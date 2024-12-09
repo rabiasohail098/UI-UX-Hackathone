@@ -28,11 +28,11 @@ const Testimonials = () => {
           <PiQuotesLight size={47} className="text-orange-500 mt-10 mx-auto mb-4" />
           <p className="leading-relaxed text-[#4F4F4F] text-lg">
             Edison bulb retro cloud bread echo park, helvetica stumptown taiyaki
-            taxidermy 90's cronut +1 kinfolk. Single-origin coffee ennui shaman
+            taxidermy 90&apos;s cronut +1 kinfolk. Single-origin coffee ennui shaman
             taiyaki vape DIY tote bag drinking vinegar cronut adaptogen squid fanny
             pack vaporware. Man bun next level coloring book skateboard four loko
             knausgaard. Kitsch keffiyeh master cleanse direct trade indigo juice
-            before they sold out gentrify plaid gastropub normcore XOXO 90's pickled
+            before they sold out gentrify plaid gastropub normcore XOXO 90&apos;s pickled
             jean shorts. Slow-carb next level ethical authentic, scenester sriracha
             forage franzen organic drinking vinegar.
           </p>

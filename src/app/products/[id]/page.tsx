@@ -1,17 +1,18 @@
 "use client";
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-interface Data {
-  id: number;
-  img: string;
-  title: string;
-  price: string;
+interface Params{
+    params:{
+      [id:string]:number|never
+    }
+   
 }
-
-interface Params {
-  params: {
-    id: string;
-  };
+interface Data{
+  [x:string]:never|number|string
+    id:number;
+    img:string;
+    title:string;
+    price:string;
 }
 const data: Data[] = [
   { 
