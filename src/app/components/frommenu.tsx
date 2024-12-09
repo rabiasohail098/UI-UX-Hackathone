@@ -21,10 +21,7 @@ const FromMenu = () => {
           <li>Soups</li>
         </ul>
       </div>
-
-      {/* Menu Content */}
       <div className=" flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
-        {/* Image Section */}
         <div className="w-full lg:w-1/2 flex justify-center">
         <div className='bg-[url(/images/me9.png)] w-[515px] h-[406px]'>
           <Image 
@@ -36,10 +33,7 @@ const FromMenu = () => {
           />
           </div>
         </div>
-
-        {/* Menu Details */}
         <div className="w-full lg:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* First Column */}
           <div className="space-y-6">
             <div className="flex items-center gap-4">
               <div className="w-16 h-16 relative">
@@ -103,7 +97,6 @@ const FromMenu = () => {
             </div>
         
           </div>
-          {/* Second Column */}
           <div className="space-y-6">
             <div className="flex items-center gap-4">
               <div className="w-16 h-16 relative">

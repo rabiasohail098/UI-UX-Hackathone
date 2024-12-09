@@ -1,23 +1,24 @@
 import React from 'react'
+import Image from 'next/image';
 interface Propstype{
     img:string;
     title:string;
     price:string;
 }
 
-const card:React.FC<Propstype> = ({img,title,price}:Propstype) => {
+const Card:React.FC<Propstype> = ({img,title,price}:Propstype) => {
   return (
-    <div>
-        <h2>{title}</h2>
-        <div>
-            {img}
+    <div className='w-[312px] h-[330px] py-3 text-left'>
+         <div className='h-[267px] w-[312px]'>
+            <Image src={img} alt="img" width={312} height={267} className="w-full"/>
         </div>
-        <p>{price}</p>
+        <h2 className='font-inter text-[16px] text-left pl-2 font-bold w-[96px] h-[26px]'>{title}</h2>
+        <p className='font-inter text-[16px] text-left pl-2 text-[#FF9F0D] w-[54px] h-[26px]'>{price}</p>
     </div>
   )
 }
 
-export default card
+export default Card
 
 interface Propstype1{
     img:string;

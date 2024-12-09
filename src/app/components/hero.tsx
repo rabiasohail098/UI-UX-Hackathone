@@ -1,10 +1,11 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 const Hero = ()=> {
   return (
     <section className="bg-black px-3 md:px-[80px] gap-10 lg:px-[135px] flex flex-col justify-evenly md:flex-row md:items-center py-[50px]">
       <div>
-        <Image src="/images/bar.png" alt="bar" width={25.28} height={492}/>
+        <Image src="/images/bar.png" alt="bar" width={25.28} height={492} className="hidden sm:block md:block lg:block"/>
       </div>
       <div className="text-white w-full md:w-[50%]">
         <h1 className="text-[20px] md:text-[28px] lg:text-[32px] font-greatvibes font-normal text-[#FF9F0D] whitespace-nowrap text-center md:text-left">
@@ -20,9 +21,11 @@ const Hero = ()=> {
         </p>
 
         <div className="flex flex-col md:flex-row items-center justify-center md:justify-start mt-6">
+          <Link href="/manu">
           <button className="bg-[#FF9F0D] text-white w-[100px] h-[30px] md:w-[160px] md:h-[50px] lg:w-[190px] lg:h-[60px] rounded-[40px] hover:bg-yellow-800">
             See More
           </button>
+          </Link>
         </div>
       </div>
       <div className="mt-[30px] md:mt-0 md:w-[50%] flex justify-center">

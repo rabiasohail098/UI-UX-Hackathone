@@ -22,7 +22,7 @@ const Header = () => {
             </li>
             <li className="font-normal font-helvetica text-[#ffffff] text-[14px] sm:text-[16px]"><Link href="/about">About</Link></li>
             <li className="font-normal font-helvetica text-[#ffffff] text-[14px] sm:text-[16px]">
-              <Link href="/error">Shop</Link>
+              <Link href="/shop">Shop</Link>
             </li>
             <li className="font-normal font-helvetica text-[#ffffff] text-[14px] sm:text-[16px]">
               <Link href="/singin">Contact</Link>
@@ -40,10 +40,12 @@ const Header = () => {
             size="20px"
             className="text-[#ffffff] sm:text-[24px]"
           /></Link>
+          <Link href="/shoppingcart">
           <HiOutlineShoppingBag
             size="20px"
             className="text-[#ffffff] sm:text-[24px]"
           />
+          </Link>
         </div>
       </div>
     </header>

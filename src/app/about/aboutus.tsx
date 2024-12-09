@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { IoPlayOutline } from "react-icons/io5";
-
+import Link from "next/link";
 
 export default function Aboutus() {
   return (
@@ -43,11 +43,12 @@ export default function Aboutus() {
               velit in consequat.
             </p>
             <div className="flex justify-center">
-              <button className="inline-flex text-white bg-orange-400 border-0 py-2 px-3 focus:outline-none rounded text-lg">
+             <Link href="/shop"> <button className="inline-flex text-white bg-orange-400 border-0 py-2 px-3 focus:outline-none rounded text-lg">
                 Show More
               </button>
+              </Link>
               <button className="ml-4 inline-flex text-black  border-0 py-2 px-3 focus:outline-none rounded text-lg">
-                <IoPlayOutline className="mr-2 block" /> 
+                <IoPlayOutline className="mr-2 mt-[6px] block" /> 
                 Watch video
               </button>
             </div>
