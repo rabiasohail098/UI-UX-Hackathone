@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-
+import Link from "next/link";
 const Error = () => {
   return (
     <>
@@ -8,7 +8,7 @@ const Error = () => {
         <div className="text-center">
           <h1 className="text-[32px] md:text-[40px] lg:text-[48px] font-helvetica text-[#FFFFFF] font-bold">404 Error</h1>
           <div className="flex justify-center items-center mt-4 gap-2">
-    <p className="text-[16px] md:text-[18px] lg:text-[20px] font-normal font-inter text-[#FFFFFF]">Home</p>
+    <p className="text-[16px] md:text-[18px] lg:text-[20px] font-normal font-inter text-[#FFFFFF]"><Link href="/">Home</Link></p>
   <p className="text-[16px] md:text-[18px] lg:text-[20px] text-[#FFFFFF]">&gt;</p>
 <span className="text-[16px] md:text-[18px] lg:text-[20px] text-[#FF9F0D]">404</span>
          </div>

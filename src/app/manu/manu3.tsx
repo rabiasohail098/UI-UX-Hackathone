@@ -36,10 +36,9 @@ const Menu3 = () => {
 
   return (
     <div className="min-h-screen flex gap-24 flex-col md:flex-row items-center justify-center space-y-28 bg-gray-50 px-8 md:px-24">
-      {/* Text Section */}
       <div className="w-full md:w-3/4">
-        <div className="flex items-center mb-4">
-          <BsCupHot size={36} className="text-[#FF9F0D] mr-4" />
+        <div className="items-center  mb-4">
+          <BsCupHot size={36} className="text-[#FF9F0D] mb-4 mr-4" />
           <h2 className="text-4xl font-bold text-gray-800">Main Course</h2>
         </div>
         <div className="space-y-8">
@@ -61,8 +60,6 @@ const Menu3 = () => {
           ))}
         </div>
       </div>
-
-      {/* Image Section */}
       <div className="w-full md:w-1/2 flex items-center justify-center mt-12 md:mt-0">
         <Image 
           src="/images/menu1.png"

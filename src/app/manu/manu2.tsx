@@ -5,7 +5,6 @@ import { BsCupHot } from 'react-icons/bs';
 const Menu2 = () => {
   return (
     <div className="min-h-screen gap-24 space-y-28 flex flex-col md:flex-row items-center justify-center bg-gray-50 px-8 md:px-24">
-      {/* Image Section */}
       <div className="w-full md:w-1/2 flex justify-center">
         <Image
           src="/images/menu.png"
@@ -18,8 +17,8 @@ const Menu2 = () => {
 
       {/* Text Section */}
       <div className="w-full md:w-3/4 mt-12 md:mt-0">
-        <div className="flex items-center mb-4">
-          <BsCupHot size={36} className="text-[#FF9F0D] mr-4" />
+        <div className="items-center mb-4">
+          <BsCupHot size={36} className="text-[#FF9F0D] mb-4 mr-4" />
           <h2 className="text-4xl font-bold text-gray-800">Starter Menu</h2>
         </div>
         <div className="space-y-8">

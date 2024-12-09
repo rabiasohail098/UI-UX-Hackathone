@@ -16,18 +16,16 @@ const Header = () => {
           <ul className="flex gap-2 sm:gap-4">
             <li className="font-bold font-helvetica text-[#FF9F0D] text-[14px] sm:text-[16px]"><Link href="/">Home</Link></li>
             <li className="font-normal font-helvetica text-[#ffffff] text-[14px] sm:text-[16px]"><Link href="/manu">Menu</Link></li>
-            <li className="font-normal font-helvetica text-[#ffffff] text-[14px] sm:text-[16px]">Blog</li>
+            <li className="font-normal font-helvetica text-[#ffffff] text-[14px] sm:text-[16px]"><Link href="/faq">Blog</Link></li>
             <li className="font-normal font-helvetica text-[#ffffff] text-[14px] sm:text-[16px]">
-              Pages
+              <Link href="/faq">Pages</Link>
+            </li>
+            <li className="font-normal font-helvetica text-[#ffffff] text-[14px] sm:text-[16px]"><Link href="/about">About</Link></li>
+            <li className="font-normal font-helvetica text-[#ffffff] text-[14px] sm:text-[16px]">
+              <Link href="/error">Shop</Link>
             </li>
             <li className="font-normal font-helvetica text-[#ffffff] text-[14px] sm:text-[16px]">
-              About
-            </li>
-            <li className="font-normal font-helvetica text-[#ffffff] text-[14px] sm:text-[16px]">
-              Shop
-            </li>
-            <li className="font-normal font-helvetica text-[#ffffff] text-[14px] sm:text-[16px]">
-              Contact
+              <Link href="/singin">Contact</Link>
             </li>
           </ul>
         </div>

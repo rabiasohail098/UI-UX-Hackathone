@@ -4,7 +4,7 @@ import { IoMailOutline } from "react-icons/io5";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { FcGoogle } from "react-icons/fc";
 import { FaApple } from "react-icons/fa6";
-
+import Link from "next/link";
 const page = () => {
   return (
     <>
@@ -12,7 +12,7 @@ const page = () => {
         <div className="text-center">
    <h1 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold text-white">Sign Up</h1>
           <div className="flex justify-center items-center mt-4 gap-2 text-[16px] md:text-[18px] lg:text-[20px] text-white">
-        <p>Home</p><span>&gt;</span><p className="text-[#ff9f0d]">Sign Up Page</p>
+        <p><Link href="/">Home</Link></p><span>&gt;</span><p className="text-[#ff9f0d]">Sign Up Page</p>
           </div>
     </div>
   </div>
