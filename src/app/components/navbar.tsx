@@ -46,26 +46,26 @@ const Header = () => {
               <Menu className="text-white" size={24} />
             </SheetTrigger>
             <SheetContent>
-              <ul className="flex flex-col md:flex-row gap-4 p-4">
+              <ul className="flex flex-col text-[#333333] md:flex-row gap-4 p-4">
                 <li className="font-bold font-helvetica text-[#FF9F0D] text-[14px] sm:text-[16px]">
                   <Link href="/">Home</Link>
                 </li>
-                <li className="font-normal font-helvetica text-[#ffffff] text-[14px] sm:text-[16px]">
+                <li className="font-normal font-helvetica text-[#333333] text-[14px] sm:text-[16px]">
                   <Link href="/menu">Menu</Link>
                 </li>
-                <li className="font-normal font-helvetica text-[#ffffff] text-[14px] sm:text-[16px]">
+                <li className="font-normal font-helvetica text-[#333333] text-[14px] sm:text-[16px]">
                   <Link href="/blog">Blog</Link>
                 </li>
-                <li className="font-normal font-helvetica text-[#ffffff] text-[14px] sm:text-[16px]">
+                <li className="font-normal font-helvetica text-[#333333] text-[14px] sm:text-[16px]">
                   <Link href="/pages">Pages</Link>
                 </li>
-                <li className="font-normal font-helvetica text-[#ffffff] text-[14px] sm:text-[16px]">
+                <li className="font-normal font-helvetica text-[#333333] text-[14px] sm:text-[16px]">
                   <Link href="/about">About</Link>
                 </li>
-                <li className="font-normal font-helvetica text-[#ffffff] text-[14px] sm:text-[16px]">
+                <li className="font-normal font-helvetica text-[#333333] text-[14px] sm:text-[16px]">
                   <Link href="/shop">Shop</Link>
                 </li>
-                <li className="font-normal font-helvetica text-[#ffffff] text-[14px] sm:text-[16px]">
+                <li className="font-normal font-helvetica text-[#333333] text-[14px] sm:text-[16px]">
                   <Link href="/singin">Contact</Link>
                 </li>
               </ul>
