@@ -46,7 +46,7 @@ const Header = () => {
               <Menu className="text-white" size={24} />
             </SheetTrigger>
             <SheetContent>
-              <ul className="flex flex-row md:flex-col gap-4 p-4">
+              <ul className="flex flex-col md:flex-row gap-4 p-4">
                 <li className="font-bold font-helvetica text-[#FF9F0D] text-[14px] sm:text-[16px]">
                   <Link href="/">Home</Link>
                 </li>
