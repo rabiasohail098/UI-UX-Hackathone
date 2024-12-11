@@ -34,14 +34,14 @@ export default function CheckoutPage() {
   return (
     <>
       <div className="bg-[url('/images/bg.png')] bg-cover bg-center flex justify-center items-center max-w-full h-[320px] md:h-[500px] lg:h-[600px]">
-        <div className="text-center">
+    <div className="text-center">
           <h1 className="text-[32px] md:text-[40px] lg:text-[48px] font-helvetica text-[#FFFFFF] font-bold">
             Cheekout Page
           </h1>
           <div className="flex justify-center items-center mt-4 gap-2">
             <p className="text-[16px] md:text-[18px] lg:text-[20px] font-normal font-inter text-[#FFFFFF]">
               Home
-            </p>
+           </p>
             <p className="text-[16px] md:text-[18px] lg:text-[20px] text-[#FFFFFF]">
               &gt;
             </p>
@@ -51,15 +51,15 @@ export default function CheckoutPage() {
           </div>
         </div>
       </div>
-      <div className=" md:max-w-[1920px] w-full px-auto   gap-4 ">
-      <div className="container md:max-w-[1320px] w-full flex  flex-col md:flex-row mx-auto  py-24">
+      <div className=" lg:max-w-[1920px] w-full px-auto   gap-2 ">
+     <div className=" lg:max-w-[1320px] w-full flex lg:px-16 flex-col lg:flex-row  py-24">
        
          
-        <div className="md:max-w-[872px] px-4 my-4 w-full h-auto">
+        <div className="lg:max-w-[872px] md:px-16 px-4  w-full h-auto">
             <h2 className=" text-xl font-semibold mb-4">Shipping Address</h2>
             
 
-                <div className="w-full gap-4 flex md:flex-row flex-col px-0">
+                <div className="w-full gap-2 flex md:flex-row flex-col px-0">
                   <div className="md:w-1/2 px-4 w-full">
                     <label
                       htmlFor="firstName"
@@ -216,6 +216,7 @@ export default function CheckoutPage() {
               <div>
               </div>
             </div>
+            <div className=" md:max-w-[1920px] w-full px-auto   gap-4 ">
             <div className="md:max-w-[872px] my-4 w-full h-auto">
             <h2 className="text-xl font-semibold mb-4">Billing Address</h2>
               <div className="flex items-center space-x-2">
@@ -240,29 +241,36 @@ export default function CheckoutPage() {
               </button>
             </div>
             </div>
-            </div>
-          <div className="md:max-w-[424px] w-full px-4 mx-4 py-8 md:h-[700px] h-auto rounded-lg border-2 border-gray-300">
-            <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
-            <div className="space-y-6">
-              {data.map((item) => (
-                <div key={item.id} className="flex flex-col mx-3 px-4 md:flex-row items-center space-x-4">
-                  <div className="h-16 w-16">
-                    <Image
-                      src={item.img}
-                      alt="Chicken Tikka Kebab"
-                      fill
-                      className="rounded-md object-cover"
-                    />
-                  </div>
-                  <div className="w-full">
-                    <h3 className="font-medium w-full md:w-[161px]">Chicken Tikka Kebab</h3>
-                    <p className="text-sm text-gray-500">{item.weg}</p>
-                    <p className="text-sm text-gray-500">{item.price}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-        
+          </div>
+          </div>
+          <div className="flex-1">
+  <div className="py-8 px-6 relative mx-auto  lg:max-w-[424px] w-full rounded-lg border-2 border-gray-300">
+    <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
+    <div className="space-y-6 gap-3 w-full">
+      {data.map((item) => (
+        <div 
+          key={item.id} 
+          className="flex gap-4 items-center w-full">
+          <div className="relative w-[82px] h-[88px]">
+            <Image
+              src={item.img}
+              alt="Chicken Tikka Kebab"
+              fill
+              className="rounded-md object-cover"
+            />
+          </div>
+          <div className="flex-1">
+            <h3 className="font-medium md:w-[161px]">
+              Chicken Tikka Kebab
+            </h3>
+            <p className="text-sm text-gray-500">{item.weg}</p>
+            <p className="text-sm text-gray-500">{item.price}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+ 
+  
            
             <div className="mt-6 w-full space-y-6 border-t pt-4">
               <div className="flex justify-between text-sm">
@@ -286,14 +294,14 @@ export default function CheckoutPage() {
                 <span className="font-semibold">432.65$</span>
               </div>
             </div>
-
+           
             <button className="w-full mt-6 px-6 py-3 bg-orange-500 text-white rounded-md shadow-sm text-sm font-medium hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
               Place an order
             </button>
           </div>
           </div>
-        </div>
-        
+          </div>
+          </div>
     
     </>
   );

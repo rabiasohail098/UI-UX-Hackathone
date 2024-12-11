@@ -21,7 +21,7 @@ const Page = () => {
          </div>
         </div>
       </div>
-        <div className="px-32 my-20 pb-10">
+        <div className="px-4 w-full my-20 pb-10">
       <div className="md:max-w-[1320px] w-full mx-auto space-y-6 md:h-[765px] h-auto ">
     <div className="flex flex-col md:flex-row justify-center">
         <div className="w-full rounded-md">
@@ -62,14 +62,14 @@ const Page = () => {
     </div>
                  </div>
                  
-                
-    <div className="flex flex-col md:max-w-[1320px] mb-8 h-auto w-full md:flex-row gap-6">
-        <div className=" md:w-[424px] mx-2 w-full ">
+              <div className='md:max-w-[1920px] mx-2 w-full'>  
+    <div className="flex flex-col md:max-w-[1320px] mb-8 h-auto w-full md:flex-row md:gap-6">
+        <div className=" md:max-w-[424px] px-2 w-full ">
     <h2 className="text-xl font-bold mb-4">Coupon Code</h2>
-        <div className="border p-4 rounded-md">
+        <div className="border p-2 rounded-md">
     <p className="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque diam pellentesque bibendum non</p>
     <div className="flex flex-col sm:flex-row">
-    <input type="text" placeholder="Enter Here code" className="flex-1 border rounded-md px-4 py-2"/>
+    <input type="text" placeholder="Enter Here code" className=" border rounded-md px-4 py-2"/>
     <button className="bg-orange-500 text-white md:text-[18px] text-sm px-6 py-2 rounded-md">Apply</button>
     </div>
         </div>
@@ -95,7 +95,8 @@ const Page = () => {
       </Link>
     </div>
         </div>
-        </div>
+                 </div>
+                 </div>
         </div>
             
              
