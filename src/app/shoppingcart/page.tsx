@@ -33,10 +33,10 @@ const Page = () => {
         <div className='pl-8 md:block hidden'>Remove</div>
     </div>
             {products.map((item, index) => (
-    <div key={index} className="grid grid-cols-5  gap-4 items-center border-b py-4">     
+    <div key={index} className="grid grid-cols-5 ml-20  gap-4 items-center border-b py-4">     
     <div className="flex flex-col md:flex-row items-center md:w-[225px] h-auto w-full gap-4">
-    <div className="relative md:w-20 md:h-16 w-48 h-44">
-    <Image src="/images/me4.png" alt={item} width={100} height={100} className="object-cover w-full  rounded-md"/>
+    <div className="relative mx-4 md:w-20 md:h-16  w-48 h-44">
+    <Image src="/images/me4.png" alt={item} width={100} height={100} className="object-cover w-full rounded-md"/>
 </div>
 <div>
     <h3 className="text-lg font-semibold text-gray-800">{item}</h3>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import cheakout from "@/../../public/cheakout.png";
+import Link from "next/link";
 interface Checkout {
   id: number;
   img: string;
@@ -40,7 +40,7 @@ export default function CheckoutPage() {
           </h1>
           <div className="flex justify-center items-center mt-4 gap-2">
             <p className="text-[16px] md:text-[18px] lg:text-[20px] font-normal font-inter text-[#FFFFFF]">
-              Home
+             <Link href="/">Home</Link> 
            </p>
             <p className="text-[16px] md:text-[18px] lg:text-[20px] text-[#FFFFFF]">
               &gt;
