@@ -18,10 +18,7 @@ const Page = () => {
       <div className="w-full max-w-[1200px]">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {chef.map((item) => (
-            <div
-              key={item.id}
-              className="bg-white shadow-md hover:shadow-lg transition-shadow duration-300"
-            >
+      <div key={item.id} className="bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
               <Image
                 src={item.image}
                 alt="chef"

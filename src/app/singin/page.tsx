@@ -35,12 +35,14 @@ const page = () => {
             <RiLockPasswordLine size={20} className="text-gray-400" />
     <input type="password" placeholder="Password" className="w-full outline-none text-sm text-gray-700"/>
           </div>
-    <div className="flex items-center gap-2">
+    <div className="flex  items-center gap-2">
 <input type="checkbox" className="w-4 h-4" />
-<label className="text-sm text-gray-600">Remember me?</label>
-    </div>
-<button className="w-full bg-[#ff9f0d] text-white py-2 rounded-md font-medium hover:bg-[#e88e0c]">Sign Up</button>
-<p className="text-right text-sm text-gray-500 hover:underline">Forgot Password?</p>
+<label className="text-sm  text-gray-600">Remember me?</label>
+          </div>
+          <Link href="/singup" >
+<button className="w-full bg-[#ff9f0d] text-white mt-4 py-2 rounded-md font-medium hover:bg-[#e88e0c]">Sign Up</button>
+</Link>
+            <p className="text-right text-sm text-gray-500 hover:underline">Forgot Password?</p>
  <div className="flex items-center justify-center gap-2">
 <hr className="w-1/3 border-gray-300" />
      <span className="text-sm text-gray-500">OR</span>

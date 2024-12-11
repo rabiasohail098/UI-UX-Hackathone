@@ -69,13 +69,13 @@ const Page = ({ params }: Params) => {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
-      <div key={filteredItem.id} className="shadow-md p-4 rounded-lg">
-        <Image src={filteredItem.img} alt={filteredItem.title} width={312} height={267} />
-        <h2 className="text-xl font-bold mt-2">{filteredItem.title}</h2>
-        <p className="text-gray-600">{filteredItem.price}</p>
+    <div className='justify-center items-center rounded-md shadow-lg shadow-gray-500 py-12 border-gray-200 my-12 mx-auto  bg-black w-full md:w-[600px] h-auto md:h-[800px]'>
+      <div key={filteredItem.id} className="shadow-md space-y-6 mx-6 py-6  border-2 border-gray-400 rounded-lg">
+        <Image src={filteredItem.img} alt={filteredItem.title} width={512} height={767} />
+        <h2 className="md:text-4xl text-3xl text-[#ffffff] pl-4 font-bold ">{filteredItem.title}</h2>
+        <p className="text-orange-500 font-semibold text-2xl md:text-3xl  pl-4">{filteredItem.price}</p>
       </div>
-    </div>
+      </div>
   );
 };
 

@@ -1,9 +1,9 @@
 import React from 'react'
 import Image from 'next/image';
-const Hero2 = () => {
+const FoodCategory1 = () => {
   return (
-        <div className="min-h-screen w-full flex flex-col items-center justify-center bg-[#0D0D0D] px-6 sm:pt-[31rem] md:px-16 lg:px-24 space-y-12">
-          <div className="text-center space-y-4">
+        <div className="min-h-screen w-full flex flex-col items-center justify-center bg-[#0D0D0D] px-6 pt-16 md:px-16 lg:px-24 space-y-8">
+          <div className="text-center md:mt-32 space-y-4">
         <p className="font-greatvibes text-[16px] md:text-[18px] font-normal text-[#FF9F0D]"> Food Category</p>
     <h2 className="font-helvetica text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#FFFFFF]"><span className='text-[#FF9F0D]'>Ch</span>oose Food Iteam</h2>
           </div>
@@ -50,4 +50,4 @@ const Hero2 = () => {
       );
     };
 
-export default Hero2
+export default FoodCategory1

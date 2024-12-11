@@ -35,7 +35,7 @@ const Menu3 = () => {
   ];
 
   return (
-    <div className="min-h-screen flex gap-24 flex-col md:flex-row items-center justify-center space-y-28 bg-gray-50 px-8 md:px-24">
+    <div className="min-h-screen gap-24 space-y-28 flex flex-col md:flex-row items-center justify-center bg-gray-50 px-8 md:px-24">
       <div className="w-full md:w-3/4">
         <div className="items-center  mb-4">
           <BsCupHot size={36} className="text-[#FF9F0D] mb-4 mr-4" />

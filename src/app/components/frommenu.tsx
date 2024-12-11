@@ -22,7 +22,7 @@ const FromMenu = () => {
         </ul>
       </div>
       <div className=" flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
-        <div className="w-full lg:w-1/2 flex justify-center">
+        <div className="w-full lg:w-[30%] flex justify-center">
         <div className='bg-[url(/images/me9.png)] w-[515px] h-[406px]'>
           <Image 
             src="/images/me10.png" 
@@ -33,15 +33,15 @@ const FromMenu = () => {
           />
           </div>
         </div>
-        <div className="w-full lg:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className=" lg:w-[70%] grid w-full grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-6">
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 relative">
+            <div className="flex items-center  w-[376px] gap-4">
+              <div className="w-[80px] h-[79px] relative">
                 <Image 
                   src="/images/me1.png" 
                   alt="Lettuce Leaf" 
                   fill 
-                  className="rounded-md object-cover"
+                  className="rounded-[2px] w-full object-cover"
                 />
               </div>
               <div>
@@ -50,13 +50,13 @@ const FromMenu = () => {
                 <p className="text-orange-500">12.5$</p>
               </div>
             </div>
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 relative">
+            <div className="flex items-center w-[376px] gap-4">
+              <div className="w-[80px] h-[79px] relative">
                 <Image 
                   src="/images/me2.png" 
                   alt="Lettuce Leaf" 
                   fill 
-                  className="rounded-md object-cover"
+                  className="rounded-[2px] object-cover"
                 />
               </div>
               <div>
@@ -65,13 +65,13 @@ const FromMenu = () => {
                 <p className="text-orange-500">12.5$</p>
               </div>
             </div>
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 relative">
+            <div className="flex items-center w-[376px] gap-4">
+              <div className="w-[80px] h-[79px] relative">
                 <Image 
                   src="/images/me3.png" 
                   alt="Lettuce Leaf" 
                   fill 
-                  className="rounded-md object-cover"
+                  className="rounded-[2px] object-cover"
                 />
               </div>
               <div>
@@ -80,13 +80,13 @@ const FromMenu = () => {
                 <p className="text-orange-500">12.5$</p>
               </div>
             </div>
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 relative">
+            <div className="flex items-center w-[376px] gap-4">
+              <div className="w-[80px] h-[79px] relative">
                 <Image 
                   src="/images/me4.png" 
                   alt="Fresh Breakfast" 
                   fill 
-                  className="rounded-md object-cover"
+                  className="rounded-[2px] object-cover"
                 />
               </div>
               <div>
@@ -98,13 +98,13 @@ const FromMenu = () => {
         
           </div>
           <div className="space-y-6">
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 relative">
+            <div className="flex items-center w-[376px] gap-4">
+              <div className="w-[80px] h-[79px] relative">
                 <Image 
                   src="/images/me3.png" 
                   alt="Mild Butter" 
                   fill 
-                  className="rounded-md object-cover"
+                  className="rounded-[2px] object-cover"
                 />
               </div>
               <div>
@@ -113,13 +113,13 @@ const FromMenu = () => {
                 <p className="text-orange-500">12.5$</p>
               </div>
             </div>
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 relative">
+            <div className="flex items-center w-[376px] gap-4">
+              <div className="w-[80px] h-[79px] relative">
                 <Image 
                   src="/images/me5.png" 
                   alt="Mild Butter" 
                   fill 
-                  className="rounded-md object-cover"
+                  className="rounded-[2px] object-cover"
                 />
               </div>
               <div>
@@ -128,13 +128,13 @@ const FromMenu = () => {
                 <p className="text-orange-500">12.5$</p>
               </div>
             </div>
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 relative">
+            <div className="flex items-center w-[376px] gap-4">
+              <div className="w-[80px] h-[79px] relative">
                 <Image 
                   src="/images/me6.png" 
                   alt="Fresh Breakfast" 
                   fill 
-                  className="rounded-md object-cover"
+                  className="rounded-[2px] object-cover"
                 />
               </div>
               <div>
@@ -143,13 +143,13 @@ const FromMenu = () => {
                 <p className="text-orange-500">14.5$</p>
               </div>
             </div>
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 relative">
+            <div className="flex items-center w-[376px] gap-4">
+              <div className="w-[80px] h-[79px] relative">
                 <Image 
                   src="/images/me7.png" 
                   alt="Mild Butter" 
                   fill 
-                  className="rounded-md object-cover"
+                  className="rounded-[2px] object-cover"
                 />
               </div>
               <div>

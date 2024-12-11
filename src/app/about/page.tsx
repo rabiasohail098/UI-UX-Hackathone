@@ -8,10 +8,11 @@ import Foodmenu from './foodmenu'
 const page = () => {
   return (
     <div>
-        <Aboutus/>
-        <TeamMember/>
-        <Testimonial1/>
-        <Foodmenu/>
+      <Aboutus/>
+  <TeamMember/>
+  <Testimonial1/>
+  <Foodmenu/>
+      
     </div>
   )
 }
