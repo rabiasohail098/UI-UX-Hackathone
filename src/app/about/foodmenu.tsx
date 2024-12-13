@@ -61,6 +61,7 @@ const Foodmenu = () => {
   ];
 const foodmenu = ['Breakfast', 'Lunch', 'Dinner', 'Dessert', 'Drink', 'Snack', 'Soups']
   return (
+    <div className='max-w-[1920px]'>
     <div className="bg-gray-50 py-16 px-4 sm:px-8 lg:px-24">
       <div className="text-center mb-12">
         <h2 className="text-[32px] sm:text-[40px] lg:text-[48px] font-bold text-gray-800">
@@ -91,7 +92,8 @@ const foodmenu = ['Breakfast', 'Lunch', 'Dinner', 'Dessert', 'Drink', 'Snack', '
           </div>
         ))}
       </div>
-    </div>
+      </div>
+      </div>
   );
 };
 

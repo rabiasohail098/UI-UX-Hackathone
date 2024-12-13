@@ -5,6 +5,7 @@ import { FaStar } from "react-icons/fa";
 import { CiStar } from "react-icons/ci";
 const Testimonial1 = () => {
   return (
+    <div className="max-w-[1920px]">
     <div className=" px-4 sm:px-8 lg:px-16 py-12">
       <div className="text-left mb-12 ml-4 sm:ml-8 lg:ml-12">
         <p className="font-greatvibes text-[24px] sm:text-[32px] text-orange-500">
@@ -61,7 +62,8 @@ const Testimonial1 = () => {
         height={16}
         className="md:ml-[47%] ml-[27%]"
       />
-    </div>
+      </div>
+      </div>
   );
 };
 

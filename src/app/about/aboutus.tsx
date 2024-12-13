@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Aboutus() {
   return (
-    <div>
+    <div className="max-w-[1920px]">
       <div className="container mx-auto mt-12 flex md:flex-row px-12 items-center justify-center flex-col w-full max-w-[1220px]">
         <div className="ml-6 md:w-[669px] w-full md:h-[734px] flex md:flex-row flex-col">
           <div className="flex md:w-1/2 w-full flex-col items-center">

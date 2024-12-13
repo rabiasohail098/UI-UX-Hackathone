@@ -15,8 +15,9 @@ const page = () => {
         <p><Link href="/">Home</Link></p><span>&gt;</span><p className="text-[#ff9f0d]">Sign Up Page</p>
           </div>
     </div>
-  </div>
-      <div className="flex flex-col items-center justify-center mx-auto  max-w-[1920px] w-[1200px] px-4 md:px-8 lg:px-12 py-10 gap-6  rounded-lg">
+      </div>
+      <div className="max-w-[1920px]">
+      <div className="flex flex-col items-center justify-center mx-auto  max-w-[1200px] px-4 md:px-8 lg:px-12 py-10 gap-6  rounded-lg">
         <form className="bg-white w-full max-w-[424px] p-6 space-y-6 rounded-md shadow-[0_0_10px_0_rgba(155,159,13,0.4)]"action="#">
           <h2 className="text-[20px] font-bold text-gray-800">Sign Up</h2>
           <div className="flex items-center border rounded-md px-3 py-2 gap-2">
@@ -55,7 +56,8 @@ const page = () => {
             <span className="text-sm text-gray-600">Sign Up with Apple</span>
           </button>
         </form>
-      </div>
+        </div>
+        </div>
     </>
   );
 };
