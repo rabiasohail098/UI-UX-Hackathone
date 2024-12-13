@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const Bottom = () => {
   return (
-    <div className="w-full bg-[#4F4F4F] flex flex-col items-center py-4 px-4 md:px-8">
+    <div className="w-full max-w-[1920px] bg-[#4F4F4F] flex flex-col items-center py-4 px-4 md:px-8">
       <div className="w-full max-w-[1318px] flex flex-col md:flex-row items-center justify-between text-center gap-4">
         <p className="text-[14px] md:text-[16px] text-white font-inter font-normal">
           Copyright © 2022 by Ayeman. All Rights Reserved.

@@ -7,7 +7,7 @@ export default function Aboutus() {
     <div>
       <div className="container mx-auto mt-12 flex md:flex-row px-12 items-center justify-center flex-col w-full max-w-[1220px]">
         <div className="ml-6 md:w-[669px] w-full md:h-[734px] flex md:flex-row flex-col">
-          <div className="flex w-1/2 flex-col items-center">
+          <div className="flex md:w-1/2 w-full flex-col items-center">
             <Image
               className="object-cover object-center  w-full  md:w-[309px] md:h-[536px] h-[309px] rounded-s mr-0 md:mr-4"
               alt="hero"
@@ -16,7 +16,7 @@ export default function Aboutus() {
               height={536}
             />
           </div>
-          <div className="flex w-1/2 gap-3 flex-col md:flex-col">
+          <div className="flex md:w-1/2 w-full gap-3 flex-col md:flex-col">
             <Image
               className="object-cover object-center mt-2 md:block mb-4 w-full md:w-[309px] h-[271px] radius-6px"
               alt="image2"
@@ -102,7 +102,7 @@ export default function Aboutus() {
                 </div>
               </div>
             </div>
-            <div className="p-2  mr-12 md:w-[359px]">
+            <div className="p-2  mr-12 md:max-w-[359px]">
               <div className="h-full flex justify-center items-center flex-col rounded-lg overflow-hidden">
                 <Image
                   className=""

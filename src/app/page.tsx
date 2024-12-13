@@ -11,7 +11,7 @@ import FoodCategory1 from "./components/foodcategory";
 
 const page = () => {
   return (
-    <div>
+    <div className="md:max-w-[1920px]">
       <Hero />
       <Hero1 />
       <FoodCategory1 />

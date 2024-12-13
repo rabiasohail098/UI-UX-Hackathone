@@ -8,7 +8,7 @@ import Link from "next/link";
 const page = () => {
   return (
     <>
-      <div className="bg-[url('/images/bg.png')] bg-cover bg-center flex justify-center items-center w-full h-[320px] md:h-[500px] lg:h-[600px]">
+      <div className="bg-[url('/images/bg.png')] bg-cover bg-center flex justify-center max-w-[1920px] items-center w-full h-[320px] md:h-[500px] lg:h-[600px]">
         <div className="text-center">
    <h1 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold text-white">Sign Up</h1>
           <div className="flex justify-center items-center mt-4 gap-2 text-[16px] md:text-[18px] lg:text-[20px] text-white">
@@ -16,7 +16,7 @@ const page = () => {
           </div>
     </div>
   </div>
-      <div className="flex flex-col items-center justify-center mx-auto w-full max-w-[1200px] px-4 md:px-8 lg:px-12 py-10 gap-6  rounded-lg">
+      <div className="flex flex-col items-center justify-center mx-auto  max-w-[1920px] w-[1200px] px-4 md:px-8 lg:px-12 py-10 gap-6  rounded-lg">
         <form className="bg-white w-full max-w-[424px] p-6 space-y-6 rounded-md shadow-[0_0_10px_0_rgba(155,159,13,0.4)]"action="#">
           <h2 className="text-[20px] font-bold text-gray-800">Sign Up</h2>
           <div className="flex items-center border rounded-md px-3 py-2 gap-2">

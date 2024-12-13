@@ -8,7 +8,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const Header = () => {
   return (
-    <header className="relative max-w-full bg-[#0D0D0D] h-[90px]">
+    <header className="relative max-w-[1920px] w-full bg-[#0D0D0D] h-[90px]">
       <div className="absolute max-w-full mt-[15px] bg-[#0D0D0D] w-full flex justify-between items-center px-4 sm:px-8 h-[32px]">
         <div className="max-w-[109px]">
           <h2 className="font-helvetica font-bold text-[20px] sm:text-[24px] text-[#ffffff]">

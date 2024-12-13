@@ -27,9 +27,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="max-w-[1920px]">
       
-      <body className={inter.className}>
+      <body className={inter.className} >
         <Header />
         {children}
         <Footer />
@@ -38,3 +38,4 @@ export default function RootLayout({
     </html>
   );
 }
+ 
