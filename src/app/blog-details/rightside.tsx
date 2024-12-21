@@ -4,11 +4,12 @@ import { TiMessages } from "react-icons/ti";
 import { PiUserCirclePlus } from "react-icons/pi";
 import { PiQuotes } from "react-icons/pi";
 import Image from 'next/image';
-import { FaFacebookF } from "react-icons/fa";
-import { FaTwitter } from "react-icons/fa";
+import Link from 'next/link';
+import { FaFacebook } from "react-icons/fa";
+import { IoLogoGithub } from "react-icons/io";
 import { FaInstagram } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
-
+import { FaYoutube } from "react-icons/fa"
 const Rightside = () => {
   return (
       <div className='md:max-w-[872px] '>
@@ -58,7 +59,7 @@ himenaeos nunc torquent euismod adipiscing adipiscing dui gravida justo.</p>
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. <br/> <br />
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.     </p>
               {/* tag div */}
-              <div className='md:max-w-[872px] px-8 flex flex-col md:flex-row justify-between p-4 border-[1px] '>
+              <div className='md:max-w-[872px] mb-16 px-8 flex flex-col md:flex-row justify-between p-4 border-[1px] '>
                   <div className=' flex gap-4'>
                       <label htmlFor="tags" className='font-bold text-[16px]'>Tags: </label>
                       <p>Restaurant, Dinner, Pizza, Yummy, </p>
@@ -66,10 +67,11 @@ himenaeos nunc torquent euismod adipiscing adipiscing dui gravida justo.</p>
                   <div className=' flex gap-4'>
                       <label htmlFor="tags" className='font-bold text-[16px]'>Share: </label>
                       <p className='flex gap-3'>
-                      <FaFacebookF size={18} />
-                      <FaTwitter size={18} />
-                      <FaInstagram size={18} />
-                      <FaLinkedin size={18} />
+                      <Link href="https://www.linkedin.com/in/rabia-sohail-684740278/"><FaLinkedin size={18}/></Link>
+            <Link href="https://github.com/rabiasohail098"><IoLogoGithub size={18}/></Link>
+            <Link href="www.youtube.com/@Parniya098"><FaYoutube size={18}/></Link>
+            <Link href="https://www.instagram.com/rabiasohail642/"><FaInstagram size={18}/></Link>
+            <Link href="https://www.facebook.com/parniyasohail098"><FaFacebook size={18}/></Link>
 
                       </p>
                   </div>
