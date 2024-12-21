@@ -23,7 +23,7 @@ const Hero1 = () => {
           ✔ Lorem ipsum dolor sit amet, consectetur adipiscing elit
         </p>
         <Link href="/about">
-          <button className="rounded-[30px] md:h-[60px] h-[50px] pl-5 md:ml-[64px] px-5 w-[160px] md:w-[180px] text-[#FFFFFF] bg-[#FF9F0D]">
+          <button className="rounded-[30px] md:h-[60px] h-[50px] pl-5 md:ml-[64px] px-5 mx-4 w-[160px] md:w-[180px] text-[#FFFFFF] bg-[#FF9F0D]">
             Read More
           </button>
         </Link>

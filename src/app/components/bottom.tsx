@@ -1,6 +1,8 @@
 import React from 'react';
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 import Image from 'next/image';
+import { FaGithub } from "react-icons/fa";
+import Link from 'next/link';
 
 const Bottom = () => {
   return (
@@ -11,16 +13,16 @@ const Bottom = () => {
         </p>
         <div className="flex gap-3">
           <div className="w-9 h-9 flex items-center justify-center rounded bg-white hover:bg-gray-300 transition">
-            <FaFacebookF size={18} className="text-black" />
+            <Link href="https://www.facebook.com/parniyasohail098"><FaFacebookF size={18} className="text-black" /></Link>
           </div>
           <div className="w-9 h-9 flex items-center justify-center rounded bg-white hover:bg-gray-300 transition">
-            <FaTwitter size={18} className="text-black" />
+            <Link href="https://github.com/rabiasohail098"><FaGithub size={18} className="text-black" /></Link>
           </div>
           <div className="w-9 h-9 flex items-center justify-center rounded bg-white hover:bg-gray-300 transition">
-            <FaInstagram size={18} className="text-black" />
+            <Link href="https://www.instagram.com/rabiasohail642/"><FaInstagram size={18} className="text-black" /></Link>
           </div>
           <div className="w-9 h-9 flex items-center justify-center rounded bg-white hover:bg-gray-300 transition">
-            <FaYoutube size={18} className="text-[#FF9F0D]" />
+           <Link href="www.youtube.com/@Parniya098"><FaYoutube size={18} className="text-[#FF9F0D]" /></Link> 
           </div>
           <div className="w-9 h-9 flex items-center justify-center rounded bg-white hover:bg-gray-300 transition">
             <Image src="/images/pa.png" alt="Logo" width={16} height={18} className="w-4 h-4" />

@@ -42,10 +42,10 @@ const Blog = () => {
               mi pug VHS try-hard.
             </p>
             <div className="flex justify-center gap-4 text-xl text-gray-800 mt-4">
-              <Link href=""><FaLinkedin /></Link>
-              <Link href=""><IoLogoGithub /></Link>
-              <Link href=""><FaInstagram /></Link>
-              <Link href=""><FaFacebook /></Link>
+              <Link href="https://www.linkedin.com/in/rabia-sohail-684740278/"><FaLinkedin /></Link>
+              <Link href="https://github.com/rabiasohail098"><IoLogoGithub /></Link>
+              <Link href="https://www.instagram.com/rabiasohail642/"><FaInstagram /></Link>
+              <Link href="https://www.facebook.com/parniyasohail098"><FaFacebook /></Link>
             </div>
           </div>
         </section>
@@ -130,11 +130,11 @@ const Blog = () => {
         <div className="mt-8 border border-gray-400 rounded-md p-4 text-center">
           <h1 className="text-lg font-bold mb-4">Follow Us</h1>
           <div className="flex justify-center gap-4 text-xl text-gray-800">
-            <Link href=""><FaLinkedin /></Link>
-            <Link href=""><IoLogoGithub /></Link>
-            <Link href=""><FaYoutube /></Link>
-            <Link href=""><FaInstagram /></Link>
-            <Link href=""><FaFacebook /></Link>
+            <Link href="https://www.linkedin.com/in/rabia-sohail-684740278/"><FaLinkedin /></Link>
+            <Link href="https://github.com/rabiasohail098"><IoLogoGithub /></Link>
+            <Link href="www.youtube.com/@Parniya098"><FaYoutube /></Link>
+            <Link href="https://www.instagram.com/rabiasohail642/"><FaInstagram /></Link>
+            <Link href="https://www.facebook.com/parniyasohail098"><FaFacebook /></Link>
           </div>
         </div>
       </div>

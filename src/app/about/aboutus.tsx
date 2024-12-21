@@ -72,7 +72,7 @@ export default function Aboutus() {
         </div>
       </div>
       <div className="text-white body-font ">
-        <div className=" mx-auto flex md:px-4 md:py-8 px-8 py-4 items-center justify-center flex-col w-full md:w-[579px]">
+        <div className=" mx-auto flex md:px-4 md:py-8 mx-8 py-4 items-center justify-center flex-col w-full md:w-[579px]">
           <h1 className="text-black text-lg md:text-3xl sm:2xl font-bold mt-3">
             Why Choose Us
           </h1>
@@ -92,10 +92,10 @@ export default function Aboutus() {
         </div>
       </div>
       <div className="text-white  body-font">
-        <div className="container  py-20 mx-auto">
-          <div className="flex mx-auto mr-12  flex-col md:flex-row  ">
+        <div className="container  py-20 mx-5">
+          <div className="flex  flex-col md:flex-row  ">
             <div className="p-2 px-auto mr-12  md:w-[359px]">
-              <div className="h-full flex  justify-center items-center flex-col rounded-lg overflow-hidden">
+              <div className="h-full flex  justify-center items-center px-8 flex-col rounded-lg overflow-hidden">
                 <Image
                   src="/images/ab5.png"
                   width={80}

@@ -33,7 +33,7 @@ const CommentSection = () => {
   };
 
     return (
-      <div className="md:max-w-[1920px] mb-16 px-24 w-full">
+      <div className="md:max-w-[1920px] mb-16 px-8 w-full">
     <div className="comment-section space-y-6">
       <h3 className="text-2xl font-bold font-helvetica mb-4">Comments</h3>
 

@@ -31,7 +31,7 @@ himenaeos nunc torquent euismod adipiscing adipiscing dui gravida justo.</p>
               </div>
               {/* second div */}
               <div className='md:max-w-[840px] mx-8 bg-[#FF9F0D] md:mt-8  mb-8 text-[#ffffff] h-[176px] top-[1431px] left-[300px]'>
-                  <div className='flex gap-4 p-6 mt-[5rem]'>
+                  <div className='flex gap-4 p-6 mt-[6rem]'>
                       <PiQuotes size={ 98} />
 <p className='font-helvetica font-bold text-[24px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. </p>
                   </div>

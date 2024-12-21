@@ -40,8 +40,8 @@ const TeamMember = () => {
 
   return (
     <div className="relative">
-      <div className="max-w-[1920px] w-full mt-[50px] h-[460px] bg-[#FF9F0DD9]   z-10 flex flex-col items-center justify-center">
-      <div className="w-[418px] mb-8 h-auto text-center">
+      <div className="md:max-w-[1920px] px-4 w-full mt-[50px] h-[460px] bg-[#FF9F0DD9]   z-10 flex flex-col items-center justify-center">
+      <div className="md:max-w-[418px] w-full mb-8 h-auto text-center">
         <h2 className="font-helvetica font-bold text-[#ffffff] text-[48px]">Team Member</h2>
         <p className="font-inter text-[#ffffff] text-[16px]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Varius sed

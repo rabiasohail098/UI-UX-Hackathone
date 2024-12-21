@@ -50,22 +50,22 @@ const Header = () => {
                 <li className="font-bold font-helvetica text-[#FF9F0D] text-[14px] sm:text-[16px]">
                   <Link href="/">Home</Link>
                 </li>
-                <li className="font-normal font-helvetica text-[#333333] text-[14px] sm:text-[16px]">
+                <li className="font-normal font-helvetica text-[#ffffff] text-[14px] sm:text-[16px]">
                   <Link href="/menu">Menu</Link>
                 </li>
-                <li className="font-normal font-helvetica text-[#333333] text-[14px] sm:text-[16px]">
+                <li className="font-normal font-helvetica text-[#ffffff] text-[14px] sm:text-[16px]">
                   <Link href="/blog">Blog</Link>
                 </li>
-                <li className="font-normal font-helvetica text-[#333333] text-[14px] sm:text-[16px]">
+                <li className="font-normal font-helvetica text-[#ffffff] text-[14px] sm:text-[16px]">
                   <Link href="/pages">Pages</Link>
                 </li>
-                <li className="font-normal font-helvetica text-[#333333] text-[14px] sm:text-[16px]">
+                <li className="font-normal font-helvetica text-[#ffffff] text-[14px] sm:text-[16px]">
                   <Link href="/about">About</Link>
                 </li>
-                <li className="font-normal font-helvetica text-[#333333] text-[14px] sm:text-[16px]">
+                <li className="font-normal font-helvetica text-[#ffffff] text-[14px] sm:text-[16px]">
                   <Link href="/shop">Shop</Link>
                 </li>
-                <li className="font-normal font-helvetica text-[#333333] text-[14px] sm:text-[16px]">
+                <li className="font-normal font-helvetica text-[#ffffff] text-[14px] sm:text-[16px]">
                   <Link href="/singin">Contact</Link>
                 </li>
               </ul>
