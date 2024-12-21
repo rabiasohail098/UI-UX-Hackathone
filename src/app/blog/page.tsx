@@ -17,11 +17,11 @@ const page = () => {
         </div>
       </section>
       <div className='md:max-w-[1920px] justify-center items-center object-cover'>
-        <div className='md:max-w-[1320px] mt-16 px-24 flex flex-col lg:flex-row'>
-          <div className='md:max-w-3/4'>
+        <div className='md:max-w-[1320px] mt-16 px-16 flex flex-col lg:flex-row'>
+          <div className='md:max-w-3/4 w-full'>
             <Rightside />
           </div>
-          <div className='md:max-w-1/4'>
+          <div className='md:max-w-1/4 sm:w-2/4 w-full mb-16'>
             <Blog />
             </div>
           </div>
