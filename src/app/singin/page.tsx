@@ -8,14 +8,17 @@ import Link from "next/link";
 const page = () => {
   return (
     <>
-      <div className="bg-[url('/images/bg.png')] bg-cover bg-center flex justify-center items-center max-w-[1920px] w-full h-[320px] md:h-[500px] lg:h-[600px]">
-        <div className="text-center">
-   <h1 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold text-white">404 Error</h1>
-          <div className="flex justify-center items-center mt-4 gap-2 text-[16px] md:text-[18px] lg:text-[20px] text-white">
-        <p><Link href="/">Home</Link></p><span>&gt;</span><p className="text-[#ff9f0d]">404</p>
-          </div>
+    <section
+    className="bg-cover bg-center h-64 flex items-center justify-center"
+    style={{ backgroundImage: "url('/images/bg.png')" }}
+  >
+    <div className="text-center text-white">
+      <h2 className="text-4xl font-bold">404 Error</h2>
+      <p className="pt-2">
+        <Link href="/" className="text-yellow-400">Home</Link> › 404
+      </p>
     </div>
-      </div>
+  </section>
       <div className="max-w-[1920px]">
       <div className="flex flex-col items-center justify-center mx-auto w-full max-w-[1200px] px-4 md:px-8 lg:px-12 py-10 gap-6  rounded-lg">
         <form className="bg-white w-full max-w-[424px] p-6 space-y-6 rounded-md shadow-[0_0_10px_0_rgba(155,159,13,0.4)]"action="#">

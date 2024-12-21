@@ -5,6 +5,17 @@ import Link from "next/link";
 export default function Aboutus() {
   return (
     <div className="max-w-[1920px]">
+       <section
+        className="bg-cover bg-center h-64 flex items-center justify-center"
+        style={{ backgroundImage: "url('/images/bg.png')" }}
+      >
+        <div className="text-center text-white">
+          <h2 className="text-4xl font-bold">About Us</h2>
+          <p className="pt-2">
+            <Link href="/" className="text-yellow-400">Home</Link> › About
+          </p>
+        </div>
+      </section>
       <div className="container mx-auto mt-12 flex md:flex-row px-12 items-center justify-center flex-col w-full max-w-[1220px]">
         <div className="ml-6 md:w-[669px] w-full md:h-[734px] flex md:flex-row flex-col">
           <div className="flex md:w-1/2 w-full flex-col items-center">

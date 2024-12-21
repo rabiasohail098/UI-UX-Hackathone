@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 interface Params{
     params:{
       [id:string]:number|never
@@ -69,6 +70,18 @@ const Page = ({ params }: Params) => {
   }
 
   return (
+    <>
+      <section
+    className="bg-cover bg-center h-64 flex items-center justify-center"
+    style={{ backgroundImage: "url('/images/bg.png')" }}
+  >
+    <div className="text-center text-white">
+      <h2 className="text-4xl font-bold">Shop Details</h2>
+      <p className="pt-2">
+        <Link href="/" className="text-yellow-400">Home</Link> › Shop Details
+      </p>
+    </div>
+  </section>
     <div className='justify-center items-center rounded-md shadow-lg shadow-gray-500 py-12 border-gray-200 my-12 mx-auto  bg-black w-full md:w-[600px] h-auto md:h-[800px]'>
       <div key={filteredItem.id} className="shadow-md space-y-6 mx-6 py-6  border-2 border-gray-400 rounded-lg">
         <Image src={filteredItem.img} alt={filteredItem.title} width={512} height={767} />
@@ -76,6 +89,7 @@ const Page = ({ params }: Params) => {
         <p className="text-orange-500 font-semibold text-2xl md:text-3xl  pl-4">{filteredItem.price}</p>
       </div>
       </div>
+      </>
   );
 };
 

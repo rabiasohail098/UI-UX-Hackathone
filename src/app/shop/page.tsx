@@ -107,20 +107,17 @@ const data: Data[] = [
 const Ourshop = () => {
   return (
     <>
-      <div className="bg-[url('/images/bg.png')] bg-cover bg-center flex justify-center items-center md:max-w-[1920px] w-full h-[320px] md:h-[500px] lg:h-[600px]">
-        <div className="text-center">
-          <h1 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold text-white">
-            Our Shop
-          </h1>
-          <div className="flex justify-center items-center mt-4 gap-2 text-[16px] md:text-[18px] lg:text-[20px] text-white">
-            <p>
-              <Link href="/">Home</Link>
-            </p>
-            <span>&gt;</span>
-            <p className="text-[#ff9f0d]">Shop</p>
-          </div>
-        </div>
-      </div>
+      <section
+    className="bg-cover bg-center h-64 flex items-center justify-center"
+    style={{ backgroundImage: "url('/images/bg.png')" }}
+  >
+    <div className="text-center text-white">
+      <h2 className="text-4xl font-bold">Our Shop</h2>
+      <p className="pt-2">
+        <Link href="/" className="text-yellow-400">Home</Link> › Shop
+      </p>
+    </div>
+  </section>
       <div className="container mt-32 mb-16 flex flex-col md:flex-row gap-8  mx-auto px-4">
         <div className="md:w-[984px] w-full">
           <div className="flex flex-col md:flex-row gap-3 ml-4 w-[317]px">

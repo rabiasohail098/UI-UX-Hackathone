@@ -14,8 +14,8 @@ const Footer = () => {
      Don’t wait; make a smart & logical quote here. It’s pretty easy.
       </p>
     </div>
-    <div className="flex flex-col md:flex-row w-full md:w-[50%] gap-4">
-    <input type="text" placeholder="Enter Your Email" className="font-inter font-normal text-[14px] md:text-[16px] text-[#FFFFFF] bg-[#FF9F0D] p-2 flex-1"/>
+    <div className="flex flex-col md:flex-row w-full md:w-[50%] mt-2 p-4 ">
+    <input type="text" placeholder="Enter Your Email" className="font-inter font-normal text-[14px] md:text-[16px] text-[#FFFFFF] bg-[#FF9F0D] p-4 flex-1"/>
   <button className="font-inter font-normal text-[14px] md:text-[16px] text-[#FF9F0D] bg-[#FFFFFF] p-2 md:p-3 rounded-[2px] hover:text-[#000000] hover:bg-[#eee3d3] transition duration-300">
        Subscribe Now
      </button>

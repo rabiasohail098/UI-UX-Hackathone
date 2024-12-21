@@ -11,16 +11,17 @@ const Page = () => {
 
  return (
     <>
-    <div className="bg-[url('/images/bg.png')] bg-cover bg-center flex justify-center items-center max-w-full h-[320px] md:h-[500px] lg:h-[600px]">
-        <div className="text-center">
-          <h1 className="text-[32px] md:text-[40px] lg:text-[48px] font-helvetica text-[#FFFFFF] font-bold">Shopping Cart</h1>
-          <div className="flex  justify-center items-center mt-4 gap-2">
-    <p className="text-[16px] md:text-[18px] lg:text-[20px] font-normal font-inter text-[#FFFFFF]"><Link href="/">Home</Link></p>
-  <p className="text-[16px] md:text-[18px] lg:text-[20px] text-[#FFFFFF]">&gt;</p>
-<span className="text-[16px] md:text-[18px] lg:text-[20px] text-[#FF9F0D]">Shopping Cart</span>
-         </div>
-        </div>
-      </div>
+  <section
+    className="bg-cover bg-center h-64 flex items-center justify-center"
+    style={{ backgroundImage: "url('/images/bg.png')" }}
+  >
+    <div className="text-center text-white">
+      <h2 className="text-4xl font-bold">Shopping Cart</h2>
+      <p className="pt-2">
+        <Link href="/" className="text-yellow-400">Home</Link> › Shopping Cart
+      </p>
+    </div>
+  </section>
         <div className="px-4 w-full my-20 pb-10">
       <div className="md:max-w-[1320px] w-full mx-auto space-y-6 md:h-[765px] h-auto ">
     <div className="flex flex-col md:flex-row justify-center">

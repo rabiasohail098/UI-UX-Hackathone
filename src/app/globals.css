@@ -1,10 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body{
+/* body{
   max-width: 1920px;
-}
-@layer base {
+} */
+/* @layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
@@ -68,4 +68,4 @@ body{
     @apply bg-background text-foreground;
   }
 }
-
+ */
