@@ -1,5 +1,7 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
+import React, { useState } from "react";
 interface Checkout {
   id: number;
   img: string;
@@ -31,6 +33,39 @@ export default function CheckoutPage() {
       price: "50$",
     },
   ];
+
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    address1: "",
+    address2: "",
+    city: "",
+    zipCode: "",
+    country: "",
+  });
+
+  const [isOrderPlaced, setIsOrderPlaced] = useState(false);
+
+  const subtotal = data.reduce((sum, item) => sum + parseFloat(item.price), 0);
+  const discount = 0.25 * subtotal; // 25% discount
+  const tax = 0.1 * subtotal; // 10% tax
+  const total = subtotal - discount + tax;
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const handlePlaceOrder = () => {
+    if (!formData.firstName || !formData.email || !formData.phone || !formData.address1) {
+      alert("Please fill in all required fields!");
+      return;
+    }
+    setIsOrderPlaced(true);
+  };
+
   return (
     <>
       <section

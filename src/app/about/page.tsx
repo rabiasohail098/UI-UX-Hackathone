@@ -4,6 +4,7 @@ import Aboutus from './aboutus'
 import TeamMember from './team'
 import Testimonial1 from './testimonial'
 import Foodmenu from './foodmenu'
+import CommentSection from './comment'
 
 const page = () => {
   return (
@@ -12,7 +13,7 @@ const page = () => {
   <TeamMember/>
   <Testimonial1/>
   <Foodmenu/>
-      
+      <CommentSection/>
     </div>
   )
 }
