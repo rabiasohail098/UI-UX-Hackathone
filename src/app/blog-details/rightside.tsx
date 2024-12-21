@@ -67,11 +67,11 @@ himenaeos nunc torquent euismod adipiscing adipiscing dui gravida justo.</p>
                   <div className=' flex gap-4'>
                       <label htmlFor="tags" className='font-bold text-[16px]'>Share: </label>
                       <p className='flex gap-3'>
-                      <Link href="https://www.linkedin.com/in/rabia-sohail-684740278/"><FaLinkedin size={18}/></Link>
-            <Link href="https://github.com/rabiasohail098"><IoLogoGithub size={18}/></Link>
-            <Link href="www.youtube.com/@Parniya098"><FaYoutube size={18}/></Link>
-            <Link href="https://www.instagram.com/rabiasohail642/"><FaInstagram size={18}/></Link>
-            <Link href="https://www.facebook.com/parniyasohail098"><FaFacebook size={18}/></Link>
+                      <Link href="https://www.linkedin.com/in/rabia-sohail-684740278/"><FaLinkedin size={20}/></Link>
+            <Link href="https://github.com/rabiasohail098"><IoLogoGithub size={20}/></Link>
+            <Link href="www.youtube.com/@Parniya098"><FaYoutube size={20}/></Link>
+            <Link href="https://www.instagram.com/rabiasohail642/"><FaInstagram size={20}/></Link>
+            <Link href="https://www.facebook.com/parniyasohail098"><FaFacebook size={20}/></Link>
 
                       </p>
                   </div>
