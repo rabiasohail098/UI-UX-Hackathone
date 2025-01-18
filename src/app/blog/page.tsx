@@ -1,7 +1,7 @@
 import React from 'react'
-import Blog from './leftside'
 import Rightside from './rightside'
 import Link from 'next/link'
+import Leftside from './leftside'
 const page = () => {
   return (
     <div >
@@ -22,7 +22,7 @@ const page = () => {
             <Rightside />
           </div>
           <div className='md:max-w-1/4 sm:w-2/4 w-full mb-16'>
-            <Blog />
+            <Leftside />
             </div>
           </div>
       </div>

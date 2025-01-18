@@ -60,9 +60,9 @@ const SimilarProducts: React.FC<Props> = ({ data }) => {
       <h2 className="text-[32px] font-helvetica font-bold mb-6">
         Similar Products
               </h2>
-              <div className="flex gap-1 md:mt-2 mt-0">
-              <FiArrowLeftCircle size={40} className="opacity-30 mt-7"/>
-              <button className="rounded-full mt-[-20px] text-[#FF9F0D]"><BsArrowRightCircleFill size={40} className="text-[#FF9F0D]"/></button>
+              <div className="flex gap-1 justify-center items-center  mt-0">
+              <FiArrowLeftCircle size={40} className="opacity-30 "/>
+              <button className="rounded-full   text-[#FF9F0D]"><BsArrowRightCircleFill size={40} className="text-[#FF9F0D]"/></button>
               </div>
               </div>
           <Slider {...settings}>

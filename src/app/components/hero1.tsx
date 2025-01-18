@@ -4,9 +4,9 @@ import Link from "next/link";
 
 const Hero1 = () => {
   return (
-    <div className="flex flex-col pb-56 sm:flex-row h-[562px] px-4 sm:px-8 lg:px-16  gap-8  md:max-w-[1920px] w-full  bg-black">
-      <div className="text-black md:max-w-1/2 w-full md:mb-16 gap-4 w-full pr-8  md:my-0 my-[40px] pl-0 md:mt-[110px]">
-        <p className="md:w-[106px] md:h-[40px] md:text-2xl font-greatvibes font-normal text-3xl pl-5 md:pl-[50px] leading-[40px] text-[#FF9F0D]">About us</p>
+    <div className="flex flex-col  sm:flex-row h-fit  gap-8  md:max-w-[1920px] w-full  bg-[#0D0D0D]">
+      <div className="text-black md:max-w-1/2 w-full md:mb-16 gap-4 pr-8  md:my-0 my-[40px] pl-0 md:mt-[110px]">
+        <p className="md:w-[106px] h-fit md:text-2xl font-greatvibes font-normal text-3xl pl-12  leading-[40px] text-[#FF9F0D]">About us</p>
         <h2 className="font-bold font-helvetica md:text-[40px] text-[30px] pl-5 md:pl-[50px] md:w-[446px] leading-[56px] text-[#FFFFFF]">
           {" "}<span className="text-[#FF9F0D]">We</span> Create the best foody product
         </h2>

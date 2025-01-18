@@ -1,7 +1,14 @@
 import Image from "next/image";
-import { chef } from "./chef";
+import { client } from "@/sanity/lib/client";
 import Link from "next/link";
-const Page = () => {
+const Page = async () => {
+  const query = `*[_type=="chef"]{
+  _id,
+  name,
+  specialty,
+  "imageUrl":image.asset->url,
+  }`
+  const chef = await client.fetch(query)
   return (
     <>
        <section
@@ -17,18 +24,23 @@ const Page = () => {
       </section>
     <div className="min-h-screen px-6 sm:px-[250px] py-12 bg-gray-50 flex items-center justify-center">
       <div className="w-full max-w-[1200px]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {chef.map((item) => (
-      <div key={item.id} className="bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+          {chef.map((item:any) => (
+      <div key={item._id} className="bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
               <Image
-                src={item.image}
+                src={item.imageUrl}
                 alt="chef"
                 width={312}
                 height={379}
               />
               <div className="mt-4">
                 <h2 className="text-lg font-bold text-center text-gray-700">{item.name}</h2>
-                <p className="text-sm text-center text-gray-600 mt-1">{item.chef}</p>
+                <p className="text-sm text-center text-orange-500 mt-1">{item.specialty}</p>
+                <Link href={`/chef-details/${item._id}`}>
+                  <button className="mt-2 w-full bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">
+                    Show Details
+                  </button>
+                </Link>
               </div>
             </div>
           ))}

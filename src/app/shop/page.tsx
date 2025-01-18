@@ -5,106 +5,115 @@ import { CiSearch } from "react-icons/ci";
 import { IoArrowForwardCircleOutline } from "react-icons/io5";
 import { FaStar } from "react-icons/fa6";
 import { CiStar } from "react-icons/ci";
+import { client } from "@/sanity/lib/client";
 
-interface Data {
-  id: number;
-  img: string;
-  title: string;
-  price: string;
-}
-const data: Data[] = [
-  {
-    id: 1,
-    img: "/images/sh1.png",
-    title: "Fresh Lime",
-    price: "$45.00",
-  },
-  {
-    id: 2,
-    img: "/images/sh2.png",
-    title: "Drink",
-    price: "$23.00",
-  },
-  {
-    id: 3,
-    img: "/images/sh3.png",
-    title: "Pizza",
-    price: "$43.00",
-  },
-  {
-    id: 4,
-    img: "/images/sh4.png",
-    title: "Cheese Butter",
-    price: "$10.00",
-  },
-  {
-    id: 5,
-    img: "/images/sh5.png",
-    title: "Sandwiches",
-    price: "$25.00",
-  },
-  {
-    id: 6,
-    img: "/images/sh6.png",
-    title: "Chicken Chup",
-    price: "$25.00",
-  },
-  {
-    id: 7,
-    img: "/images/sh1.png",
-    title: "Fresh Lime",
-    price: "$45.00",
-  },
-  {
-    id: 8,
-    img: "/images/sh2.png",
-    title: "Drink",
-    price: "$23.00",
-  },
-  {
-    id: 9,
-    img: "/images/sh3.png",
-    title: "Pizza",
-    price: "$43.00",
-  },
-  {
-    id: 10,
-    img: "/images/sh4.png",
-    title: "Cheese Butter",
-    price: "$10.00",
-  },
-  {
-    id: 11,
-    img: "/images/sh5.png",
-    title: "Sandwiches",
-    price: "$25.00",
-  },
-  {
-    id: 12,
-    img: "/images/sh6.png",
-    title: "Chicken Chup",
-    price: "$25.00",
-  },
-  {
-    id: 13,
-    img: "/images/sh1.png",
-    title: "Fresh Lime",
-    price: "$45.00",
-  },
-  {
-    id: 14,
-    img: "/images/sh2.png",
-    title: "Drink",
-    price: "$23.00",
-  },
-  {
-    id: 15,
-    img: "/images/sh3.png",
-    title: "Pizza",
-    price: "$43.00",
-  },
-];
-const Ourshop = () => {
+// interface Data {
+//   _id: number;
+//   image: string;
+//   name: string;
+//   price: string;
+//  }
+// const data: Data[] = [
+//   {
+//     id: 1,
+//     img: "/images/sh1.png",
+//     title: "Fresh Lime",
+//     price: "$45.00",
+//   },
+//   {
+//     id: 2,
+//     img: "/images/sh2.png",
+//     title: "Drink",
+//     price: "$23.00",
+//   },
+//   {
+//     id: 3,
+//     img: "/images/sh3.png",
+//     title: "Pizza",
+//     price: "$43.00",
+//   },
+//   {
+//     id: 4,
+//     img: "/images/sh4.png",
+//     title: "Cheese Butter",
+//     price: "$10.00",
+//   },
+//   {
+//     id: 5,
+//     img: "/images/sh5.png",
+//     title: "Sandwiches",
+//     price: "$25.00",
+//   },
+//   {
+//     id: 6,
+//     img: "/images/sh6.png",
+//     title: "Chicken Chup",
+//     price: "$25.00",
+//   },
+//   {
+//     id: 7,
+//     img: "/images/sh1.png",
+//     title: "Fresh Lime",
+//     price: "$45.00",
+//   },
+//   {
+//     id: 8,
+//     img: "/images/sh2.png",
+//     title: "Drink",
+//     price: "$23.00",
+//   },
+//   {
+//     id: 9,
+//     img: "/images/sh3.png",
+//     title: "Pizza",
+//     price: "$43.00",
+//   },
+//   {
+//     id: 10,
+//     img: "/images/sh4.png",
+//     title: "Cheese Butter",
+//     price: "$10.00",
+//   },
+//   {
+//     id: 11,
+//     img: "/images/sh5.png",
+//     title: "Sandwiches",
+//     price: "$25.00",
+//   },
+//   {
+//     id: 12,
+//     img: "/images/sh6.png",
+//     title: "Chicken Chup",
+//     price: "$25.00",
+//   },
+//   {
+//     id: 13,
+//     img: "/images/sh1.png",
+//     title: "Fresh Lime",
+//     price: "$45.00",
+//   },
+//   {
+//     id: 14,
+//     img: "/images/sh2.png",
+//     title: "Drink",
+//     price: "$23.00",
+//   },
+//   {
+//     id: 15,
+//     img: "/images/sh3.png",
+//     title: "Pizza",
+//     price: "$43.00",
+//   },
+// ];
+const Ourshop = async () => {
+  const query = `*[_type=="food"]{
+  _id,
+  "imageUrl":image.asset->url,
+  title ,
+  price}`
+
+  const data = await client.fetch(query)
+  
   return (
     <>
       <section
@@ -119,8 +128,8 @@ const Ourshop = () => {
     </div>
   </section>
       <div className="container mt-32 mb-16 flex flex-col md:flex-row gap-8  mx-auto px-4">
-        <div className="md:w-[984px] w-full">
-          <div className="flex flex-col md:flex-row gap-3 ml-4 w-[317]px">
+        <div className="md:w-[984px] px-4 w-full">
+          <div className="flex flex-col md:flex-row gap-3  w-[317]px">
             <div className="flex w-[332px] ">
               <label htmlFor="Sort By" className="mt-2 text-[20px] w-[81px]">
                 Sort By
@@ -140,20 +149,20 @@ const Ourshop = () => {
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 mt-6">
-            {data.map((item) => (
-              <div key={item.id} className="shadow-md p-4 w-full m-4 rounded-lg">
-                <Link href={`/products/${item.id}`}>
+            {data.map((item:any) => (
+              <div key={item._id} className="shadow-md p-4 w-full m-4 rounded-lg">
+                <Link href={`/products/${item._id}`}>
                   <Image
-                    src={item.img}
+                    src={item.imageUrl}
                     alt={item.title}
                     width={312}
                     height={267}
-                    className="w-full"
+                    className="object-cover w-full h-[180px]"
                   />
                 </Link>
                 <h2 className="text-xl font-bold p-2 ">{item.title}</h2>
-                <p className="text-gray-600 pl-2">{item.price}</p>
-                <Link href={`/products/${item.id}`}>
+                <p className="text-gray-600 pl-2">$ {item.price}.00</p>
+                <Link href={`/products/${item._id}`}>
                   <button className="mt-2 w-full bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">
                     Show Details
                   </button>

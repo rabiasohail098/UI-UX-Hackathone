@@ -1,238 +1,230 @@
+
 "use client";
-import React, { useState } from "react";
-import { useRouter } from 'next/navigation';
-import Image from 'next/image';
-import { FaStar } from "react-icons/fa6";
-import { IoBagOutline } from "react-icons/io5";
-import { IoIosHeartEmpty } from "react-icons/io";
-import { LuGitCompareArrows } from "react-icons/lu";
-import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
-import { IoLogoGithub } from "react-icons/io";
-import Link from 'next/link';
-import App from '../slider';
-import { Pagination, PaginationContent, PaginationItem, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
-interface Params{
-    params:{
-      [id:string]:number|never
-    }
-   
-}
-interface Data{
-  [x:string]:never|number|string
-    id:number;
-    img:string;
-    title:string;
-    price:string;
-}
-const data: Data[] = [
-  { 
-    id: 1, 
-    img: '/images/sh1.png', 
-    title: 'Fresh Lime',
-    price: '$45.00'
- },
-  { 
-    id: 3, 
-    img: '/images/sh3.png', 
-    title: 'Pizza', 
-    price: '$43.00' 
-},
-  { 
-    id: 4, 
-    img: '/images/sh4.png', 
-    title: 'Cheese Butter', 
-    price: '$10.00' 
-},
-  { 
-    id: 6, 
-    img: '/images/sh6.png', 
-    title: 'Chicken Chup', 
-    price: '$25.00' 
-},
-  { 
-    id: 9, 
-    img: '/images/sh3.png', 
-    title: 'Pizza', 
-    price: '$43.00' 
-},
-  { 
-    id: 11,
-     img: '/images/sh5.png',
-    title: 'Sandwiches', 
-    price: '$25.00' 
-},
-  { 
-    id: 4, 
-    img: '/images/sh4.png', 
-    title: 'Cheese Butter', 
-    price: '$10.00' },
-];
 
-const Page = ({ params }: Params) => {
-  const [quantity, setQuantity] = useState(1);
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
+import { client } from "@/sanity/lib/client";
+import {Pagination,PaginationContent,PaginationItem,PaginationPrevious,PaginationNext} from "@/components/ui/pagination"
+import App from "../slider";
 
-  const handleIncrement = () => {
-    setQuantity((prev) => prev + 1);
-  };
+type Product = {
+  _id: string;
+  title: string;
+  price: number;
+  imageUrl: string;
+  description: string;
+  rating: number;
+  review: number;
+  stock: number;
+};
 
-  const handleDecrement = () => {
-    if (quantity > 1) {
-      setQuantity((prev) => prev - 1);
-    }
-  };
 
-  const handleAddToCart = () => {
-    console.log("Product added to cart:", { name: "Yummy Chicken Chup", price: 54.0, quantity });
-    alert("Added to Cart!");
-  };
 
+const ShopItemServer = ({ params }: { params: { id: string } }) => {
+  const [product, setProduct] = useState<Product | null>(null);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
-  const productId = Number(params?.id);
-  const filteredItem = data.find((item) => item.id === productId);
 
-  if (!filteredItem) {
-    router.push('/error'); 
-    return null;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const query = `*[_type == "food"]{
+          _id,
+          title,
+          price,
+          "imageUrl": image.asset->url,
+          description,
+          rating,
+          review,
+          stock
+        }`;
+        const data: Product[] = await client.fetch(query);
+        const filteredItem = data.find((item) => item._id === params.id);
+
+        if (!filteredItem) {
+          router.push("/error");
+        } else {
+          setProduct(filteredItem);
+        }
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+        router.push("/error");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [params.id, router]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!product) {
+    return null; // Redirected to error page if not found
   }
 
   return (
     <>
-      <section
-    className="bg-cover bg-center h-64 flex items-center justify-center"
-    style={{ backgroundImage: "url('/images/bg.png')" }}
-  >
-    <div className="text-center text-white">
-      <h2 className="text-4xl font-bold">Shop Details</h2>
-      <p className="pt-2">
-        <Link href="/" className="text-yellow-400">Home</Link> › Shop Details
-      </p>
-    </div>
-      </section>
-      
-     
-      <div className='md:max-w-[1920px]'>
-         {/* first div */}
-        <div className='md:max-w-[1320px]  my-24 flex flex-col px-8 gap-6  md:flex-row'>
-          {/* Left div */}
-          <div className='md:max-w-[647px] flex flex-col md:flex-row gap-6  h-fit w-full'>
-            <div className='h-[491px] space-y-6'>
-              <Image src="/images/s2.png" alt="image" width={132 } height={129 } className='md:w-[132px] w-[200px] object-cover md:ml-[30px] h-[129px] ' />
-              <Image src="/images/s3.png" alt="image" width={132 } height={129 } className='md:w-[132px] w-[200px] object-cover md:ml-[30px] h-[129px] ' />
-              <Image src="/images/s4.png" alt="image" width={132 } height={129 } className='md:w-[132px] w-[200px] object-cover md:ml-[30px] h-[129px] ' />
-              <Image src="/images/s5.png" alt="image" width={132 } height={129 }  className='md:w-[132px] w-[200px] object-cover md:ml-[30px] h-[129px]  '/>
+      <div>
+        {/* Banner Section */}
+        <section
+          className="bg-cover bg-center h-64 flex items-center justify-center"
+          style={{ backgroundImage: "url('/images/bg.png')" }}
+        >
+          <div className="text-center text-white">
+            <h2 className="text-4xl font-bold">Shop Details</h2>
+            <p className="pt-2">
+              <Link href="/" className="text-yellow-400">
+                Home
+              </Link>{" "}
+              › Shop Details
+            </p>
           </div>
-            <div>
-            <Image src="/images/s1.png" alt="image" width={491} height={ 598}  className='md:max-w-[491px] w-[200px] ml-[30px] h-auto mt-[6.25rem] md:h-[598px]'/>
-          </div>
-          </div>
-          {/* right div */}
-          <div className="md:max-w-[615px] px-3 space-y-2 h-fit w-full">
-          <div className='flex  flex-col md:flex-row'>
-              <button className='w-[86px] h-[24px] bg-[#FF9F0D] text-[#ffffff] rounded-[6px] text-[14px] font-[400] font-[inner]'>In stock</button>
-              <Pagination className='mt-[-30px] hidden md:block ml-[40%]'>
+        </section>
+
+        {/* Product Details */}
+        <div className="container mx-auto my-8 px-4">
+          <div className="flex flex-col md:flex-row gap-8">
+            {/* Product Images */}
+            <div className="flex-1">
+              <Image
+                src={product.imageUrl}
+                alt={product.title}
+                width={500}
+                height={700}
+                className="object-cover"
+              />
+           
+            <div className="flex w-[300px] gap-2 my-4">
+            <Image
+                src={product.imageUrl}
+                alt={product.title}
+                width={110}
+                height={200}
+                className="object-cover h-[130px]"
+              />
+                  <Image
+                src={product.imageUrl}
+                alt={product.title}
+                width={110}
+                height={150}
+                className="object-cover"
+              />
+                <Image
+                src={product.imageUrl}
+                alt={product.title}
+                width={110}
+                height={150}
+                className="object-cover"
+              />
+            </div>
+      </div>
+            {/* Product Info */}
+            <div className="md:max-w-[615px] px-3 space-y-2 h-fit w-full">
+              <div className="space-y-4">
+                <div className="flex justify-between md:max-w-[615px]">
+                <div className='flex gap-52 lg:flex-row'>
+             <div>
+              <button className='w-[86px] h-[24px] bg-[#FF9F0D] text-[#ffffff] rounded-[6px]  mt-5 text-[14px] font-[400] font-[inner]'>In stock</button>
+              </div>
+              <div>
+              <Pagination className='mt-2 hidden sm:block md:block lg:block'>
                 <PaginationContent>
                   <PaginationItem>
                     <PaginationPrevious href="/"/>
-                  </PaginationItem>
+                          </PaginationItem>
+                          <p className="text-orange-500">Shop Details</p>
                   <PaginationItem>
                     <PaginationNext href="/shop"/>
                   </PaginationItem>
                 </PaginationContent>
               </Pagination>
+              </div>
             </div>
-      <h2 className="md:text-[48px] text-[28px]  font-helvetica font-bold md:max-w-[510px] w-full h-[56px]">Yummy Chicken Chup</h2>
-      <p className="text-[18px] font-inter font-[400] text-justify  md:max-w-[510px] w-full h-auto mb-4 border-b-2 pb-4 pt-4">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque diam pellentesque bibendum non dui volutpat
-        fringilla bibendum. Urna, urna, vitae feugiat pretium donec id elementum. Ultrices mattis sed vitae mus risus.
-        Lacus nisi, et ac dapibus sit eu velit in consequat.
-      </p>
-      <h2 className="text-[32px] font-helvetica font-bold md:max-w-[510px] h-[56px]">$54.00</h2>
-      <div className="flex gap-2 text-[#828282]">
-        <FaStar className="text-[#FF9F0D]" size={16} />
-        <FaStar className="text-[#FF9F0D]" size={16} />
-        <FaStar className="text-[#FF9F0D]" size={16} />
-        <FaStar className="text-[#FF9F0D]" size={16} />
-        <FaStar className="text-[#FF9F0D]" size={16} />
-        <span className="border-x-2 px-4 text-[#828282] text-[16px] font-[400] font:inter">5.0 Rating</span>
-        22 Reviews
-      </div>
-      <p className="text-[18px] font-inter font-[400] md:max-w-[510px] h-auto mb-4 pb-4 pt-4">Dictum/cursus/Risus</p>
-      <div className="flex flex-col md:flex-row gap-6 pb-8 border-b-2">
-        <div className="flex md:max-w-[181px] h-[50px]">
-          <button onClick={handleDecrement} className="w-[60px] border-2 p-2 text-[28px]">
-            &#45;
-          </button>
-          <div className="w-[60px] border-2 pt-3 p-2 text-center">{quantity}</div>
-          <button onClick={handleIncrement} className="w-[60px] border-2 p-2 text-[25px]">
-            &#43;
-          </button>
-        </div>
-        <button
-          onClick={handleAddToCart}
-          className="flex gap-6 w-[191px] h-[50px] rounded-[6px] bg-[#FF9F0D] text-[#ffffff] p-4"
-        >
-          <IoBagOutline size={20} /> <span>Add to Cart</span>
-        </button>
-      </div>
+</div>
+                  <h1 className="text-3xl font-bold">{product.title}</h1>
+                <p className="text-lg">{product.description}</p>
+                <p className="text-2xl font-bold text-orange-500">
+                  $ {product.price}.00
+                </p>
+                <div className="flex items-center gap-2">
+                  <span className="text-yellow-500">⭐ {product.rating}</span>
+                  <span>({product.review} reviews)</span>
+                </div>
+                <p>
+                  Stock: {product.stock > 0 ? product.stock : "Out of Stock"}
+                </p>
 
-      <p className="flex gap-2 pt-4">
-        <IoIosHeartEmpty size={20} />
-        <span>Add to Wishlist</span>
-        <LuGitCompareArrows size={20} />
-        <span>Compare</span>
-      </p>
-      <p className="py-2">
-        <span className="font-semibold">Category:</span> Pizza
-      </p>
-      <p>
-        <Link href="/shop">
-          <span className="font-semibold">Tag:</span> Our Shop
-        </Link>
-      </p>
-      <p className="flex gap-3 pt-2 pb-4 border-b-2">
-        <span className="font-semibold">Share:</span>
-        <Link href="https://www.linkedin.com/in/rabia-sohail-684740278/">
-          <FaLinkedin size={20} />
-        </Link>
-        <Link href="https://github.com/rabiasohail098">
-          <IoLogoGithub size={20} />
-        </Link>
-        <Link href="www.youtube.com/@Parniya098">
-          <FaYoutube size={20} />
-        </Link>
-        <Link href="https://www.instagram.com/rabiasohail642/">
-          <FaInstagram size={20} />
-        </Link>
-        <Link href="https://www.facebook.com/parniyasohail098">
-          <FaFacebook size={20} />
-        </Link>
-      </p>
-          </div>
-          </div>
-       {/* second div */}
-        <div className='md:max-w-[1320px] space-y-4 my-8 px-8 w-full'>
-          <div className='flex gap-6 flex-col md:flex-row'>
-            <button className='md:max-w-[165px] bg-[#FF9F0D] text-[#ffffff] p-2 rounded-[6px] '>Description</button>
-            <p className='pt-2'>Reviews (24)</p>
+                {/* Add to Cart */}
+                <div className="flex gap-4 items-center">
+                  <button className="bg-orange-500 text-white px-4 py-2 rounded">
+                    Add to Cart
+                  </button>
+                  <button className="bg-gray-200 px-4 py-2 rounded">
+                    Wishlist
+                  </button>
+                </div>
+              </div>
             </div>
-            <p className='md:max-w-[1320px] text-justify '>Nam tristique porta ligula, vel viverra sem eleifend nec. Nulla sed purus augue, eu euismod tellus. Nam mattis eros nec mi sagittis sagittis. Vestibulum suscipit cursus bibendum. Integer at justo eget sem auctor auctor eget vitae arcu. Nam tempor malesuada porttitor. Nulla quis dignissim ipsum. Aliquam pulvinar iaculis justo, sit amet interdum sem hendrerit vitae. Vivamus vel erat tortor. Nulla facilisi. In nulla quam, lacinia eu aliquam ac, aliquam in nisl. <br /> <br />
-            Suspendisse cursus sodales placerat. Morbi eu lacinia ex. Curabitur blandit justo urna, id porttitor est dignissim nec. Pellentesque scelerisque hendrerit posuere. Sed at dolor quis nisi rutrum accumsan et sagittis massa. Aliquam aliquam accumsan lectus quis auctor. Curabitur rutrum massa at volutpat placerat. Duis sagittis vehicula fermentum. Integer eu vulputate justo. Aenean pretium odio vel tempor sodales. Suspendisse eu fringilla leo, non aliquet sem.</p>
-            <h2 className='text-[20px] font-helvetica font-semibold'>Key Benefits</h2>
-          <ul className='space-y-2 px-4'>
-            <li  className='list-disc'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </li>
-            <li className='list-disc'>Maecenas ullamcorper est et massa mattis condimentum.
-            </li>
-            <li className='list-disc'>Vestibulum sed massa vel ipsum imperdiet malesuada id tempus nisl.</li>
-            <li className='list-disc'>Etiam nec massa et lectus faucibus ornare congue in nunc.</li>
-            <li className='list-disc'>Mauris eget diam magna, in blandit turpis.</li>
-        </ul>
-        </div>
+          </div>
+          {/* Pagination */}
         
-        <App/>
+
+          {/* Second Div */}
+          <div className="mt-8 space-y-6">
+            <div className="flex gap-6 flex-col md:flex-row">
+              <button className="md:max-w-[165px] bg-[#FF9F0D] text-[#ffffff] p-2 rounded-[6px]">
+                Description
+              </button>
+              <p className="pt-2">Reviews (24)</p>
+            </div>
+            <p className="text-justify">
+              Nam tristique porta ligula, vel viverra sem eleifend nec. Nulla
+              sed purus augue, eu euismod tellus. Nam mattis eros nec mi
+              sagittis sagittis. Vestibulum suscipit cursus bibendum. Integer at
+              justo eget sem auctor auctor eget vitae arcu. Nam tempor malesuada
+              porttitor. Nulla quis dignissim ipsum. Aliquam pulvinar iaculis
+              justo, sit amet interdum sem hendrerit vitae. Vivamus vel erat
+              tortor. Nulla facilisi. In nulla quam, lacinia eu aliquam ac,
+              aliquam in nisl.
+              <br />
+              <br />
+              Suspendisse cursus sodales placerat. Morbi eu lacinia ex.
+              Curabitur blandit justo urna, id porttitor est dignissim nec.
+              Pellentesque scelerisque hendrerit posuere. Sed at dolor quis nisi
+              rutrum accumsan et sagittis massa.
+            </p>
+            <h2 className="text-2xl font-semibold">Key Benefits</h2>
+            <ul className="space-y-2 px-4">
+              <li className="list-disc">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </li>
+              <li className="list-disc">
+                Maecenas ullamcorper est et massa mattis condimentum.
+              </li>
+              <li className="list-disc">
+                Vestibulum sed massa vel ipsum imperdiet malesuada id tempus
+                nisl.
+              </li>
+              <li className="list-disc">
+                Etiam nec massa et lectus faucibus ornare congue in nunc.
+              </li>
+              <li className="list-disc">
+                Mauris eget diam magna, in blandit turpis.
+              </li>
+            </ul>
+          </div>
+
+          {/* App Component */}
+          <App/>
+        </div>
       </div>
-      </>
+    </>
   );
 };
 
-export default Page;
+export default ShopItemServer;

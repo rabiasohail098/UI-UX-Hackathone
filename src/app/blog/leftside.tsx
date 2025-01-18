@@ -6,10 +6,11 @@ import { IoLogoGithub } from "react-icons/io";
 import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa6";
 import Link from "next/link";
 
-const Blog = () => {
+const Leftside = async () => {
+ 
   return (
     <div className="container mx-auto px-4 md:px-8">
-      <div className="md:max-w-lg w-full mx-auto">
+      <div className="md:max-w-lg w-full mx-auto h-fit">
         {/* Search Bar */}
         <div className="flex items-center gap-2 w-full h-10 border border-gray-500 rounded-md overflow-hidden">
           <input
@@ -21,15 +22,17 @@ const Blog = () => {
         </div>
 
         {/* Blogger Section */}
-        <section className="mt-8 border w-full border-gray-400 rounded-md p-4">
-          <div className="text-center">
-            <img
-              src="/images/cl1.png"
-              alt="client"
-              className="mx-auto w-20 h-20 rounded-full mb-4"
-            />
-            <h2 className="text-gray-900 text-lg font-medium">Prince Miyako</h2>
-            <p className="text-gray-600 hidden md:block text-sm">Blogger/Photographer</p>
+       
+       
+               <section  className="mt-8 border w-full border-gray-400 rounded-md p-4">
+               <div className="text-center">
+                 <img
+                   src="/images/cl1.png"
+                   alt="client"
+                   className="mx-auto w-20 h-20 rounded-full mb-4"
+              />
+              <h2 className="text-gray-900 text-lg font-medium"></h2>
+              <p className="text-gray-600 hidden md:block text-sm">Blogger/Photographer</p>
             <div className="flex justify-center gap-1 mt-2">
               {[...Array(5)].map((_, index) => (
                 <IoIosStar key={index} className="text-yellow-500" />
@@ -50,10 +53,13 @@ const Blog = () => {
           </div>
         </section>
 
+          
+           
+           
         {/* Recent Posts */}
 <div className="mt-8 border border-gray-400 rounded-md p-4">
   <h1 className="text-lg font-bold border-b pb-2 mb-4">Recent Posts</h1>
-  {["/images/me7.png", "images/sh2.png", "images/ab3.png", "images/me6.png"].map((image, index) => (
+  {["/images/me7.png", "/images/sh2.png", "/images/ab3.png", "/images/me6.png"].map((image, index) => (
     <div
       key={index}
       className="flex flex-col sm:flex-row gap-4 mb-4 items-start sm:items-center"
@@ -66,7 +72,7 @@ const Blog = () => {
       <div className="flex-1">
         <p className="text-sm text-gray-500">June 22, 2020</p>
         <h2 className="md:text-base text-[14px]  text-gray-800 font-medium hover:text-yellow-500 cursor-pointer">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Lorem ipsum dolor sit ame.
         </h2>
       </div>
     </div>
@@ -142,4 +148,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default Leftside;

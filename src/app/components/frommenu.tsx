@@ -3,9 +3,9 @@ import Image from 'next/image';
 
 const FromMenu = () => {
   return (
-    <div className='max-w-[1920px] bg-[#0D0D0D] text-[#ffffff]'>
-    <div className="bg-[#0D0D0D] md:max-w-[1320px]  px-4 sm:px-8 lg:px-16 lg:py-12 mt-[25rem] md:mt-0 sm:mt-[26rem]">
-      <div className="text-center mt-24  mb-12">
+    <div className='max-w-[1920px] h-fit  bg-[#0D0D0D] text-[#ffffff]'>
+    <div className="bg-[#0D0D0D] md:max-w-[1320px]  px-4 sm:px-8 lg:px-16 lg:py-12 ">
+      <div className="text-center ">
         <p className="font-greatvibes text-[24px] sm:text-[32px] text-orange-500">Choose & Pick</p>
         <h2 className="font-bold text-3xl sm:text-4xl lg:text-5xl text-white">
           <span className="text-orange-500">Fr</span>om Our Menu
@@ -99,7 +99,7 @@ const FromMenu = () => {
         
           </div>
           <div className="space-y-6">
-            <div className="flex items-center md:max-md:max-w-[376px] w-full w-full gap-4">
+            <div className="flex items-center md:max-md:max-w-[376px] w-full  gap-4">
               <div className="w-[80px] h-[79px] relative">
                 <Image 
                   src="/images/me3.png" 
@@ -114,7 +114,7 @@ const FromMenu = () => {
                 <p className="text-orange-500">12.5$</p>
               </div>
             </div>
-            <div className="flex items-center md:max-md:max-w-[376px] w-full w-full gap-4">
+            <div className="flex items-center md:max-md:max-w-[376px] w-full  gap-4">
               <div className="w-[80px] h-[79px] relative">
                 <Image 
                   src="/images/me5.png" 
@@ -129,7 +129,7 @@ const FromMenu = () => {
                 <p className="text-orange-500">12.5$</p>
               </div>
             </div>
-            <div className="flex items-center md:max-md:max-w-[376px] w-full w-full gap-4">
+            <div className="flex items-center md:max-md:max-w-[376px] w-full  gap-4">
               <div className="w-[80px] h-[79px] relative">
                 <Image 
                   src="/images/me6.png" 
@@ -144,7 +144,7 @@ const FromMenu = () => {
                 <p className="text-orange-500">14.5$</p>
               </div>
             </div>
-            <div className="flex items-center md:max-md:max-w-[376px] w-full w-full gap-4">
+            <div className="flex items-center md:max-md:max-w-[376px] w-full gap-4">
               <div className="w-[80px]  h-[79px] relative">
                 <Image 
                   src="/images/me7.png" 

@@ -4,8 +4,8 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className="max-w-[1920px] bg-black text-[#FFFFFF]">
-    <div className= "bg-black md:max-w-[1320px] px-3 sm:px-6 md:px-6 gap-10 lg:px-24 xl:px-32 py-8 md:py-12 lg:py-16 flex flex-col md:flex-row md:items-center">
+    <div className="max-w-[1920px] bg-[#0D0D0D] text-[#FFFFFF]">
+    <div className= "bg-black md:max-w-[1320px] px-12  gap-3  py-8 md:py-12 lg:py-16 flex flex-col md:flex-row ">
       
       <div className="hidden md:block w-full md:w-[26px]">
         <Image
@@ -13,7 +13,7 @@ const Hero = () => {
           alt="bar"
           width={25.28}
           height={492}
-          className="hidden w-full sm:block"
+          className=""
         />
       </div>
       <div className="text-white w- md:w-[472px] flex flex-col items-center md:items-start text-center md:text-left">
@@ -34,13 +34,13 @@ const Hero = () => {
           </Link>
         </div>
       </div>
-      <div className="mt-[30px] md:mt-0 md:w-1/2 flex justify-center">
+      <div className="mt-[30px] md:mt-0 w-full">
         <Image
           src="/images/hero.png"
           alt="Hero Image"
           width={1000}
           height={1000}
-          className="w-full max-w-[877.8px] h-auto p-4 max-h-[670px] md:p-8"
+          className="w-full md:max-w-[877.8px] object-cover  md:max-h-[670px]"
         />
       </div>
       </div>
