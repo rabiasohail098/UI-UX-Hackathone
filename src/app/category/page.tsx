@@ -87,8 +87,8 @@ const FoodCategory = async () => {
     <div className="md:max-w[1920px] mt-32 mb-16 flex flex-col md:flex-row gap-8  mx-auto px-4">
      <div className="md:max-w-[1320px] flex md:flex-row flex-col px-12">
       <div className="min-h-fit py-16 max-w-[895px] mx-auto flex flex-col items-center px-6 space-y-12">
-        {renderItems(foodData._id, "Food")}
-        {renderItems(sweetData._id, "Sweet")}
+        {renderItems(foodData, "Food")}
+        {renderItems(sweetData, "Sweet")}
           </div>
           <div className="w-[312px] md:h-[418px]">
          <Filterproduct/>
