@@ -38,7 +38,7 @@ const Page = async () => {
                 <p className="text-sm text-center text-orange-500 mt-1">{item.specialty}</p>
                 <Link href={`/chef-details/${item._id}`}>
                   <button className="mt-2 w-full bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">
-                    Show Details
+                    View Profile
                   </button>
                 </Link>
               </div>

@@ -9,9 +9,11 @@ import Hero5 from "./components/hero5";
 import Hero6 from "./components/hero6";
 import FoodCategory1 from "./components/foodcategory";
 
+
 const page = () => {
   return (
     <div className="md:max-w-[1920px]">
+    
       <Hero />
       <Hero1 />
       <FoodCategory1 />

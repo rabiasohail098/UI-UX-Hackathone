@@ -1,22 +1,33 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-
+import { FaInstagram} from "react-icons/fa6";
+import {  FaYoutube } from "react-icons/fa";
+import { FacebookIcon } from "lucide-react";
 const Hero = () => {
   return (
     <div className="max-w-[1920px] bg-[#0D0D0D] text-[#FFFFFF]">
     <div className= "bg-black md:max-w-[1320px] px-12  gap-3  py-8 md:py-12 lg:py-16 flex flex-col md:flex-row ">
       
-      <div className="hidden md:block w-full md:w-[26px]">
-        <Image
-          src="/images/bar.png"
-          alt="bar"
-          width={25.28}
-          height={492}
-          className=""
-        />
+      <div className="hidden md:block w-full md:w-[120px] space-y-8">
+          <div className="w-[2px] rounded bg-orange-500 h-[120px]"></div>
+         
+          <div className="-ml-[8px] space-y-8">
+            <div>
+            <Link href="https://www.facebook.com/parniyasohail098"><FacebookIcon size={ 18}  className="text-orange-500"/>
+            </Link>
+          </div>
+            <div>
+            <Link href="www.youtube.com/@Parniya098"><FaYoutube className="text-red-500"/></Link>
+          </div>
+            <div>
+            <Link href="https://www.instagram.com/rabiasohail642/"><FaInstagram className="text-orange-500"/>
+            </Link>
+           </div>
+          </div>
+          <div className="w-[2px] rounded bg-orange-500 h-[120px]"></div>
       </div>
-      <div className="text-white w- md:w-[472px] flex flex-col items-center md:items-start text-center md:text-left">
+      <div className="text-white  md:w-[572px] flex flex-col items-center md:items-start text-center md:text-left">
         <h1 className="text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] font-greatvibes md:w-[249px] w-full font-normal text-[#FF9F0D] whitespace-nowrap">
           Its Quick & Amusing!
         </h1>
@@ -40,7 +51,7 @@ const Hero = () => {
           alt="Hero Image"
           width={1000}
           height={1000}
-          className="w-full md:max-w-[877.8px] object-cover  md:max-h-[670px]"
+          className="w-full md:max-w-[677.8px] object-cover  md:max-h-[670px]"
         />
       </div>
       </div>

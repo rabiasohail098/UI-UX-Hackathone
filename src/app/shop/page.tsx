@@ -1,233 +1,168 @@
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { CiSearch } from "react-icons/ci";
+"use client";
+
 import { IoArrowForwardCircleOutline } from "react-icons/io5";
 import { FaStar } from "react-icons/fa6";
 import { CiStar } from "react-icons/ci";
+import React, { useState, useEffect } from "react";
 import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
+import Link from "next/link";
+import { IoIosArrowDown } from "react-icons/io";
+import Image from "next/image";
+import Filterproduct from "../components/filterproduct";
 
-// interface Data {
-//   _id: number;
-//   image: string;
-//   name: string;
-//   price: string;
-//  }
-// const data: Data[] = [
-//   {
-//     id: 1,
-//     img: "/images/sh1.png",
-//     title: "Fresh Lime",
-//     price: "$45.00",
-//   },
-//   {
-//     id: 2,
-//     img: "/images/sh2.png",
-//     title: "Drink",
-//     price: "$23.00",
-//   },
-//   {
-//     id: 3,
-//     img: "/images/sh3.png",
-//     title: "Pizza",
-//     price: "$43.00",
-//   },
-//   {
-//     id: 4,
-//     img: "/images/sh4.png",
-//     title: "Cheese Butter",
-//     price: "$10.00",
-//   },
-//   {
-//     id: 5,
-//     img: "/images/sh5.png",
-//     title: "Sandwiches",
-//     price: "$25.00",
-//   },
-//   {
-//     id: 6,
-//     img: "/images/sh6.png",
-//     title: "Chicken Chup",
-//     price: "$25.00",
-//   },
-//   {
-//     id: 7,
-//     img: "/images/sh1.png",
-//     title: "Fresh Lime",
-//     price: "$45.00",
-//   },
-//   {
-//     id: 8,
-//     img: "/images/sh2.png",
-//     title: "Drink",
-//     price: "$23.00",
-//   },
-//   {
-//     id: 9,
-//     img: "/images/sh3.png",
-//     title: "Pizza",
-//     price: "$43.00",
-//   },
-//   {
-//     id: 10,
-//     img: "/images/sh4.png",
-//     title: "Cheese Butter",
-//     price: "$10.00",
-//   },
-//   {
-//     id: 11,
-//     img: "/images/sh5.png",
-//     title: "Sandwiches",
-//     price: "$25.00",
-//   },
-//   {
-//     id: 12,
-//     img: "/images/sh6.png",
-//     title: "Chicken Chup",
-//     price: "$25.00",
-//   },
-//   {
-//     id: 13,
-//     img: "/images/sh1.png",
-//     title: "Fresh Lime",
-//     price: "$45.00",
-//   },
-//   {
-//     id: 14,
-//     img: "/images/sh2.png",
-//     title: "Drink",
-//     price: "$23.00",
-//   },
-//   {
-//     id: 15,
-//     img: "/images/sh3.png",
-//     title: "Pizza",
-//     price: "$43.00",
-//   },
-// ];
-const Ourshop = async () => {
-  const query = `*[_type=="food"]{
-  _id,
-  "imageUrl":image.asset->url,
-  title ,
-  price}`
+const Page = () => {
+  const [datas, setDatas] = useState<any[]>([]);
+  const [filteredData, setFilteredData] = useState<any[]>([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const data = await client.fetch(query)
-  
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await client.fetch(`*[_type == "foods"]{
+        _id,
+        title,
+        category,
+        price,
+        originalPrice,
+        image,
+        description,
+        available,
+        tags
+      }`);
+      setDatas(result);
+      setFilteredData(result);
+    };
+    fetchData();
+  }, []);
+ 
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const query = event.target.value.toLowerCase();
+    setSearchQuery(query);
+    const filtered = datas.filter(
+      (item) =>
+        item.title?.toLowerCase().includes(query) ||
+        item.description?.toLowerCase().includes(query) ||
+        item.category?.toLowerCase().includes(query)
+    );
+    setFilteredData(filtered);
+  };
+
+  const uniqueCategories = datas.filter(
+    (item, index, self) =>
+      index === self.findIndex((t) => t.category === item.category)
+  );
+  const price = Math.floor(Math.random()*100)
+  const data1 = datas.slice(0,4)
   return (
     <>
-      <section
-    className="bg-cover bg-center h-64 flex items-center justify-center"
-    style={{ backgroundImage: "url('/images/bg.png')" }}
-  >
-    <div className="text-center text-white">
-      <h2 className="text-4xl font-bold">Our Shop</h2>
-      <p className="pt-2">
-        <Link href="/" className="text-yellow-400">Home</Link> › Shop
-      </p>
-    </div>
-  </section>
-      <div className="container mt-32 mb-16 flex flex-col md:flex-row gap-8  mx-auto px-4">
-        <div className="md:w-[984px] px-4 w-full">
-          <div className="flex flex-col md:flex-row gap-3  w-[317]px">
-            <div className="flex w-[332px] ">
-              <label htmlFor="Sort By" className="mt-2 text-[20px] w-[81px]">
-                Sort By
-              </label>
-              <select className="opacity-30 rounded border border-gray-400 w-[236px] text-[18px] h-12">
-                <option value="Newest">Newest</option>
-              </select>
-            </div>
-
-            <div className="flex md:w-[236px] gap-2">
-              <label htmlFor="Show" className="mt-2 text-[20px] w-[64px]">
-                Show
-              </label>
-              <select className="opacity-30 rounded border border-gray-400 md:w-[236px] text-[18px] h-12">
-                <option value="Default">Default</option>
-              </select>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 mt-6">
-            {data.map((item:any) => (
-              <div key={item._id} className="shadow-md p-4 w-full m-4 rounded-lg">
-                <Link href={`/products/${item._id}`}>
-                  <Image
-                    src={item.imageUrl}
-                    alt={item.title}
-                    width={312}
-                    height={267}
-                    className="object-cover w-full h-[180px]"
-                  />
-                </Link>
-                <h2 className="text-xl font-bold p-2 ">{item.title}</h2>
-                <p className="text-gray-600 pl-2">$ {item.price}.00</p>
-                <Link href={`/products/${item._id}`}>
-                  <button className="mt-2 w-full bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">
-                    Show Details
-                  </button>
-                </Link>
-              </div>
-            ))}
-          </div>
-          <Image
-            src="/images/bar1.png"
-            alt="bar"
-            width={306}
-            height={51}
-            className="md:ml-[32%] ml-[10%] mt-10"
-          />
+     <section
+        className="bg-cover bg-center h-64 flex items-center justify-center"
+        style={{ backgroundImage: "url('/images/bg.png')" }}
+      >
+        <div className="text-center text-white">
+          <h2 className="text-4xl font-bold">Our Shop</h2>
+          <p className="pt-2">
+            <Link href="/" className="text-yellow-400">
+              Home
+            </Link>{" "}
+            › Our Shop
+          </p>
         </div>
-        {/* right side */}
-        <div className="w-[312px] md:h-[418px]">
-          <div className="flex w-[248px] h-[46px] mt-[72px] text-center ">
-            <input
-              type="text"
-              placeholder="Search Product"
-              className="w-[202px] bg-[#ebe2d5] pl-4 text-gray-400"
-            />
-            <CiSearch
-              size={20}
-              className="bg-[#FF9F0D] p-3 text-[#FFFFFF] w-[46px] h-[46px]"
-            />
+      </section>
+
+    <div className="md:max-w[1920px] mt-32 mb-16 flex flex-col md:flex-row gap-8  mx-auto px-4">
+     <div className="md:max-w-[1320px] flex md:flex-row flex-col px-12">
+      <div className="mt-[10px] mb-[100px] ">
+        <div className="lg:flex px-8 gap-4">
+         <Filterproduct/>
+            <div className="flex w-[332px] h-[46px]">
+            <div className="dropdown dropdown-right">
+              <div className="flex gap-2 justify-between px-[50px] w-[236px] h-[40px] border py-2 text-gray-500">
+                <h1>Categories:</h1>
+                <h1 tabIndex={0} role="button" className="">
+                  <IoIosArrowDown className="pt-[5px] text-xl" />
+                </h1>
+              </div>
+              <div
+                tabIndex={0}
+                className="dropdown-content menu rounded-box z-[1] w-52 p-2 shadow-lg bg-white"
+              >
+                {uniqueCategories.map((item) => (
+                  <Link
+                    href={item.category.trim().replace(/\s+/g, "-")}
+                    key={item._id}
+                  >
+                    <h1 className="text-[14px] py-2 flex justify-center hover:bg-gray-300 rounded-lg">
+                      {item.category}
+                    </h1>
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
-          <ul className="space-y-2">
+        </div>
+        <div className="mt-[20px] mb-[20px] lg:px-[20px]">
+          <section className="text-gray-600 body-font">
+            <div className="container ">
+           
+              <div className="md:max-w-[984px] px-4 w-full grid grid-cols-1 md:grid-cols-3 gap-6 -m-4">
+                {filteredData.map((items: any) => (
+                  <div key={items.title} className="shadow-md p-2 w-full m-4 rounded-lg">
+                    <a className="block relative h-48 rounded overflow-hidden">
+                    
+                      <Image
+                        alt="ecommerce"
+                        className="object-cover w-[300px] h-[200px] "
+                        src={urlFor(items.image).url()}
+                        width={200}
+                        height={200}
+                      />
+                    </a>
+                    <div className="mt-4">
+                      <h2 className="text-gray-900 title-font text-lg font-medium">
+                        {items.title}
+                      </h2>
+                      <div className="flex py-2 justify-between px-[15px]">
+                        <p className="text-[17px] text-bordercoloryello font-bold">
+                          ${price+6}.00
+                        </p>
+                        <div className="flex gap-2">
+                          <p className="line-through font-semibold text-red-600">
+                            ${items.price}
+                          </p>
+                         
+                        </div>
+                      </div>
+                      <Link href={`/products/${items._id}`}>
+                        <button className="mt-2 w-full bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">
+                          View Product
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <div className="w-[312px] md:h-[418px]">
+         <Filterproduct/>
+          <ul className="space-y-2 px-4 border-[1px] border-gray-400 my-6 py-4">
             <h2 className="font-helvetica text-[20px] font-bold mt-2">
               Category
-            </h2>
-            <li>
-              <input type="checkbox" className="font-helvetica text-[18px]" />{" "}
-              Sandwitch
-            </li>
-            <li>
-              <input type="checkbox" className="font-helvetica text-[18px]" />{" "}
-              Burger
-            </li>
-            <li>
-              <input type="checkbox" className="font-helvetica text-[18px]" />{" "}
-              Chicken Chup
-            </li>
-            <li>
-              <input type="checkbox" className="font-helvetica text-[18px]" />{" "}
-              Drink
-            </li>
-            <li>
-              <input type="checkbox" className="font-helvetica text-[18px]" />{" "}
-              Pizza
-            </li>
-            <li>
-              <input type="checkbox" className="font-helvetica text-[18px]" />{" "}
-              Thi
-            </li>
-            <li>
-              <input type="checkbox" className="font-helvetica text-[18px]" />{" "}
-              Non Veg
-            </li>
-            <li>
-              <input type="checkbox" className="font-helvetica text-[18px]" />{" "}
-              Uncategorized
-            </li>
-          </ul>
+              </h2>
+              {datas.map((items: any) => (
+                <ul key={items._id} className="space-y-2 px-4  my-4">
+                  <Link href={`/products/${items._id}`}>
+                  <li className="flex gap-2">
+                    <input type="checkbox" />
+                    {items.title}
+                    </li>
+                  </Link>
+                </ul>
+              ))}
+     </ul>
           <div className="bg-[url(/images/shop.png)] p-4 mt-4 bg-cover w-[248px] h-[286px] ">
             <p className="font-inter font-bold text-[16px] w-[105px] text-[#FFFFFF]">
               {" "}
@@ -261,12 +196,13 @@ const Ourshop = async () => {
           <h2 className="font-helvetica text-[20px] font-bold mt-2 mb-2">
             Latest Products
           </h2>
-          <div className=" w-[252px] mb-2 space-y-2">
-            <div className="flex items-center gap-4">
+            <div className=" w-[252px] mb-2 space-y-2">
+              {data1.map((item:any)=>(
+            <div className="flex items-center gap-4" key={item._id}>
               <div className="object-cover w-[72px] h-16 relative">
                 <Image
-                  src="/images/me4.png"
-                  alt="Fresh Breakfast"
+                  src={urlFor(item.image).url()}
+                  alt={item.title}
                   width={100}
                   height={100}
                   className=" w-[72px] h-[65px]"
@@ -274,7 +210,7 @@ const Ourshop = async () => {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-[#333333] ">
-                  Fresh Breakfast
+                {item.title}
                 </h3>
                 <div className="flex w-[63px] gap-1 mb-1 h-[9px]">
                   <FaStar size={10} className="text-[#FF9F0D] " />
@@ -283,81 +219,12 @@ const Ourshop = async () => {
                   <CiStar size={10} />
                   <CiStar size={10} />
                 </div>
-                <p className="text-orange-500">14.5$</p>
+                    <p className="text-orange-500">$ {item.price}.00</p>
               </div>
             </div>
-            <div className="flex items-center gap-4">
-              <div className="object-cover w-[72px] h-16 relative">
-                <Image
-                  src="/images/me4.png"
-                  alt="Fresh Breakfast"
-                  width={100}
-                  height={100}
-                  className=" w-[72px] h-[65px]"
-                />
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-[#333333] ">
-                  Fresh Breakfast
-                </h3>
-                <div className="flex w-[63px] gap-1 mb-1 h-[9px]">
-                  <FaStar size={10} className="text-[#FF9F0D] " />
-                  <FaStar size={10} className="text-[#FF9F0D] " />
-                  <CiStar size={10} />
-                  <CiStar size={10} />
-                  <CiStar size={10} />
-                </div>
-                <p className="text-orange-500">14.5$</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="object-cover w-[72px] h-16 relative">
-                <Image
-                  src="/images/me4.png"
-                  alt="Fresh Breakfast"
-                  width={100}
-                  height={100}
-                  className=" w-[72px] h-[65px]"
-                />
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-[#333333] ">
-                  Fresh Breakfast
-                </h3>
-                <div className="flex w-[63px] gap-1 mb-1 h-[9px]">
-                  <FaStar size={10} className="text-[#FF9F0D] " />
-                  <FaStar size={10} className="text-[#FF9F0D] " />
-                  <CiStar size={10} />
-                  <CiStar size={10} />
-                  <CiStar size={10} />
-                </div>
-                <p className="text-orange-500">14.5$</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="object-cover w-[72px] h-16 relative">
-                <Image
-                  src="/images/me4.png"
-                  alt="Fresh Breakfast"
-                  width={100}
-                  height={100}
-                  className=" w-[72px] h-[65px]"
-                />
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-[#333333] ">
-                  Fresh Breakfast
-                </h3>
-                <div className="flex w-[63px] gap-1 mb-1 h-[9px]">
-                  <FaStar size={10} className="text-[#FF9F0D] " />
-                  <FaStar size={10} className="text-[#FF9F0D] " />
-                  <CiStar size={10} />
-                  <CiStar size={10} />
-                  <CiStar size={10} />
-                </div>
-                <p className="text-orange-500">14.5$</p>
-              </div>
-            </div>
+                ))}
+          
+          
             <h2 className="font-helvetica text-[20px] font-bold mt-2 mb-2">
               Product Tags
             </h2>
@@ -365,34 +232,48 @@ const Ourshop = async () => {
               <p className="font-inter font-bold text-[16px]  hover:text-[#FF9F0D] hover:underline  text-[#333333]">
                 Services
               </p>
-              <p className="font-inter font-bold text-[16px] hover:text-[#FF9F0D] hover:underline text-[#333333]">
+                <Link href="/menu">
+                <p className="font-inter font-bold text-[16px] hover:text-[#FF9F0D] hover:underline text-[#333333]">
                 Our Menu
-              </p>
+                  </p>
+                </Link>
             </div>
-            <div className="w-[225px] h-[24px] gap-2 flex">
-              <p className="font-inter font-bold text-[16px]  hover:text-[#FF9F0D] hover:underline text-[#333333]">
+              <div className="w-[225px] h-[24px] gap-2 flex">
+             
+                <Link href="/category">
+                <p  className="font-inter font-bold text-[16px]  hover:text-[#FF9F0D] hover:underline text-[#333333]">
                 Cupcake
-              </p>
-              <p className="font-inter font-bold text-[16px] hover:underline hover:text-[#333333] text-[#FF9F0D]">
+                  </p>
+                </Link>
+                 
+                <Link href="/category">
+                <p className="font-inter font-bold text-[16px] hover:underline hover:text-[#333333] text-[#FF9F0D]">
                 Burger
               </p>
-              <p className="font-inter font-bold text-[16px]   hover:text-[#FF9F0D] hover:underlinetext-[#333333]">
+                </Link>
+                <Link href="/category">
+                <p className="font-inter font-bold text-[16px]   hover:text-[#FF9F0D] hover:underlinetext-[#333333]">
                 Cookies
-              </p>
+                  </p>
+                </Link>
             </div>
             <div className="w-[225px] h-[24px] gap-2 flex">
-              <p className="font-inter font-bold text-[16px]  hover:text-[#FF9F0D] hover:underline text-[#333333]">
+                <Link href="/shop">
+                <p className="font-inter font-bold text-[16px]  hover:text-[#FF9F0D] hover:underline text-[#333333]">
                 Our Shop
-              </p>
-              <p className="font-inter font-bold text-[16px] hover:text-[#FF9F0D] hover:underline text-[#333333]">
+              </p></Link>
+                <Link href="/category">
+                <p className="font-inter font-bold text-[16px] hover:text-[#FF9F0D] hover:underline text-[#333333]">
                 Tandoori Chicken
               </p>
+                </Link>
             </div>
           </div>
         </div>
+        </div>
       </div>
-    </>
+      </>
   );
 };
 
-export default Ourshop;
+export default Page;

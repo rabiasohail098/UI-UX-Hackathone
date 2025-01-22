@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "./components/navbar";
 import Footer from "./components/footer";
 import Bottom from "./components/bottom";
 import { Great_Vibes } from '@next/font/google';
+import Nav from "./components/nav";
 
 const greatVibes = Great_Vibes({
   weight: '400', // Specify the font weight if needed
@@ -30,7 +30,8 @@ export default function RootLayout({
     <html lang="en" className="max-w-[1920px]">
       
       <body className={inter.className} >
-        <Header />
+      
+        <Nav /> 
         {children}
         <Footer />
         <Bottom />

@@ -1,96 +1,3 @@
-// import Link from "next/link";
-// import Rightside from "../rightside";
-// import Blog from "@/app/blog/leftside";
-// async function fetchPost(id: string) {
-//     const res = await fetch(`https://677c0f1720824100c07bb9bc.mockapi.io/blog/${id}`);
-//     if (!res.ok) {
-//       throw new Error("Failed to fetch post");
-//     }
-//     return res.json();
-//   }
-  
-//   interface Post {
-//     id: string;
-//     image: string;
-//     date: string;
-//     title: string;
-//     description: string;
-//   }
-  
-//   const BlogDetails = async ({ params }: { params: { id: string } }) => {
-//     const post: Post = await fetchPost(params.id);
-  
-//     return (
-//         <div >
-//         <section
-//         className="bg-cover bg-center h-64 flex items-center justify-center"
-//         style={{ backgroundImage: "url('/images/bg.png')" }}
-//       >
-//         <div className="text-center text-white">
-//           <h2 className="text-4xl font-bold">Blog Details</h2>
-//           <p className="pt-2">
-//             <Link href="/" className="text-yellow-400">Home</Link> › Blog details
-//           </p>
-//         </div>
-//       </section>
-//       <div className='md:max-w-[1920px] justify-center items-center object-cover'>
-//         <div className='md:max-w-[1320px] mt-16 flex flex-col lg:flex-row'>
-//           <div className='md:max-w-2/4'>
-//             <Rightside />
-//           </div>
-//           < className='md:max-w-1/4 mb-8'>
-//           import Link from "next/link";
-// import Rightside from "../rightside";
-// import Blog from "@/app/blog/leftside";
-// async function fetchPost(id: string) {
-//     const res = await fetch(`https://677c0f1720824100c07bb9bc.mockapi.io/blog/${id}`);
-//     if (!res.ok) {
-//       throw new Error("Failed to fetch post");
-//     }
-//     return res.json();
-//   }
-  
-//   interface Post {
-//     id: string;
-//     image: string;
-//     date: string;
-//     title: string;
-//     description: string;
-//   }
-  
-//   const BlogDetails = async ({ params }: { params: { id: string } }) => {
-//     const post: Post = await fetchPost(params.id);
-  
-//     return (
-//         <div >
-//         <section
-//         className="bg-cover bg-center h-64 flex items-center justify-center"
-//         style={{ backgroundImage: "url('/images/bg.png')" }}
-//       >
-//         <div className="text-center text-white">
-//           <h2 className="text-4xl font-bold">Blog Details</h2>
-//           <p className="pt-2">
-//             <Link href="/" className="text-yellow-400">Home</Link> › Blog details
-//           </p>
-//         </div>
-//       </section>
-//       <div className='md:max-w-[1920px] justify-center items-center object-cover'>
-//         <div className='md:max-w-[1320px] mt-16 flex flex-col lg:flex-row'>
-            
-//           <div className='md:max-w-2/4'>
-          
-//           </div>
-//           <div className='md:max-w-1/4 mb-8'>
-//            <Blog/>
-//             </div>
-//           </div>
-//       </div>
-     
-//     </div>
-//   )
-// }
-// export default BlogDetails
-
 import Link from "next/link";
 import { IoCalendarNumberOutline } from "react-icons/io5";
 import { TiMessages } from "react-icons/ti";
@@ -141,7 +48,7 @@ const BlogDetails = async ({ params }: { params: { id: string } }) => {
       {/* Main Content */}
       <div className='md:max-w-[1920px] justify-center items-center object-cover'>
        <div className='md:max-w-[1320px] mt-16 flex flex-col lg:flex-row'>
-           <div className='md:max-w-2/4 px-12 space-y-6'>
+           <div className='md:max-w-[740px] px-12 space-y-6'>
                       {/* Dynamically rendering Blog component with post data */}
                       <Image src={post.image} alt={post.title} width={400} height={330 } className="object-cover w-full h-[400px]"/>
                         <div className="flex gap-2 text-sm md:text-base items-center">

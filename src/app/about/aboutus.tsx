@@ -45,8 +45,8 @@ export default function Aboutus() {
           </div>
         </div>
         <div className="ml-12 md:w-[526px] w-full space-y-4  mt-8 left-{1094px} top-{714px} flex flex-wrap ">
-          <h1 className="text-sm font-medium text-yellow-400 italic">
-            About us _____
+          <h1 className="text-sm  font-medium text-yellow-400 italic">
+            About us ____
           </h1>
           <p className="text-black title-font text-3xl font-bold">
             Food is an important part of a balanced Diet
