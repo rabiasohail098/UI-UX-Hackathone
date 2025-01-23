@@ -105,7 +105,7 @@ const Rightside = () => {
       </div>
 
       {/* Post a Comment Section */}
-      <div className="md:max-w-[872px] px-4 space-y-8 my-8 h-fit">
+      <div className="md:max-w-[972px] px-4 space-y-8 my-8 h-fit">
         <h2 className="font-bold font-helvetica mt-8 text-[32px]">Post a comment</h2>
         <hr />
         {error && <p className="text-red-500">{error}</p>}

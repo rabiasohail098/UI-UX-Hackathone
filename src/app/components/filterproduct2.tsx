@@ -5,7 +5,7 @@ import { IoSearch } from "react-icons/io5";
 import React from "react";
 import Link from "next/link";
 import { client } from "@/sanity/lib/client";
-const Filterproduct = () => {
+const Filterproduct2 = () => {
     const [cart, setCart] = useState([]);
       const [searchQuery, setSearchQuery] = useState("");
       const [products, setProducts] = useState<any[]>([]);
@@ -42,7 +42,7 @@ const Filterproduct = () => {
     
   return (
       <div>
-           <div className="flex w-[300px] items-center gap-[10px] px-[10px] py-[10px] border border-gray-400 rounded-[5px]">
+           <div className="flex w-[236px] my-4 items-center gap-[10px] px-[10px] py-[10px] border border-gray-400 rounded-[5px]">
                 <input
                   type="text"
                   placeholder="Search by name or ID..."
@@ -55,7 +55,7 @@ const Filterproduct = () => {
                   
               </div>
               {searchQuery && filteredProducts.length > 0 && (
-                <div className="absolute bg-white w-[240px] mt-1 border border-gray-300 rounded-md shadow-lg z-10">
+                <div className="absolute bg-white w-[200px] mt-1 border border-gray-300 rounded-md shadow-lg z-10">
                   <ul>
                     {filteredProducts.map((product: any) => (
                       <li
@@ -73,4 +73,4 @@ const Filterproduct = () => {
   )
 }
 
-export default Filterproduct
+export default Filterproduct2

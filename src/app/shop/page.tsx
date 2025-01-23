@@ -5,7 +5,7 @@ import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
 import { IoIosArrowDown } from "react-icons/io";
 import Image from "next/image";
-import Filterproduct from "../components/filterproduct";
+import Filterproduct2 from "../components/filterproduct2";
 import Sidebar from "../components/sidebar";
 
 const Page = () => {
@@ -70,18 +70,18 @@ const Page = () => {
   
       {/* Main Content */}
       <div className="md:max-w-[1320px]">
-      <div className="container  mt-16 mb-16 flex flex-col md:flex-row gap-8 px-8">
+      <div className="container  mt-16 mb-16 flex flex-col md:flex-row gap-12 px-4">
          {/* Main Product Grid */}
-      <main className="w-full md:w-3/4 px-4">
+      <main className="w-full md:w-3/4 ">
         <div className="text-center mb-8">
           <h2 className="text-2xl text-orange-500 font-bold">Products</h2>
           <p className="text-gray-500">Explore our wide range of products</p>
           </div>
           <div className="mt-[10px] mb-[100px] ">
-            <div className="lg:flex md:w-3/4 w-full px-8 gap-4">
+            <div className="lg:flex md:w-1/4 w-full px-4 gap-4">
               
-         <Filterproduct/>
-            <div className="flex mt-4  h-[46px]">
+         <Filterproduct2 />
+            <div className="flex  h-[46px]">
             <div className="dropdown dropdown-right">
               <div className="flex gap-2 justify-between px-[50px] w-[236px] h-[40px] border py-2 text-gray-500">
                 <h1>Categories:</h1>

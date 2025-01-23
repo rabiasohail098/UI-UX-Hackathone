@@ -183,7 +183,7 @@ const ProductListing = ({ addToCart }: ProductListingProps) => {
             className="border rounded-lg shadow-lg p-4 hover:shadow-xl transition"
           >
             <Image
-              src={product.imageUrl}
+              src={product.image?.asset?.url}
               alt={product.title}
               width={120}
               height={120}

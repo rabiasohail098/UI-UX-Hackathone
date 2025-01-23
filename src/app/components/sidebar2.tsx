@@ -3,6 +3,9 @@
 import { IoArrowForwardCircleOutline } from "react-icons/io5";
 import { FaStar } from "react-icons/fa6";
 import { CiStar } from "react-icons/ci";
+import { FaYoutube } from "react-icons/fa";
+import { IoLogoGithub } from "react-icons/io";
+import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa6";
 import React, { useState, useEffect } from "react";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
@@ -11,7 +14,7 @@ import Image from "next/image";
 import Filterproduct from "../components/filterproduct";
 
 
-const Sidebar = () => {
+const Sidebar2 = () => {
      const [datas, setDatas] = useState<any[]>([]);
       const [filteredData, setFilteredData] = useState<any[]>([]);
       const [searchQuery, setSearchQuery] = useState("");
@@ -52,16 +55,18 @@ const Sidebar = () => {
           index === self.findIndex((t) => t.category === item.category)
       );
       const price = Math.floor(Math.random()*100)
-      const data1 = datas.slice(0,4)
+    const data1 = datas.slice(0, 4)
+    const data2 = datas.slice(4, 10)
+    const data3 = datas.slice(11,16)
   return (
       <div>
-            <aside className="w-[300px] px-4 md:w-1/4 flex flex-col gap-8">
+            <aside className="w-[350px] px-4 md:w-1/3 flex flex-col gap-8">
         {/* Filter Section */}
         <div className="space-y-4">
-          <Filterproduct />
+          <Filterproduct/>
           <div className="border w-[300px] border-gray-400 rounded-lg p-4">
             <h2 className="font-bold text-lg mb-4">Category</h2>
-            <ul className="space-y-2 w-[300px]">
+            <ul className="space-y-2">
               {datas.map((item: any) => (
                 <li key={item._id} className="flex items-center gap-2">
                   <input type="checkbox" />
@@ -82,10 +87,35 @@ const Sidebar = () => {
             <IoArrowForwardCircleOutline size={20} className="ml-2" />
           </Link>
         </div>
-  
+              {/* recent post */}
+              <div className="w-[300px]">
+          <h2 className="font-bold text-lg mb-4">Recent Products</h2>
+          <ul className="space-y-4 border w-[300px] border-gray-400 rounded-lg p-4">
+            {data3.map((item: any) => (
+              <li key={item._id} className="flex items-center gap-4">
+                <Link href={`/products/${item._id}`}>
+                  <div className="flex items-center gap-4">
+                <Image src={urlFor(item.image).url()} alt={item.title} width={72} height={72} className="rounded-lg h-[72px] w-[72px]" />
+                <div>
+                  <h3 className="font-bold">{item.title}</h3>
+                  <div className="flex items-center gap-1 text-yellow-500">
+                    <FaStar size={12} />
+                    <FaStar size={12} />
+                    <FaStar size={12} />
+                    <CiStar size={12} />
+                    <CiStar size={12} />
+                  </div>
+                  <p className="text-orange-500">${item.price}.00</p>
+                    </div>
+                    </div>
+                  </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
         {/* Filter by Price */}
         <div className="w-[300px]">
-          <h2 className="font-bold w-[250px] text-lg mb-2">Filter By Price</h2>
+          <h2 className="font-bold w-[300px] text-lg mb-2">Filter By Price</h2>
           <div className="h-2 bg-orange-500 rounded mb-4"></div>
         </div>
   
@@ -145,11 +175,41 @@ const Sidebar = () => {
               <p className="font-inter font-bold text-[16px] hover:text-[#FF9F0D] hover:underline text-[#333333]">
                 Tandoori Chicken
               </p>
-            </div>
-            </div>
+                  </div>
+                  <div className="mt-8 border w-[260px] border-gray-400 rounded-md p-4">
+          <h2 className="text-lg font-bold mb-4">Photo Gallery</h2>
+          <div className="grid grid-cols-3 gap-2">
+            {data2.map((items:any) => (
+            <div key={items._id}>
+                    <Link href={`/products/${items._id}`}>
+                    <img 
+                  src={urlFor(items.image).url()}
+                  alt="Gallery"
+                  className="w-[80px] h-[60px] object-cover rounded-lg cursor-pointer" />
+                    </Link>
+                </div>
+              )
+            )}
+          </div>
+        </div>
+
+        {/* Follow Us */}
+        <div className="mt-8 border border-gray-400 rounded-md p-4 text-center">
+          <h1 className="text-lg font-bold mb-4">Follow Us</h1>
+          <div className="flex justify-center gap-4 text-xl text-gray-800">
+            <Link href="https://www.linkedin.com/in/rabia-sohail-684740278/"><FaLinkedin /></Link>
+            <Link href="https://github.com/rabiasohail098"><IoLogoGithub /></Link>
+            <Link href="www.youtube.com/@Parniya098"><FaYoutube /></Link>
+            <Link href="https://www.instagram.com/rabiasohail642/"><FaInstagram /></Link>
+            <Link href="https://www.facebook.com/parniyasohail098"><FaFacebook /></Link>
+          </div>
+        </div>
+      </div>
+              
+              
       </aside>
     </div>
   )
 }
 
-export default Sidebar
+export default Sidebar2
