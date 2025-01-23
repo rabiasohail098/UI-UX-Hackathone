@@ -63,7 +63,7 @@ const Rightside = () => {
       <div>
                        
               {/* tag div */}
-              <div className='md:max-w-[872px] mb-16 px-8 flex flex-col md:flex-row justify-between p-4 border-[1px] '>
+              <div className='md:max-w-[872px] my-6 flex flex-col md:flex-row justify-between  border-[1px] '>
                   <div className=' flex gap-4'>
                       <label htmlFor="tags" className='font-bold text-[16px]'>Tags: </label>
                       <p>Restaurant, Dinner, Pizza, Yummy, </p>
@@ -88,7 +88,7 @@ const Rightside = () => {
       <div className="md:max-w-[872px] px-8 h-fit">
         <h2 className="font-bold font-helvetica text-[32px]">Comments - {comments.length}</h2>
         {comments.map((comment) => (
-          <div key={comment.id} className="flex mt-8 gap-6">
+          <div key={comment.id} className="flex md:flex-row flex-col mt-8 gap-6">
             <Image src={comment.avatar} alt="user" width={72} height={65} className="rounded-full w-[72px] h-[65px]" />
             <div className="space-y-2">
               <div className="flex gap-2">
@@ -105,12 +105,12 @@ const Rightside = () => {
       </div>
 
       {/* Post a Comment Section */}
-      <div className="md:max-w-[872px] px-8 space-y-8 my-8 h-fit">
+      <div className="md:max-w-[872px] px-4 space-y-8 my-8 h-fit">
         <h2 className="font-bold font-helvetica mt-8 text-[32px]">Post a comment</h2>
         <hr />
         {error && <p className="text-red-500">{error}</p>}
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="flex flex-col md:flex-row  gap-4">
+          <div className="flex flex-col md:flex-row px-2  gap-4">
             <input
               id="name"
               type="text"
@@ -127,11 +127,11 @@ const Rightside = () => {
               placeholder='Email'
               value={newComment.email}
               onChange={(e) => setNewComment({ ...newComment, email: e.target.value })}
-              className="border p-2 rounded md:w-1/2 w-full"
+              className="border p-2 rounded md:w-1/2 px-2 w-full"
               required
             />
           </div>
-          <div className="flex flex-col">
+          <div className="flex px-2 flex-col">
            
             <textarea
               id="comment"

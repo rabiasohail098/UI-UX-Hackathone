@@ -42,7 +42,7 @@ const Filterproduct = () => {
     
   return (
       <div>
-           <div className="flex items-center gap-[10px] px-[10px] py-[10px] border border-gray-400 rounded-[5px]">
+           <div className="flex w-[250px] items-center gap-[10px] px-[10px] py-[10px] border border-gray-400 rounded-[5px]">
                 <input
                   type="text"
                   placeholder="Search by name or ID..."

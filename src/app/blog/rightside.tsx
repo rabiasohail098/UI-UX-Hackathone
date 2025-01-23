@@ -32,7 +32,7 @@ const Rightside = () => {
   }
 
   return (
-    <div className="grid grid-cols-3 justify-center gap-6 p-4">
+    <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 justify-center gap-6 p-4">
       {posts.map((post:any) => (
         <div
           key={post.id}
@@ -56,15 +56,16 @@ const Rightside = () => {
             <PiUserCirclePlus size={20} className="text-[#FF9F0D]" />
             <span>Admin</span>
           </div>
-          <h2 className="font-bold text-lg md:text-xl">{post.title}</h2>
-          Food is a universal experience that connects people and nourishes their bodies and souls.          <Link href={`/blog/${post.id}`}>
-  <button className="w-[150px] md:w-[172px] h-[40px] md:h-[52px] rounded-lg border border-[#FF9F0D] text-[#FF9F0D] flex items-center justify-center gap-2">
+          <div className="space-y-3">
+          <h2 className="font-bold text-lg text-justify md:text-xl">{post.title}</h2>
+          <p>Food is a universal experience that connects people and nourishes their bodies and souls.</p>          <Link href={`/blog/${post.id}`}>
+  <button className="w-[150px] md:w-[172px] mt-3 h-[40px] md:h-[52px] rounded-lg border border-[#FF9F0D] text-[#FF9F0D] flex items-center justify-center gap-2">
     <p>Read More</p>
     <LuSquareArrowOutUpRight size={16} />
   </button>
 </Link>
-
-        </div>
+</div>
+       </div>
       ))}
     </div>
   );

@@ -65,12 +65,12 @@ const ShopItemServer = ({ params }: { params: { id: string } }) => {
           style={{ backgroundImage: "url('/images/bg.png')" }}
         >
           <div className="text-center text-white">
-            <h2 className="text-4xl font-bold">Chef Details</h2>
+            <h2 className="text-4xl font-bold">Chef Profile</h2>
             <p className="pt-2">
               <Link href="/" className="text-yellow-400">
                 Home
               </Link>{" "}
-              › Chef Details
+              › Chef Profile
             </p>
           </div>
         </section>

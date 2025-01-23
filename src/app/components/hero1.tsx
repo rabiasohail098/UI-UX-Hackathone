@@ -34,31 +34,31 @@ const Hero1 = () => {
     <div className="px-12 h-fit md:max-w-[1920px] w-full bg-[#0D0D0D]">
       <div className="flex flex-col sm:flex-row h-fit gap-8 md:max-w-[1320px] w-full bg-[#0D0D0D]">
         <div className="text-black md:max-w-1/2 w-full md:mb-16 gap-4 pr-8 md:my-0 my-[40px] pl-0 md:mt-[110px]">
-          <p className="md:w-[106px] h-fit md:text-2xl font-greatvibes font-normal text-3xl pl-12 leading-[40px] text-[#FF9F0D]">
+          <p className="md:w-[106px] h-fit md:text-2xl font-greatvibes font-normal text-3xl leading-[40px] text-[#FF9F0D]">
             About us
           </p>
-          <h2 className="font-bold font-helvetica md:text-[40px] text-[30px] pl-5 md:pl-[50px] md:w-[446px] leading-[56px] text-[#FFFFFF]">
+          <h2 className="font-bold font-helvetica md:text-[40px] text-[30px]  md:w-[446px] leading-[56px] text-[#FFFFFF]">
             <span className="text-[#FF9F0D]">We</span> Create the best foody product
           </h2>
-          <p className="text-[#FFFFFF] font-inter font-normal md:text-[16px] md:leading-[24px] w-[320px] px-6 pl-6 md:pl-12 md:w-[526px] md:my-[20px]">
+          <p className="text-[#FFFFFF] font-inter font-normal md:text-[16px] md:leading-[24px] w-[260px]  md:w-[526px] md:my-[20px]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque diam pellentesque bibendum non dui volutpat fringilla bibendum. Urna, elit augue urna, vitae feugiat pretium donec id elementum. Ultrices mattis sed vitae mus risus. Lacus nisi, et ac dapibus sit eu velit in consequat.
           </p>
-          <p className="font-inter text-white my-[20px] pl-5 md:pl-[59px] px-5">
+          <p className="font-inter text-white my-[20px] px-5">
             ✔ Lacus nisi, et ac dapibus sit eu velit in consequat.
           </p>
-          <p className="font-inter text-white my-[20px] pl-5 md:pl-[59px] px-5">
+          <p className="font-inter text-white my-[20px]  px-5">
             ✔ Quisque diam pellentesque bibendum non dui volutpat fringilla
           </p>
-          <p className="font-inter text-white my-[20px] pl-5 md:pl-[59px] px-5">
+          <p className="font-inter text-white my-[20px]  px-5">
             ✔ Lorem ipsum dolor sit amet, consectetur adipiscing elit
           </p>
           <Link href="/about">
-            <button className="rounded-[30px] md:h-[60px] h-[50px] pl-5 md:ml-[64px] px-5 mx-4 w-[160px] md:w-[180px] text-[#FFFFFF] bg-[#FF9F0D]">
+            <button className="rounded-[30px] md:h-[60px] h-[50px] px-5 mx-4 w-[160px] md:w-[180px] text-[#FFFFFF] bg-[#FF9F0D]">
               Read More
             </button>
           </Link>
         </div>
-        <div className="space-y-4 md:p-5 w-full md:mb-12 sm:mb-20 p-1 md:w-1/2 object-cover mt-8">
+        <div className="space-y-4 md:p-5 w-full md:mb-12 sm:mb-20  md:w-1/2 object-cover mt-8">
           {data1.map((item: any) => (
             <div key={item._id}>
               <Link href={`/products/${item._id}`}>

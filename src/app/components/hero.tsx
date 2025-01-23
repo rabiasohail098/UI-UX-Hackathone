@@ -10,22 +10,22 @@ const Hero = () => {
     <div className= "bg-black md:max-w-[1320px] px-12  gap-3  py-8 md:py-12 lg:py-16 flex flex-col md:flex-row ">
       
       <div className="hidden md:block w-full md:w-[120px] space-y-8">
-          <div className="w-[2px] rounded bg-orange-500 h-[120px]"></div>
+          <div className="w-[2px] rounded bg-white h-[120px]"></div>
          
           <div className="-ml-[8px] space-y-8">
             <div>
-            <Link href="https://www.facebook.com/parniyasohail098"><FacebookIcon size={ 18}  className="text-orange-500"/>
+            <Link href="https://www.facebook.com/parniyasohail098"><FacebookIcon size={ 18} />
             </Link>
           </div>
             <div>
-            <Link href="www.youtube.com/@Parniya098"><FaYoutube className="text-red-500"/></Link>
+            <Link href="www.youtube.com/@Parniya098"><FaYoutube className="text-orange-500"/></Link>
           </div>
             <div>
-            <Link href="https://www.instagram.com/rabiasohail642/"><FaInstagram className="text-orange-500"/>
+            <Link href="https://www.instagram.com/rabiasohail642/"><FaInstagram />
             </Link>
            </div>
           </div>
-          <div className="w-[2px] rounded bg-orange-500 h-[120px]"></div>
+          <div className="w-[2px] rounded bg-white h-[120px]"></div>
       </div>
       <div className="text-white  md:w-[572px] flex flex-col items-center md:items-start text-center md:text-left">
         <h1 className="text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] font-greatvibes md:w-[249px] w-full font-normal text-[#FF9F0D] whitespace-nowrap">

@@ -92,6 +92,7 @@ const FromMenu: React.FC = () => {
                   key={data._id}
                 >
                   <Link href={`/products/${data._id}`}>
+                  <div className="flex flex-row items-center mb-4 md:max-w-[376px] w-full gap-4">
                     <div className="w-[120px] h-[100px] relative">
                       <Image
                         src={data.imageUrl}
@@ -108,7 +109,8 @@ const FromMenu: React.FC = () => {
                         Lorem, ipsum dolor consectetur adipisicing elit.
                       </p>
                       <p className="text-orange-500">$ {data.price}.00</p>
-                    </div>
+                      </div>
+                      </div>
                   </Link>
                 </div>
               ))}
@@ -117,10 +119,11 @@ const FromMenu: React.FC = () => {
             <div className="space-y-6">
               {data2.map((data: Product1) => (
                 <div
-                  className="flex items-center mb-4 md:max-w-[376px] w-full gap-4"
+                  className="flex flex-row items-center mb-4 md:max-w-[376px] w-full gap-4"
                   key={data._id}
                 >
                   <Link href={`/products/${data._id}`}>
+                    <div className="flex flex-row items-center mb-4 md:max-w-[376px] w-full gap-4">
                     <div className="w-[120px] h-[100px] relative">
                       <Image
                         src={data.imageUrl}
@@ -137,7 +140,8 @@ const FromMenu: React.FC = () => {
                         Lorem, ipsum dolor consectetur adipisicing elit.
                       </p>
                       <p className="text-orange-500">$ {data.price}.00</p>
-                    </div>
+                      </div>
+                      </div>
                   </Link>
                 </div>
               ))}

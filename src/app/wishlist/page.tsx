@@ -28,7 +28,7 @@ const Cart = ({ cartItems, removeFromCart }: CartProps) => {
           <ul className="divide-y divide-gray-200">
             {cartItems.map((item:any) => (
               
-                <div  key={item._id} className="flex justify-between items-center py-4">
+                <div  key={item._id} className="md:flex-row flex-col flex justify-between items-center py-4">
                   <Image  src={item.image?.asset?.url} alt={item.title} width={120} height={120 } className="rounded-md w-[120px] h-[120px]" />
                   <h2 className="text-lg font-semibold">{item.title}</h2>
                 <p className="text-gray-700">Price: ${item.price}</p>
@@ -183,9 +183,10 @@ const ProductListing = ({ addToCart }: ProductListingProps) => {
             className="border rounded-lg shadow-lg p-4 hover:shadow-xl transition"
           >
             <Image
-              src={product.image?.asset?.url}
+              src={product.imageUrl}
               alt={product.title}
-              fill
+              width={120}
+              height={120}
               className="w-full h-48 object-cover rounded-md mb-4"
             />
             <h2 className="text-lg font-semibold mb-2">{product.title}</h2>

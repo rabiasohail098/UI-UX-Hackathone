@@ -70,7 +70,7 @@ const FoodCategory1: React.FC = () => {
 
         {data3.map((data: any) => (
           <div key={data._id} className="flex w-1/2 items-center justify-center">
-            <Link href={`/category/${data._id}`}>
+            <Link href={`/products/${data._id}`}>
               <Image
                 src={data.imageUrl}
                 alt="Sweet Item"

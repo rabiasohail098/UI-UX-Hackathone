@@ -45,7 +45,7 @@ export default function Aboutus() {
           </div>
         </div>
         <div className="ml-12 md:w-[526px] w-full space-y-4  mt-8 left-{1094px} top-{714px} flex flex-wrap ">
-          <h1 className="text-sm  font-medium text-yellow-400 italic">
+          <h1 className="text-xl  font-medium text-yellow-400 italic">
             About us ____
           </h1>
           <p className="text-black title-font text-3xl font-bold">
@@ -72,7 +72,7 @@ export default function Aboutus() {
         </div>
       </div>
       <div className="text-white body-font ">
-        <div className=" mx-auto flex md:px-4 md:py-8 mx-8 py-4 items-center justify-center flex-col w-full md:w-[579px]">
+        <div className=" flex md:px-4 md:py-8 mx-8 py-4 items-center justify-center flex-col w-full md:w-[579px]">
           <h1 className="text-black text-lg md:text-3xl sm:2xl font-bold mt-3">
             Why Choose Us
           </h1>
