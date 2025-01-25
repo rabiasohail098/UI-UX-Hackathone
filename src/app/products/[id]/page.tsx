@@ -125,7 +125,7 @@ const ShopItemServer = ({ params }: { params: { id: string } }) => {
                     alt={product.title}
                     width={110}
                     height={150}
-                    className=" h-[100px] w-[100px] "
+                    className=" h-[100px] w-[120px] "
                   />
                 ))}
               </div>

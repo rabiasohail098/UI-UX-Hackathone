@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Hero from "./components/hero";
 import Hero1 from "./components/hero1";
 import Hero4 from "./components/hero4";
@@ -15,10 +15,16 @@ const page = () => {
     <div className="md:max-w-[1920px]">
     
       <Hero />
+      
       <Hero1 />
-      <FoodCategory1 />
+      
+     
+        <FoodCategory1 />
+     
       <Hero4 />
-      <FromMenu />
+  
+        <FromMenu />
+       
       <Meetchef />
       <Testimonials />
       <Hero5 />

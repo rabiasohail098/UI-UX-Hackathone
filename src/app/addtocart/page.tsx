@@ -1,9 +1,10 @@
 // Product Listing and Cart Components with Tailwind and Sanity Integration
 "use client"
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { client } from '@/sanity/lib/client'; // Import your Sanity client setup
 import Image from 'next/image';
 import Link from 'next/link';
+import  Swal from "sweetalert2"
 interface ProductListingProps {
   addToCart: (product: any) => void;
 }
@@ -117,7 +118,8 @@ const FoodApp = () => {
 interface Product {
     _id: string;
     name: string;
-    price: number;
+  price: number;
+  stock: boolean;
     image: {
         asset: {
             url: string;
@@ -150,8 +152,18 @@ interface CartItem {
                 _type: 'reference',
             },
             title: product.name,
-            price: product.price,
+          price: product.price,
+            stock:product.stock
         });
+      Swal.fire({
+        position: "top",
+        text:"Are you sure you want to add this product in your cart?",
+        icon: "question",
+        title: `Add to Cart?`,
+        showConfirmButton: true,
+        confirmButtonColor:"#f97316",
+        confirmButtonText:"Yes, add it!",
+      })
     } catch (error) {
         console.error('Error adding to cart in Sanity:', error);
   }
@@ -167,7 +179,15 @@ const removeFromCart = async (id: string) => {
         const result: { _id: string }[] = await client.fetch(query);
         if (result.length > 0) {
             await client.delete(result[0]._id);
-        }
+        }  Swal.fire({
+          position: "top",
+          text:"Are you sure you want to remove this product in your cart?",
+          icon: "question",
+          title: `Remove from Cart?`,
+          showConfirmButton: true,
+          confirmButtonColor:"red",
+          confirmButtonText:"Yes, remove it!",
+        })
     } catch (error) {
         console.error('Error removing from cart in Sanity:', error);
   }
@@ -213,6 +233,7 @@ const ProductListing = ({ addToCart }: ProductListingProps) => {
             asset -> { url }
           },
           category,
+          stock,
         }`;
         const result = await client.fetch(query);
         setProducts(result);
@@ -258,7 +279,8 @@ const ProductListing = ({ addToCart }: ProductListingProps) => {
               </Link>
           </div>
         ))}
-      </div>
+        </div>
+   
     </div>
   );
 };

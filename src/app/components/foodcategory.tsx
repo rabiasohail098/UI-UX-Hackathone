@@ -58,6 +58,7 @@ const FoodCategory1: React.FC = () => {
           <div key={data._id} className="flex w-1/2 items-center justify-center">
             <Link href={`/products/${data._id}`}>
               <Image
+                key={data._id}
                 src={data.imageUrl}
                 alt="Food Item"
                 width={306}
@@ -72,6 +73,7 @@ const FoodCategory1: React.FC = () => {
           <div key={data._id} className="flex w-1/2 items-center justify-center">
             <Link href={`/products/${data._id}`}>
               <Image
+                key={data._id}
                 src={data.imageUrl}
                 alt="Sweet Item"
                 width={306}
