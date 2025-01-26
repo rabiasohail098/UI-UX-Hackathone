@@ -1,4 +1,5 @@
 "use client"
+import { client } from "@/sanity/lib/client";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -9,31 +10,39 @@ interface Checkout {
   weg: string;
   price: string;
 }
-export default function CheckoutPage() {
-  const query = `[_type=="carts"]`
-  const data: Checkout[] = [
-    {
-      id: 1,
-      img: "/images/chick.png",
-      title: "Chicken Tikka Kabab",
-      weg: "150 gm net",
-      price: "50$",
-    },
-    {
-      id: 2,
-      img: "/images/chick.png",
-      title: "Chicken Tikka Kabab",
-      weg: "150 gm net",
-      price: "50$",
-    },
-    {
-      id: 3,
-      img: "/images/chick.png",
-      title: "Chicken Tikka Kabab",
-      weg: "150 gm net",
-      price: "50$",
-    },
-  ];
+export default async function CheckoutPage() {
+  const query = `[_type=="carts"]{
+   _id,
+          title,
+          price,
+          image {
+            asset -> { url }
+          }
+            }`
+  const data = await client.fetch(query)
+  // const data: Checkout[] = [
+  //   {
+  //     id: 1,
+  //     img: "/images/chick.png",
+  //     title: "Chicken Tikka Kabab",
+  //     weg: "150 gm net",
+  //     price: "50$",
+  //   },
+  //   {
+  //     id: 2,
+  //     img: "/images/chick.png",
+  //     title: "Chicken Tikka Kabab",
+  //     weg: "150 gm net",
+  //     price: "50$",
+  //   },
+  //   {
+  //     id: 3,
+  //     img: "/images/chick.png",
+  //     title: "Chicken Tikka Kabab",
+  //     weg: "150 gm net",
+  //     price: "50$",
+  //   },
+  // ];
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -49,7 +58,7 @@ export default function CheckoutPage() {
 
   const [isOrderPlaced, setIsOrderPlaced] = useState(false);
 
-  const subtotal = data.reduce((sum, item) => sum + parseFloat(item.price), 0);
+  const subtotal = data.reduce((sum:any, item:any) => sum + parseFloat(item.price), 0);
   const discount = 0.25 * subtotal; // 25% discount
   const tax = 0.1 * subtotal; // 10% tax
   const total = subtotal - discount + tax;
@@ -276,23 +285,22 @@ export default function CheckoutPage() {
   <div className="py-8 px-6 relative mx-auto  lg:max-w-[424px] w-full rounded-lg border-2 border-gray-300">
     <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
     <div className="space-y-6 gap-3 w-full">
-      {data.map((item) => (
+      {data.map((item:any) => (
         <div 
-          key={item.id} 
+          key={item._id} 
           className="flex gap-4 items-center w-full">
           <div className="relative w-[82px] h-[88px]">
             <Image
-              src={item.img}
-              alt="Chicken Tikka Kebab"
+              src={item.imageUrl}
+              alt={item.title}
               fill
               className="rounded-md object-cover"
             />
           </div>
           <div className="flex-1">
             <h3 className="font-medium md:w-[161px]">
-              Chicken Tikka Kebab
+              {item.title}
             </h3>
-            <p className="text-sm text-gray-500">{item.weg}</p>
             <p className="text-sm text-gray-500">{item.price}</p>
           </div>
         </div>
