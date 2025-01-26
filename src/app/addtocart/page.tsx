@@ -176,7 +176,8 @@ const removeFromCart = async (id: string) => {
     // Remove cart data from Sanity
     try {
         const query = `*[_type == "carts" && product._ref == "${id}"]`;
-        const result: { _id: string }[] = await client.fetch(query);
+      const result: { _id: string }[] = await client.fetch(query);
+      console.log(result)
         if (result.length > 0) {
             await client.delete(result[0]._id);
         }  Swal.fire({

@@ -106,7 +106,7 @@ const ShopItemServer = ({ params }: { params: { id: string } }) => {
 
         {/* Product Details */}
         <div className="md:max-w-[1320px]  my-8 px-4">
-          <div className="flex flex-col px-4 gap-5 justify-between lg:flex-row">
+          <div className="flex flex-col px-12 gap-5 justify-between lg:flex-row">
             {/* Product Images */}
             <div className="">
               <Image
@@ -174,7 +174,7 @@ const ShopItemServer = ({ params }: { params: { id: string } }) => {
           </div>
 
           {/* Description */}
-          <div className="mt-8">
+          <div className="mt-8 px-12">
             <div className="flex flex-col sm:flex-row gap-4">
               <button className="bg-orange-500 text-white px-4 py-2 rounded">
                 Description

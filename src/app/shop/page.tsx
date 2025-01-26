@@ -69,8 +69,8 @@ const Page = () => {
     </section>
   
       {/* Main Content */}
-      <div className="md:max-w-[1320px]">
-      <div className="container  mt-16 mb-16 flex flex-col md:flex-row gap-12 px-4">
+      <div className="md:max-w-[1320px] px-12">
+      <div className="container  mt-16 mb-16 flex flex-col md:flex-row justify-between gap-8">
          {/* Main Product Grid */}
       <main className="w-full md:w-3/4 ">
         <div className="text-center mb-8">

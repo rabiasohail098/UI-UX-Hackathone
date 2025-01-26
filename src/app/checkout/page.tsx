@@ -10,6 +10,7 @@ interface Checkout {
   price: string;
 }
 export default function CheckoutPage() {
+  const query = `[_type=="carts"]`
   const data: Checkout[] = [
     {
       id: 1,

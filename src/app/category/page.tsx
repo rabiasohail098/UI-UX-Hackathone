@@ -25,7 +25,7 @@ const FoodCategory = async () => {
     const foodData = await client.fetch(foodQuery);
     const data1 = foodData.slice(0, 4)
     const data2 = foodData
-    
+    console.log(data2)
   const sweetData = await client.fetch(sweetQuery);
     const data3 = sweetData
 
