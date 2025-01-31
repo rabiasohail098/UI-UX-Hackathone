@@ -1,81 +1,7 @@
-"use client"
-import { client } from "@/sanity/lib/client";
-import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
-interface Checkout {
-  id: number;
-  img: string;
-  title: string;
-  weg: string;
-  price: string;
-}
-export default async function CheckoutPage() {
-  const query = `[_type=="carts"]{
-   _id,
-          title,
-          price,
-          image {
-            asset -> { url }
-          }
-            }`
-  const data = await client.fetch(query)
-  // const data: Checkout[] = [
-  //   {
-  //     id: 1,
-  //     img: "/images/chick.png",
-  //     title: "Chicken Tikka Kabab",
-  //     weg: "150 gm net",
-  //     price: "50$",
-  //   },
-  //   {
-  //     id: 2,
-  //     img: "/images/chick.png",
-  //     title: "Chicken Tikka Kabab",
-  //     weg: "150 gm net",
-  //     price: "50$",
-  //   },
-  //   {
-  //     id: 3,
-  //     img: "/images/chick.png",
-  //     title: "Chicken Tikka Kabab",
-  //     weg: "150 gm net",
-  //     price: "50$",
-  //   },
-  // ];
-
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    address1: "",
-    address2: "",
-    city: "",
-    zipCode: "",
-    country: "",
-  });
-
-  const [isOrderPlaced, setIsOrderPlaced] = useState(false);
-
-  const subtotal = data.reduce((sum:any, item:any) => sum + parseFloat(item.price), 0);
-  const discount = 0.25 * subtotal; // 25% discount
-  const tax = 0.1 * subtotal; // 10% tax
-  const total = subtotal - discount + tax;
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { id, value } = e.target;
-    setFormData((prev) => ({ ...prev, [id]: value }));
-  };
-
-  const handlePlaceOrder = () => {
-    if (!formData.firstName || !formData.email || !formData.phone || !formData.address1) {
-      alert("Please fill in all required fields!");
-      return;
-    }
-    setIsOrderPlaced(true);
-  };
-
+import Order from "./order";
+export default  function CheckoutPage() {
+  
   return (
     <>
       <section
@@ -271,9 +197,11 @@ export default async function CheckoutPage() {
                 </label>
               </div>
             <div className="flex flex-col md:flex-row pt-4">
-              <button className="py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 w-72 h-12 px-3">
+                  <Link href="/addtocart">
+                  <button className="py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 w-72 h-12 px-3">
                 Back to cart
-              </button>
+                    </button>
+                  </Link>
               <button className="px-6 py-2 bg-orange-500 text-white rounded-md shadow-sm text-sm font-medium hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 w-72 h-12">
                 Proceed to shipping
               </button>
@@ -284,57 +212,13 @@ export default async function CheckoutPage() {
           <div className="flex-1">
   <div className="py-8 px-6 relative mx-auto  lg:max-w-[424px] w-full rounded-lg border-2 border-gray-300">
     <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
-    <div className="space-y-6 gap-3 w-full">
-      {data.map((item:any) => (
-        <div 
-          key={item._id} 
-          className="flex gap-4 items-center w-full">
-          <div className="relative w-[82px] h-[88px]">
-            <Image
-              src={item.imageUrl}
-              alt={item.title}
-              fill
-              className="rounded-md object-cover"
-            />
-          </div>
-          <div className="flex-1">
-            <h3 className="font-medium md:w-[161px]">
-              {item.title}
-            </h3>
-            <p className="text-sm text-gray-500">{item.price}</p>
-          </div>
-        </div>
-      ))}
-    </div>
+    <Order />
  
   
            
-            <div className="mt-6 w-full space-y-6 border-t pt-4">
-              <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Subtotal</span>
-                <span className="font-medium">130$</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Shipping</span>
-                <span className="font-medium">Free</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Discount</span>
-                <span className="font-medium">25%</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Tax</span>
-                <span className="font-medium">54.76$</span>
-              </div>
-              <div className="flex justify-between border-t pt-2">
-                <span className="font-semibold">Total</span>
-                <span className="font-semibold">432.65$</span>
-              </div>
-            </div>
+          
            
-            <button className="w-full mt-6 px-6 py-3 bg-orange-500 text-white rounded-md shadow-sm text-sm font-medium hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
-              Place an order
-            </button>
+         
           </div>
           </div>
           </div>

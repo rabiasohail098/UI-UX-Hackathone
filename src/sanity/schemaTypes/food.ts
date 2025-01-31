@@ -13,7 +13,7 @@ export default {
         type: 'string',
         title: 'Category',
         description:
-          'Category of the food item (e.g., Burger, Sandwich, Drink, etc.)',
+          'Category of the food item (e.g., foods,sweet, etc.)',
       },
       {
         name: 'price',

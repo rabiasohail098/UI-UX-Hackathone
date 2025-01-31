@@ -50,7 +50,7 @@ const FromMenu: React.FC = () => {
   }
 
   return (
-    <div className="max-w-[1920px] h-fit bg-[#0D0D0D] text-[#ffffff]">
+    <div className="md:max-w-[1920px] w-full h-fit bg-[#0D0D0D] text-[#ffffff]">
       <div className="bg-[#0D0D0D] md:max-w-[1320px] px-4 sm:px-8 lg:px-16 lg:py-12">
         <div className="text-center">
           <p className="font-greatvibes text-[24px] sm:text-[32px] text-orange-500">
@@ -71,7 +71,7 @@ const FromMenu: React.FC = () => {
             <li>Soups</li>
           </ul>
         </div>
-        <div className="md:max-w-[1320px] flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+        <div className="md:max-w-[1320px] w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
           <div className="md:lg:w-[515px] bg-[url(/images/me9.png)] sm:w-[400px] w-full flex justify-center">
             <div>
               <Image

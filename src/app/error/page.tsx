@@ -5,7 +5,7 @@ const Error = () => {
   return (
     <>
           <section
-        className="bg-cover bg-center h-64 flex items-center justify-center"
+        className="bg-cover bg-center w-full h-64 flex items-center justify-center"
         style={{ backgroundImage: "url('/images/bg.png')" }}
       >
         <div className="text-center text-white">
@@ -15,7 +15,7 @@ const Error = () => {
           </p>
         </div>
       </section>
-<div className="flex flex-col text-center items-center  mx-auto w-full md:w-[630px] justify-center  h-auto top-{530} left-{645} py-10 px-4 md:px-8 lg:px-12 gap-6 rounded-[6px]">
+<div className="flex  flex-col text-center items-center  mx-auto w-full md:w-[630px] justify-center  h-auto top-{530} left-{645} py-10 px-4 md:px-8 lg:px-12 gap-6 rounded-[6px]">
 <h2 className="text-[64px] md:w-[630px] w-full md:text-[80px] lg:text-[96px] font-bold font-helvetica text-[#FF9F0D]">404</h2>
 <h4 className="  w-full text-[32px]  font-bold font-helvetica text-[#333333]">Oops! Looks like something went wrong</h4>
 <p className="text-[18px] w-full font-bold font-inter text-[#4F4F4F] px-4">Page cannot be found! We’ll have it figured out in no time. Meanwhile, check out these fresh ideas:</p>

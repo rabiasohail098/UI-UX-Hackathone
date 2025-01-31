@@ -50,7 +50,7 @@ const BlogDetails = async ({ params }: { params: { id: string } }) => {
        <div className='md:max-w-[1320px] mt-16 flex flex-col justify-center lg:flex-row'>
            <div className='md:max-w-[840px] px-8 space-y-4'>
                       {/* Dynamically rendering Blog component with post data */}
-                      <Image src={post.image} alt={post.title} width={400} height={330 } className="object-cover w-full h-fit"/>
+                      <Image src={post.image} alt={post.title} width={400} height={330 } className="w-[780px] h-[430px]"/>
                         <div className="flex gap-2 text-sm md:text-base items-center">
                                   <IoCalendarNumberOutline size={20} className="text-[#FF9F0D]" />
                                   <span>{post.date}</span>
@@ -85,7 +85,7 @@ const BlogDetails = async ({ params }: { params: { id: string } }) => {
                                         </div>
                                         {/* image div */}
                                         <div className='md:w-1/2 w-full px-4'>
-                                            <Image src={post.image} alt="food" width={ 424} height={366 }  className="object-cover "/> 
+                                            <Image src={post.image} alt="food" width={ 424} height={366 }  className="w-[350px] h-[250px]"/> 
                                         </div>
                                     </div>
                                     <p className='text-[#000000] font-[400] pl-4 text-justify font-inter text-[16px] my-4'>

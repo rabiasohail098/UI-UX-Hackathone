@@ -1,5 +1,6 @@
 // Product Listing and Cart Components with Tailwind and Sanity Integration
 "use client"
+import { useUser } from '@clerk/nextjs';
 import { useState, useEffect, Suspense } from 'react';
 import { client } from '@/sanity/lib/client'; // Import your Sanity client setup
 import Image from 'next/image';
@@ -112,9 +113,66 @@ const Cart = ({ cartItems, removeFromCart }: CartProps) => {
   );
 };
 
-const FoodApp = () => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+// const FoodApp = () => {
+//   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
+// interface Product {
+//     _id: string;
+//     name: string;
+//   price: number;
+//   stock: boolean;
+//     image: {
+//         asset: {
+//             url: string;
+//         };
+//     };
+//     category: string;
+// }
+
+// interface CartItem {
+//     _id: string;
+//     name: string;
+//     price: number;
+// }
+
+//   const addToCart = async (product: Product) => {
+//     const autoScrollToCart = () => {
+//       window.scrollTo({
+//         top:document.body.scrollHeight,
+//         behavior: "smooth",
+//       });
+//     };
+//     setCartItems((prevItems: CartItem[]) => [...prevItems, product]);
+
+//     // Store cart data in Sanity
+//     try {
+//         await client.create({
+//             _type: 'carts',
+//             product: {
+//                 _ref: product._id,
+//                 _type: 'reference',
+//             },
+//             title: product.name,
+//           price: product.price,
+//             stock:product.stock
+//         });
+//       Swal.fire({
+//         position: "top",
+//         text:"Are you sure you want to add this product in your cart?",
+//         icon: "question",
+//         title: `Add to Cart?`,
+//         showConfirmButton: true,
+//         confirmButtonColor:"#f97316",
+//         confirmButtonText:"Yes, add it!",
+//       })
+//     } catch (error) {
+//         console.error('Error adding to cart in Sanity:', error);
+//   }
+//   autoScrollToCart()
+// };
+const FoodApp = () => {
+  const { user, isLoaded } = useUser();
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
 interface Product {
     _id: string;
     name: string;
@@ -134,41 +192,91 @@ interface CartItem {
     price: number;
 }
 
-  const addToCart = async (product: Product) => {
-    const autoScrollToCart = () => {
-      window.scrollTo({
-        top:document.body.scrollHeight,
-        behavior: "smooth",
-      });
-    };
-    setCartItems((prevItems: CartItem[]) => [...prevItems, product]);
+  useEffect(() => {
+    if (user) {
+      // Check if user already exists in Sanity, otherwise add them
+      const addUserToSanity = async () => {
+        const foodQuery = `*[_type == "foods"]{
+          _id,
+          title,
+          price,
+          "imageUrl": image.asset->url,}`;
+        const foods = await client.fetch(foodQuery);
+        const existingUserQuery = `*[_type == "users"  && _id == "${user.id}" ]`;
+        const existingUser = await client.fetch(existingUserQuery);
+console.log(existingUser)
+        if (!existingUser.length && foods.length) {
+          // Add user data to Sanity
+          await client.create({
+            _type: 'users',
+            _id: user.id, // Use Clerk's user ID
+            name: user.fullName || 'Anonymous',
+            image: user.imageUrl || '',
+            email: user.emailAddresses[0]?.emailAddress || '',
+            orders: foods.map((food:any)=>food._id.push())||[]
+            , // Initialize with an empty order list
+          });
+        }
+      };
 
-    // Store cart data in Sanity
+      addUserToSanity();
+    }
+  }, [user]);
+
+  // Add the product to cart and associate it with the user in Sanity
+  const addToCart = async (product: Product) => {
+    if (!user) {
+      alert("Please sign in first.");
+      return;
+    }
+
+    setCartItems((prevItems) => [...prevItems, product]);
+
     try {
-        await client.create({
-            _type: 'carts',
-            product: {
-                _ref: product._id,
-                _type: 'reference',
-            },
-            title: product.name,
-          price: product.price,
-            stock:product.stock
-        });
+      await client.create({
+        _type: 'carts',
+        product: {
+          _ref: product._id,
+          _type: 'reference',
+          title:product.name
+        },
+        user: {
+          _ref: user.id, // Associate with Clerk's user ID
+          _type: 'reference',
+        },
+        quantity: 1, // Default quantity
+      });
       Swal.fire({
         position: "top",
-        text:"Are you sure you want to add this product in your cart?",
+        text: "Are you sure you want to add this product to your cart?",
         icon: "question",
         title: `Add to Cart?`,
         showConfirmButton: true,
-        confirmButtonColor:"#f97316",
-        confirmButtonText:"Yes, add it!",
-      })
+        confirmButtonColor: "#f97316",
+        confirmButtonText: "Yes, add it!",
+      });
     } catch (error) {
-        console.error('Error adding to cart in Sanity:', error);
-  }
-  autoScrollToCart()
-};
+      console.error('Error adding to cart in Sanity:', error);
+    }
+  };
+
+  // Proceed to Checkout
+  const handleCheckout = async () => {
+    if (!user) {
+      alert("Please sign in first.");
+      return;
+    }
+
+    const userData = await client.fetch(`*[_type == "users" && _id == "${user.id}"]`);
+
+    if (userData.length) {
+      // Fetch user data to display at checkout
+      const { name, email, image } = userData[0];
+      console.log('User data for checkout:', { name, email, image });
+
+      // You can then pass this data to the checkout page or show it to the user.
+    }
+  };
 
 const removeFromCart = async (id: string) => {
     setCartItems((prevItems: CartItem[]) => prevItems.filter((item: CartItem) => item._id !== id));

@@ -1,30 +1,50 @@
 export default {
   name: 'order',
+  title: 'Order',
   type: 'document',
   fields: [
-    { name: 'customer', 
+    {
+      name: 'user',
+      title: 'User',
       type: 'reference',
-       to: [
-        { type: 'customer' }], 
-         title: 'Customer' 
-},
-    { name: 'products', 
+      to: [{ type: 'users' }], // Reference to the user
+    },
+    {
+      name: 'products',
+      title: 'Products',
       type: 'array',
       of: [
-     { type: 'reference', 
-      to: [ 
-          { type: 'product' } 
-]
- }],
- title: 'Products' },
-
-
-    { name: 'totalAmount',
-      type: 'number',
-      title: 'Total Amount' },
+        {
+          type: 'object',
+          fields: [
+            {
+              name: 'product',
+              title: 'Product',
+              type: 'reference',
+              to: [{ type: 'foods' }], // Reference to the product
+            },
+            {
+              name: 'quantity',
+              title: 'Quantity',
+              type: 'number',
+              validation: (Rule:any) => Rule.min(1).required(),
+            },
+          ],
+        },
+      ],
+    },
     {
-       name: 'status',
-       type: 'string',
-       title: 'Order Status' }
-  ]
+      name: 'totalPrice',
+      title: 'Total Price',
+      type: 'number',
+    },
+    {
+      name: 'status',
+      title: 'Order Status',
+      type: 'string',
+      options: {
+        list: ['Pending', 'Completed', 'Shipped'],
+      },
+    },
+  ],
 };

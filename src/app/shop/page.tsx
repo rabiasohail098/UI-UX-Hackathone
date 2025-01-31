@@ -108,6 +108,7 @@ const Page = () => {
               </div>
             </div>
             </div>
+      
         <div className="grid grid-cols-1 px-4 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredData.map((item: any) => (
             <div key={item.title} className="bg-white w-[230px] rounded-lg shadow-md p-4">
@@ -135,6 +136,7 @@ const Page = () => {
               
           ))}
         </div>
+        
       </main>
       {/* Sidebar */}
     <Sidebar/>

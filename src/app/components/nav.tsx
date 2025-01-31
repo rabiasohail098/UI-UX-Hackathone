@@ -6,11 +6,12 @@ import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { IoSearch } from "react-icons/io5";
 import React from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
-
+import { UserButton, useUser } from "@clerk/nextjs";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Link from "next/link";
 import { client } from "@/sanity/lib/client";
-import { HeartIcon } from "lucide-react";
+import { HeartIcon, User2, User2Icon } from "lucide-react";
+
 
 const Nav = () => {
   const [cart, setCart] = useState([]);
@@ -70,7 +71,7 @@ const Nav = () => {
             <Link href={"/shop"}>
               <li className="w-[45px] h-[24px] font-medium leading-[24px]">Shop</li>
             </Link>
-            <Link href={"/signin"}>
+            <Link href={"/sign-in"}>
               <li className="w-[45px] h-[24px] font-medium leading-[24px]">Signin</li>
             </Link>
                   </ul>
@@ -126,6 +127,14 @@ const Nav = () => {
                     {cart.length}
                   </span>
                 )}
+              </div>
+            </Link>
+
+            <Link href="/sign-in">
+              <div className="relative mt-3">
+                <span className="text-whitetext text-[28px]  cursor-pointer">
+                <UserButton/>
+                </span>
               </div>
             </Link>
           </div>

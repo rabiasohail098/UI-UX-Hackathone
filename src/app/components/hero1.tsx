@@ -31,7 +31,7 @@ const Hero1 = () => {
   }
 
   return (
-    <div className="px-12 h-fit md:max-w-[1920px] w-full bg-[#0D0D0D]">
+    <div className="px-32 h-fit md:max-w-[1920px] w-full bg-[#0D0D0D]">
       <div className="flex flex-col sm:flex-row h-fit gap-8 md:max-w-[1320px] w-full bg-[#0D0D0D]">
         <div className="text-black md:max-w-1/2 w-full md:mb-16 gap-4 pr-8 md:my-0 my-[40px] pl-0 md:mt-[110px]">
           <p className="md:w-[106px] h-fit md:text-2xl font-greatvibes font-normal text-3xl leading-[40px] text-[#FF9F0D]">

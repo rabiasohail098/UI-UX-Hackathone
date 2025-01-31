@@ -6,22 +6,22 @@ import {  FaYoutube } from "react-icons/fa";
 import { FacebookIcon } from "lucide-react";
 const Hero = () => {
   return (
-    <div className="max-w-[1920px] bg-[#0D0D0D] text-[#FFFFFF]">
-    <div className= "bg-black md:max-w-[1320px] px-12  gap-3  py-8 md:py-12 lg:py-16 flex flex-col md:flex-row ">
+    <div className="w-full bg-[#0D0D0D] text-[#FFFFFF]">
+    <div className= "bg-black w-full px-32  gap-3  py-8 md:py-12 lg:py-16 flex flex-col md:flex-row ">
       
-      <div className="hidden md:block w-full md:w-[120px] space-y-8">
+      <div className="hidden md:block w-full md:w-[130px] space-y-8">
           <div className="w-[2px] rounded bg-white h-[120px]"></div>
          
-          <div className="-ml-[8px] space-y-8">
+          <div className="-ml-[12px] space-y-8">
             <div>
-            <Link href="https://www.facebook.com/parniyasohail098"><FacebookIcon size={ 18} />
+            <Link href="https://www.facebook.com/parniyasohail098"><FacebookIcon size={ 20} />
             </Link>
           </div>
             <div>
-            <Link href="www.youtube.com/@Parniya098"><FaYoutube className="text-orange-500"/></Link>
+            <Link href="www.youtube.com/@Parniya098"><FaYoutube size={ 20} className="text-orange-500"/></Link>
           </div>
             <div>
-            <Link href="https://www.instagram.com/rabiasohail642/"><FaInstagram />
+            <Link href="https://www.instagram.com/rabiasohail642/"><FaInstagram size={ 20} />
             </Link>
            </div>
           </div>
