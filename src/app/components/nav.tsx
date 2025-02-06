@@ -74,6 +74,9 @@ const Nav = () => {
             <Link href={"/sign-in"}>
               <li className="w-[45px] h-[24px] font-medium leading-[24px]">Signin</li>
             </Link>
+            <Link href={"/sign-up"}>
+              <li className="w-[45px] h-[24px] font-medium leading-[24px]">Signup</li>
+            </Link>
                   </ul>
                   <div className="max-w-[109px] pb-[30px]">
           <h2 className="font-helvetica font-bold text-[20px] sm:text-[24px] text-[#ffffff]">
