@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
 import { groq } from "next-sanity";
-
+import Link from "next/link";
 interface CheckoutItem {
   _id: string;
   title: string;
@@ -118,9 +118,11 @@ console.log(user)
           <span className="font-semibold">${total.toFixed(2)}</span>
         </div>
       </div>
+      <Link href="/placeanorder">
       <button className="w-full mt-6 px-6 py-3 bg-orange-500 text-white rounded-md shadow-sm text-sm font-medium hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
               Place an order
             </button>
+      </Link>
     </div>
   );
 }

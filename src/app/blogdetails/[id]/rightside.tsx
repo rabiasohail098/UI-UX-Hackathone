@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { IoLogoGithub } from "react-icons/io";
 
-const Rightside = () => {
+const Rightside1 = () => {
      const [comments, setComments] = useState([
         {
           id: 1,
@@ -151,4 +151,4 @@ const Rightside = () => {
   )
 }
 
-export default Rightside
+export default Rightside1

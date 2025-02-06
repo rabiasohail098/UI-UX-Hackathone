@@ -209,13 +209,13 @@ console.log(existingUser)
           // Add user data to Sanity
           await client.create({
             _type: 'users',
-            _id: user.id, // Use Clerk's user ID
+            _id: user.id, 
             name: user.fullName || 'Anonymous',
             image: user.imageUrl || '',
             email: user.emailAddresses[0]?.emailAddress || '',
-            orders: foods.map((food:any)=>food._id.push())||[]
-            , // Initialize with an empty order list
-          });
+            orders: foods.map((food: any) => food._id) || []
+         });
+         
         }
       };
 
@@ -236,16 +236,16 @@ console.log(existingUser)
       await client.create({
         _type: 'carts',
         product: {
-          _ref: product._id,
-          _type: 'reference',
-          title:product.name
+           _ref: product._id,
+           _type: 'reference',
+           title: product.name
         },
         user: {
-          _ref: user.id, // Associate with Clerk's user ID
-          _type: 'reference',
+           _ref: user.id, // Associate with Clerk's user ID
+           _type: 'reference',
         },
         quantity: 1, // Default quantity
-      });
+     });
       Swal.fire({
         position: "top",
         text: "Are you sure you want to add this product to your cart?",

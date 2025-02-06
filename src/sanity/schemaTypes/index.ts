@@ -6,6 +6,7 @@ import carts from './carts'
 import wishlist from './wishlist'
 import user from './user'
 import order from './order'
+import blog from './blog'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -15,6 +16,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     wishlist,
     user,
     order,
+    blog,
     
   ],
 }
