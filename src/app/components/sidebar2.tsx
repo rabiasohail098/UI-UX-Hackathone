@@ -182,7 +182,11 @@ const Sidebar2 = () => {
             {data2.map((items:any) => (
             <div key={items._id}>
                     <Link href={`/products/${items._id}`}>
+<<<<<<< HEAD
                     <Image
+=======
+                    <Image 
+>>>>>>> e50712b74b973cb3013cb6ccd4bc1ba70e81e7c3
                   src={urlFor(items.image).url()}
                     alt="Gallery"
                     width={200}
