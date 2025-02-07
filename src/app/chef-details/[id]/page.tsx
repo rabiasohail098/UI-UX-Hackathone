@@ -105,7 +105,7 @@ const ShopItemServer = ({ params }: { params: { id: string } }) => {
               <p className="text-lg">
                 Availability: {chef.available}
               </p>
-              <button className="bg-orange-500 text-white px-4 py-2 rounded">
+              <button className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 rounded-[4px] px-4 py-1 hover:via-orange-500 hover:to-orange-600">
                 Contact Chef
               </button>
             </div>

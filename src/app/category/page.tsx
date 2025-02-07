@@ -54,7 +54,7 @@ const FoodCategory = async () => {
             </div>
                 <p className="text-orange-500 font-medium">$ {item.price}.00</p>
                   <Link href={`/products/${item._id}`}>
-                        <button className="mt-2 w-full bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">
+                        <button className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 rounded-[4px] px-4 py-1 hover:via-orange-500 hover:to-orange-600">
                           View Product
                         </button>
                       </Link>

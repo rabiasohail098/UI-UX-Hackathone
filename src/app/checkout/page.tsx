@@ -1,7 +1,166 @@
+"use client";
+
+import { client } from "@/sanity/lib/client";
+import { useUser } from "@clerk/nextjs";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import Order from "./order";
-export default  function CheckoutPage() {
+import Order from "@/app/checkout/order";
+import Swal from "sweetalert2";
+interface CheckoutItem {
+  _id: string;
+  title: string;
+  price: number;
+  category: string;
+  quantity: number;
+  imageUrl: string;
+  product: { _ref: string };
+}
+
+export default function CheckoutPage() {
+  const { user, isLoaded } = useUser();
+  const [cartItems, setCartItems] = useState<CheckoutItem[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  // Fetch cart items from Sanity
+  useEffect(() => {
+    if (!user) return;
+
+    const fetchCartItems = async () => {
+      try {
+        setLoading(true);
+
+        const query = `*[_type == "carts" && user._ref == $userId] {
+          _id,
+          "imageUrl": product->image.asset->url,
+          "title": product->title,
+          "price": product->price,
+          "category": product->category,
+          quantity,
+          "product": { "_ref": product._id }
+        }`;
+        const result = await client.fetch(query, { userId: user.id });
+        setCartItems(result);
+      } catch (error) {
+        console.error("Error fetching cart items:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCartItems();
+
+    // Real-time listener for cart updates
+    const subscription = client
+      .listen(`*[_type == "carts" && user._ref == $userId]`, { userId: user.id })
+      .subscribe(() => {
+        fetchCartItems();
+      });
+
+    return () => subscription.unsubscribe();
+  }, [user]);
+  const handleCreateShipment = async () => {
+    try {
+      const response = await fetch("/api/shipment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ orderId: "orderId" }),
+      });
   
+      const result = await response.json();
+      console.log("Shipment Created:", result);
+      Swal.fire({
+        position: "top",
+        text: "Yourshipment has been created successfully! 🎉",
+        icon: "success",
+        title: `Shipment Status`,
+        showConfirmButton: true,
+        confirmButtonColor: "#f97316",
+        confirmButtonText: "OK",
+      });
+    } catch (error) {
+      console.error("Error creating shipment:", error);
+      alert("Failed to create shipment!");
+    }
+  };
+  
+  const handlePlaceOrder = async () => {
+    if (!user) {
+      console.log("🚨 User not found!");
+      alert("Please log in first.");
+      return;
+    }
+    if (cartItems.length === 0) {
+      console.log("🚨 No cart items!");
+      alert("Your cart is empty.");
+      return;
+    }
+  
+    console.log("👤 User Data:", user);
+    console.log("🛒 Cart Items:", cartItems);
+  
+    setLoading(true);
+    try {
+      const newOrder = await client.create({
+        _type: "order",
+        userId: user.id,
+        name: user.fullName || "Guest",
+        email: user.emailAddresses[0]?.emailAddress || "",
+        totalAmount: cartItems.reduce((sum, item) => sum + (item.price || 0) * (item.quantity || 1), 0),
+        cartItems: cartItems.map((item) => ({
+          _key: item._id,
+          product: item.product?._ref ? { _type: "reference", _ref: item.product._ref } : null,
+          quantity: item.quantity || 1,
+          price: item.price || 0,
+        })),
+        // Empty address fields to be updated later
+        address: "123 Default St",
+      city: "New York",
+      state: "NY",
+      zipCode: "10001"
+      });
+  
+      console.log("✅ Order Placed Successfully:", newOrder);
+      Swal.fire({
+        position: "top",
+        text: "Your order has been placed successfully! 🎉",
+        icon: "success",
+        title: `Order Added`,
+        showConfirmButton: true,
+        confirmButtonColor: "#f97316",
+        confirmButtonText: "OK",
+      });
+    } catch (error) {
+      console.error("❌ Error placing order:", JSON.stringify(error, null, 2));
+      alert("⚠️ Failed to place order! Check console.");
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  const handleProceedToBilling = async () => {
+    try {
+      const response = await fetch("/api/update-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          orderId: "JdGgvq3N7DvO0fkp5gNcix", // Replace with actual orderId
+          address: "123 Default St",
+          city: "New York",
+          state: "NY",
+          zipCode: "10001",
+        }),
+      });
+  
+      const result = await response.json();
+      console.log("Order Updated:", result);
+      alert("Order updated successfully!");
+    } catch (error) {
+      console.error("Error updating order:", error);
+      alert("Error updating order! Please try again.");
+    }
+  };
+  
+
   return (
     <>
       <section
@@ -19,7 +178,8 @@ export default  function CheckoutPage() {
      <div className=" lg:max-w-[1320px] w-full flex lg:px-16 flex-col lg:flex-row  py-24">
        
          
-        <div className="lg:max-w-[872px] md:px-16 px-4  w-full h-auto">
+        <div className="lg:max-w-[872px] md:px-16 px-4  w-full h-auto" >
+        
             <h2 className=" text-xl font-semibold mb-4">Shipping Address</h2>
             
 
@@ -32,7 +192,8 @@ export default  function CheckoutPage() {
                       First name
                     </label>
                     <input
-                      type="text"
+                  type="text"
+               
                       id="firstName"
                       className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                     />
@@ -45,7 +206,8 @@ export default  function CheckoutPage() {
                       Last name
                     </label>
                     <input
-                      type="text"
+                  type="text"
+              
                       id="lastName"
                       className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                     />
@@ -64,7 +226,8 @@ export default  function CheckoutPage() {
                     </label>
                     <input
                       type="email"
-                      id="email"
+                  id="email"
+               
                       className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                     />
                   </div>
@@ -75,8 +238,9 @@ export default  function CheckoutPage() {
                     >
                       Phone number
                     </label>
-                    <input
-                      type="tel"
+                <input
+                  type="tel"
+               
                       id="phone"
                       className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                     />
@@ -92,7 +256,8 @@ export default  function CheckoutPage() {
                       Company
                     </label>
                     <input
-                      type="text"
+                  type="text"
+                 
                       id="company"
                       className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                     />
@@ -106,16 +271,13 @@ export default  function CheckoutPage() {
                       Country
                 </label>
                <div className="w-[235px]">
-                    <select
-                      id="country"
+               <input
+                      type="text"
+                    id="country"
+               
                       className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                    >
-                      <option value="" className="w-full px-3">Choose country</option>
-                      <option value="us" className="w-full px-3">United States</option>
-                      <option value="uk" className="w-full px-3">United Kingdom</option>
-                      <option value="ca" className="w-full px-3">Canada</option>
-                      <option value="pa" className="w-full px-3">Pakistan</option>
-                  </select>
+                      placeholder="Choose city"
+                    />
                   </div>
                   </div>
                 </div>
@@ -130,7 +292,8 @@ export default  function CheckoutPage() {
                     </label>
                     <input
                       type="text"
-                      id="city"
+                  id="city"
+         
                       className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                       placeholder="Choose city"
                     />
@@ -140,10 +303,11 @@ export default  function CheckoutPage() {
                       htmlFor="zipCode"
                       className="block text-sm font-medium text-gray-700 mb-1"
                     >
-                      Zip code
+                      Postal code
                     </label>
                     <input
-                      type="text"
+                  type="text"
+            
                       id="zipCode"
                       className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                     />
@@ -159,7 +323,8 @@ export default  function CheckoutPage() {
                     Address 1
                   </label>
                   <input
-                    type="text"
+                  type="text"
+                
                     id="address1"
                     className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                   />
@@ -172,7 +337,8 @@ export default  function CheckoutPage() {
                     Address 2
                   </label>
                   <input
-                    type="text"
+                  type="text"
+               
                     id="address2"
                     className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                   />
@@ -202,9 +368,10 @@ export default  function CheckoutPage() {
                 Back to cart
                     </button>
                   </Link>
-              <button className="px-6 py-2 bg-orange-500 text-white rounded-md shadow-sm text-sm font-medium hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 w-72 h-12">
-                Proceed to shipping
-              </button>
+                  <Link href="/placeanorder">
+                  <button onClick={() =>handleCreateShipment()}  className="px-6 py-2 bg-orange-500 text-white rounded-md shadow-sm text-sm font-medium hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 w-72 h-12" disabled={loading || cartItems.length === 0}>
+             Proced to Billing
+              </button></Link>
             </div>
             </div>
           </div>
@@ -213,7 +380,13 @@ export default  function CheckoutPage() {
   <div className="py-8 px-6 relative mx-auto  lg:max-w-[424px] w-full rounded-lg border-2 border-gray-300">
     <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
     <Order />
- 
+    <button
+        onClick={handlePlaceOrder}
+        disabled={loading || cartItems.length === 0}
+        className="px-6 py-2 bg-orange-500 text-white"
+      >
+        {loading ? "Placing Order..." : "Place Order"}
+      </button>
   
            
           
@@ -227,3 +400,68 @@ export default  function CheckoutPage() {
     </>
   );
 }
+
+
+export const ShipmentComponent = ({ orderId }: { orderId: string }) => {
+  const [sanityOrderId, setSanityOrderId] = useState(null);
+
+  // 🟢 Step 1: Fetch Order ID from Sanity
+  useEffect(() => {
+    const fetchOrderId = async () => {
+      try {
+        const response = await fetch(`/api/getOrder?orderId=${orderId}`);
+        const data = await response.json();
+
+        if (response.ok && data?.sanityOrderId) {
+          setSanityOrderId(data.sanityOrderId);
+        } else {
+          console.error("❌ Error fetching order ID:", data.message);
+        }
+      } catch (error) {
+        console.error("❌ Fetch Order ID Error:", error);
+      }
+    };
+
+    fetchOrderId();
+  }, [orderId]); // Runs when `orderId` changes
+
+  // 🟢 Step 2: Create Shipment
+  const handleCreateShipment = async () => {
+    if (!sanityOrderId) {
+      alert("Order ID is missing!");
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/shipment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ orderId: sanityOrderId }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || "Failed to create shipment");
+      }
+
+      console.log("✅ Shipment Created:", result);
+      alert("Shipment created successfully!");
+    } catch (error) {
+      console.error("❌ Error creating shipment:", error);
+      alert("Failed to create shipment!");
+    }
+  };
+
+  return (
+    <div>
+      <h2>Shipment</h2>
+      <p>Sanity Order ID: {sanityOrderId || "Loading..."}</p>
+      <button onClick={handleCreateShipment} disabled={!sanityOrderId}>
+        Create Shipment
+      </button>
+    </div>
+  );
+};
+
+

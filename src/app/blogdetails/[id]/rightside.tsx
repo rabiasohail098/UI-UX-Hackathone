@@ -143,7 +143,7 @@ const Rightside1 = () => {
               required
             />
           </div>
-          <button type="submit" className="bg-[#FF9F0D] w-[212px] h-[56]  text-white p-2 rounded font-bold">Post a comment</button>
+          <button type="submit" className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 rounded-[4px] px-4 py-1 hover:via-orange-500 hover:to-orange-600">Post a comment</button>
         </form>
       </div>
           </div>

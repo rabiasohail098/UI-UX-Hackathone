@@ -36,7 +36,7 @@ const Cart = ({ cartItems, removeFromCart }: CartProps) => {
              
                 <button
                   onClick={() => removeFromCart(item._id)}
-                  className="bg-red-500 text-white py-1 px-4 rounded hover:bg-red-600"
+                  className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 rounded-[4px] px-4 py-1 hover:via-orange-500 hover:to-orange-600"
                 >
                   Remove
                 </button>
@@ -62,7 +62,7 @@ const Cart = ({ cartItems, removeFromCart }: CartProps) => {
                   placeholder="Enter Here code"
                   className="border rounded-md px-4 py-2"
                 />
-                <button className="bg-orange-500 text-white md:text-[18px] text-sm px-6 py-2 rounded-md">
+                <button className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 rounded-[4px] px-4 py-1 hover:via-orange-500 hover:to-orange-600">
                   Apply
                 </button>
               </div>
@@ -98,7 +98,7 @@ const Cart = ({ cartItems, removeFromCart }: CartProps) => {
                 </span>
               </div>
               <Link href="/checkout">
-                <button className="w-full bg-orange-500 text-sm md:text-[18px] text-white py-3 rounded-md font-semibold">
+                <button className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 rounded-[4px] px-4 py-1 hover:via-orange-500 hover:to-orange-600">
                   Proceed to Checkout
                 </button>
               </Link>
@@ -381,7 +381,7 @@ const ProductListing = ({ addToCart }: ProductListingProps) => {
             <Link href="">
             <button
               onClick={() => addToCart(product)}
-              className="mt-2 bg-orange-500 w-full overflow-y-auto text-white py-1 px-4 rounded hover:bg-orange-600"
+              className="mt-2 bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 rounded-[4px] px-4 py-1 hover:via-orange-500 hover:to-orange-600"
             >
               Add to Cart
               </button>

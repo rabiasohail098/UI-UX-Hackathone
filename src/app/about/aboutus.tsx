@@ -144,7 +144,7 @@ export default function Aboutus() {
                 />
                 <div className="p-4">
                   <h1 className="title-font text-lg font-medium text-black mb-2 text-bold text-center">
-                    Clean Environmen
+                    Clean Environment
                   </h1>
                   <p className="leading-relaxed mb-3 text-center text-black">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.

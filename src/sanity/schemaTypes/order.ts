@@ -1,50 +1,76 @@
+import food from "./food"; // 👈 Product schema import karein
+
 export default {
-  name: 'order',
-  title: 'Order',
-  type: 'document',
+  name: "order",
+  type: "document",
+  title: "Order",
   fields: [
     {
-      name: 'user',
-      title: 'User',
-      type: 'reference',
-      to: [{ type: 'users' }], // Reference to the user
+      name: "userId",
+      type: "string",
+      title: "User ID",
     },
     {
-      name: 'products',
-      title: 'Products',
-      type: 'array',
+      name: "name",
+      type: "string",
+      title: "Name",
+    },
+    {
+      name: "email",
+      type: "string",
+      title: "Email",
+    },
+    {
+      name: "address",
+      type: "string",
+      title: "Address",
+    },
+    {
+      name: "city",
+      type: "string",
+      title: "City",
+    },
+    {
+      name: "state",
+      type: "string",
+      title: "State",
+    },
+    {
+      name: "zipCode",
+      type: "string",
+      title: "Zip Code",
+    },
+    {
+      name: "totalAmount",
+      type: "number",
+      title: "Total Amount",
+    },
+    {
+      name: "cartItems",
+      type: "array",
+      title: "Cart Items",
       of: [
         {
-          type: 'object',
+          type: "object",
           fields: [
             {
-              name: 'product',
-              title: 'Product',
-              type: 'reference',
-              to: [{ type: 'foods' }], // Reference to the product
+              name: "food",
+              type: "reference",
+              to: [{ type: "foods" }], // ✅ Ye ab sahi kaam karega
             },
             {
-              name: 'quantity',
-              title: 'Quantity',
-              type: 'number',
-              validation: (Rule:any) => Rule.min(1).required(),
+              name: "quantity",
+              type: "number",
+              title: "Quantity",
+            },
+            {
+              name: "price",
+              type: "number",
+              title: "Price",
             },
           ],
         },
       ],
-    },
-    {
-      name: 'totalPrice',
-      title: 'Total Price',
-      type: 'number',
-    },
-    {
-      name: 'status',
-      title: 'Order Status',
-      type: 'string',
-      options: {
-        list: ['Pending', 'Completed', 'Shipped'],
-      },
     },
   ],
 };

@@ -53,7 +53,7 @@ const CommentSection = () => {
           onChange={handleCommentChange}
           className="border px-4 mt-4 py-2 mb-2 w-full"
         />
-        <button type="submit" className="bg-orange-500 mt-4 w-[120px] text-white px-4 py-2 rounded">
+        <button type="submit" className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 rounded-[4px] px-4 py-1 hover:via-orange-500 hover:to-orange-600 mt-4 w-[120px] text-white ">
           Submit
         </button>
       </form>

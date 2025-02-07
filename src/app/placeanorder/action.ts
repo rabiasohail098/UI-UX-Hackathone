@@ -1,6 +1,5 @@
 "use server";
 
-
 import Stripe from "stripe";
 
 export async function createPaymentIntent() {
@@ -20,13 +19,8 @@ export async function createPaymentIntent() {
       },
     });
 
-console.log("Payment Intent Response:", paymentIntent);
-console.log("Client Secret:", paymentIntent.client_secret);
-    console.log(process.env.STRIPE_SECRET_KEY)
-    console.log(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY )
-    return{
+    return {
       clientSecret: paymentIntent.client_secret,
-      
     };
   } catch (error) {
     // In a real app, you should handle the error properly
