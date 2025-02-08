@@ -241,13 +241,13 @@
 // Enable client-side rendering in Next.js (client components).
 // Enable client-side rendering in Next.js (client components).
 // Enable client-side rendering in Next.js (client components).
+// Enable client-side rendering in Next.js (client components).
 "use client";
 
 // Import the CheckoutPage component and a helper function to convert amounts to subcurrency.
-import CheckoutPage from "@/app/components/Checkoutpage"
+import CheckoutPage from "../components/Checkoutpage";
 import convertToSubcurrency from "@/lib/convertToSubcurrency";
-import { client } from "@/sanity/lib/client";
-import { useState,useEffect } from "react";
+
 // Import Stripe-specific components and methods for creating and managing payments.
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
@@ -261,39 +261,9 @@ if (process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY === undefined) {
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 // Define the main component for the home page.
-export default async function Home() {
-  const [orders, setOrders] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-  const userId = "JdGgvq3N7DvO0fkp5gNcix"; // Replace with actual user ID
- const amount = 49.99
-  useEffect(() => {
-    if (!userId) return;
-
-    const fetchOrders = async () => {
-      try {
-        const query = `*[_type == "order" && user._ref == $userId]{
-          _id,
-          name,
-          totalAmount
-        }`;
-
-        const data = await client.fetch(query, { userId });
-        const amount = data.totalAmout
-        setOrders(data); // Store the fetched orders in state
-      } catch (error) {
-        console.error("Error fetching orders:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchOrders();
-  }, [userId]);
-  console.log(orders)
-  
-  if (loading) return <p>Loading orders...</p>;
-
-
+export default function Home() {
+  // The amount requested for payment.
+  const amount = 49.99;
 
   // Return the main content of the page.
   return (
@@ -302,16 +272,11 @@ export default async function Home() {
       
       {/* A header section for displaying who requested payment and how much. */}
       <div className="mb-10">
-        {orders.map((order: any) => (
-          <div key={order._id}>
-            <h1 className="text-4xl font-extrabold mb-2">{order.name}</h1>
-            <h2 className="text-2xl">
-              has requested
-              <span className="font-bold"> ${order.totalAmount}</span>
-            </h2>
-            </div>
-        ))}
-      
+        <h1 className="text-4xl font-extrabold mb-2">Ali Aftab</h1>
+        <h2 className="text-2xl">
+          has requested
+          <span className="font-bold"> ${amount}</span>
+        </h2>
       </div>
 
       {/* Wrap the checkout page in Stripe's Elements component, which provides context 

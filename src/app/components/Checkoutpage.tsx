@@ -121,7 +121,7 @@ const CheckoutPage = ({ amount }: { amount: number }) => {
       {/* The payment button, disabled if Stripe isn't ready or if we're loading. */}
       <button
         disabled={!stripe || loading}
-        className="text-white w-full p-5 bg-black mt-2 rounded-md font-bold disabled:opacity-50 disabled:animate-pulse"
+        className="bg-gradient-to-r w-full from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 rounded-[4px] px-4 py-1 hover:via-orange-500 hover:to-orange-600 font-bold disabled:opacity-50 disabled:animate-pulse"
       >
         {/* If we're not loading, show the pay amount; otherwise, show a processing message. */}
         {!loading ? `Pay $${amount}` : "Processing..."}

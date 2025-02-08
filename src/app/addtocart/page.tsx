@@ -98,7 +98,7 @@ const Cart = ({ cartItems, removeFromCart }: CartProps) => {
                 </span>
               </div>
               <Link href="/checkout">
-                <button className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 rounded-[4px] px-4 py-1 hover:via-orange-500 hover:to-orange-600">
+                <button className="w-full mt-2 bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 rounded-[4px] px-4 py-1 hover:via-orange-500 hover:to-orange-600">
                   Proceed to Checkout
                 </button>
               </Link>
@@ -381,7 +381,7 @@ const ProductListing = ({ addToCart }: ProductListingProps) => {
             <Link href="">
             <button
               onClick={() => addToCart(product)}
-              className="mt-2 bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 rounded-[4px] px-4 py-1 hover:via-orange-500 hover:to-orange-600"
+              className="mt-2 w-full bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 rounded-[4px] px-4 py-1 hover:via-orange-500 hover:to-orange-600"
             >
               Add to Cart
               </button>

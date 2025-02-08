@@ -369,7 +369,7 @@ export default function CheckoutPage() {
                     </button>
                   </Link>
                   <Link href="/placeanorder">
-                  <button onClick={() =>handleCreateShipment()}  className="px-6 py-2 bg-orange-500 text-white rounded-md shadow-sm text-sm font-medium hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 w-72 h-12" disabled={loading || cartItems.length === 0}>
+                  <button onClick={() =>handleCreateShipment()}  className="px-6 py-2 bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 rounded-[4px] hover:via-orange-500 hover:to-orange-600 w-72 h-12" disabled={loading || cartItems.length === 0}>
              Proced to Billing
               </button></Link>
             </div>
@@ -383,7 +383,7 @@ export default function CheckoutPage() {
     <button
         onClick={handlePlaceOrder}
         disabled={loading || cartItems.length === 0}
-        className="px-6 py-2 bg-orange-500 text-white"
+        className="px-6 py-2 w-full bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 rounded-[4px]  hover:via-orange-500 hover:to-orange-600"
       >
         {loading ? "Placing Order..." : "Place Order"}
       </button>

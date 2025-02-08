@@ -186,7 +186,7 @@ const Page = () => {
                   <h2 className="font-bold text-lg text-justify md:text-xl">{post.title}</h2>
                   <p className=" text-[12px] text-justify md:text-[14px]">Make sure that all the words you use to describe a dish fit well together. For example, describing something as “light” and “rich” at the same time might be confusing unless you explain how those qualities work together in the dish.</p>
                   <Link href={`/blogdetails/${post._id}`}>
-                    <button className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 rounded-[4px] px-4 py-1 hover:via-orange-500 hover:to-orange-600 flex items-center justify-center gap-2">
+                    <button className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 rounded-[4px] px-4 py-1 hover:via-orange-500 hover:to-orange-600 mt-2 flex items-center justify-center gap-2">
                       <p>Read More</p>
                       <LuSquareArrowOutUpRight size={16} />
                     </button>

@@ -49,7 +49,7 @@ const Footer: React.FC = () => {
             <input
               type="text"
               placeholder="Enter Your Email"
-              className="font-inter font-normal text-[14px] md:text-[16px] text-[#FFFFFF] bg-[#FF9F0D] p-4 flex-1"
+              className="font-inter font-normal text-[14px] md:text-[16px] text-black bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 rounded-[4px] px-4 py-1 hover:via-orange-500 hover:to-orange-600 p-4 flex-1"
             />
             <button className="font-inter font-normal text-[14px] md:text-[16px] text-[#FF9F0D] bg-[#FFFFFF] p-2 md:p-3 rounded-[2px] hover:text-[#000000] hover:bg-[#eee3d3] transition duration-300">
               Subscribe Now

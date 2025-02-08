@@ -100,7 +100,7 @@ const BlogDetails = ({ params }: { params: { id: string } }) => {
             <p className="text-sm md:text-base text-justify">{blog.description}</p>
 
             {/* Quote Section */}
-            <div className="md:max-w-[940px] px-4 bg-[#FF9F0D] text-[#ffffff] h-fit my-6 left-[300px]">
+            <div className="md:max-w-[940px] px-4 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 hover:from-orange-500 rounded-[4px] py-1 hover:via-orange-600 hover:to-orange-600 text-[#ffffff] h-fit my-6 left-[300px]">
               <div className="flex gap-4 px-4">
                 <PiQuotes size={68} />
                 <p className="font-helvetica px-4 font-bold text-[24px]">{blog.quote}</p>
@@ -108,14 +108,14 @@ const BlogDetails = ({ params }: { params: { id: string } }) => {
             </div>
 
             <p className="text-[#000000] font-[400] font-inter px-4 text-justify text-[16px] my-6">
-              Lorem ipsum dolor sit amet...
+              {blog.description}
             </p>
 
             {/* Image & Text Section */}
             <div className="flex flex-col md:flex-row md:max-w-[972px] justify-around gap-3">
               <div className="md:w-1/2 w-full">
-                <p className="w-full lg:hidden block text-justify px-4">
-                  Lorem ipsum dolor sit amet...
+                <p className="w-full sm:block hidden md:block lg:block text-justify px-4">
+                 {blog.description}
                 </p>
               </div>
               <div className="md:w-1/2 w-full px-4">
