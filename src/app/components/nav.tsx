@@ -169,9 +169,12 @@ const Nav = () => {
                 <Link href={"/shop"}>
                   <li className="font-medium hover:text-bordercoloryello">Shop</li>
                 </Link>
-                <Link href={"/signin"}>
-                  <li className="font-medium hover:text-bordercoloryello">Signin</li>
-                </Link>
+                <Link href={"/sign-in"}>
+              <li className="w-[45px] h-[24px] font-medium leading-[24px]">Signin</li>
+            </Link>
+            <Link href={"/sign-up"}>
+              <li className="w-[45px] h-[24px] font-medium leading-[24px]">Signup</li>
+            </Link>
               </ul>
               <div>
               <div className="flex mt-4 items-center gap-[10px] px-[15px] py-[5px] border border-bordercoloryello rounded-2xl">
