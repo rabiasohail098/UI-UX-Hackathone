@@ -10,7 +10,7 @@ const Hero5 = () => {
           Restaurant Active Process
         </p>
         <h2 className="font-bold text-3xl max-w-[705px] sm:text-4xl lg:text-5xl leading-tight mb-6">
-          <span className='text-[#FF9F0D]'>we</span> Document Every Food
+          <span className='text-[#FF9F0D]'>We</span> Document Every Food
           Bean Process until it is saved
         </h2>
         <p className='font-inter text-[16px] max-w-[651px] leading-relaxed mb-6'>
@@ -19,13 +19,13 @@ const Hero5 = () => {
           augue urna.
         </p>
         <div className="flex justify-end gap-4">
-          <Link href="/faq">
-          <button className="w-[190px] h-[60px] text-center border-[#FF9F0D] text-white border-[1px] rounded-[25px] text-lg">
+          <Link href="/blog">
+          <button className="w-[190px] h-[60px] text-center border-[#FF9F0D] text-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 hover:via-orange-500 hover:to-orange-600 border-[1px] rounded-[25px] text-lg">
             Show More
           </button>
           </Link>
-          <button className="flex items-center gap-2 text-[#ffffff] text-lg">
-            <IoPlayOutline className="text-[#FF9F0D]" />
+          <button className="flex p-4 items-center rounded-[16px] gap-2 text-[#ffffff] text-lg bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 hover:via-orange-500 hover:to-orange-600">
+            <IoPlayOutline className="text-orange-800" size={20} />
             Watch Video
           </button>
         </div>

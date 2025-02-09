@@ -16,7 +16,7 @@ const OrderTracking = () => {
 
       <input type="text" placeholder="Enter Order ID" onChange={(e) => setOrderId(e.target.value)} className="border p-2 w-full mb-2" />
 
-      <button onClick={fetchOrder} className="bg-green-500 text-white p-2 rounded-md w-full">
+      <button onClick={fetchOrder} className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 hover:via-orange-500 hover:to-orange-600 text-white p-2 rounded-md w-full">
         Track Order
       </button>
 

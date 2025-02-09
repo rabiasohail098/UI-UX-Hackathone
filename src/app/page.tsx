@@ -9,6 +9,7 @@ import Hero5 from "./components/hero5";
 import Hero6 from "./components/hero6";
 import FoodCategory1 from "./components/foodcategory";
 import { SkeletonCard } from "./components/skeleton";
+import HelpPage from "./components/testimonialslider";
 
 
 const page = () => {
@@ -27,7 +28,7 @@ const page = () => {
         <FromMenu />
        </Suspense>
       <Meetchef />
-      <Testimonials />
+      <HelpPage/>
       <Hero5 />
       <Hero6 />
     </div>

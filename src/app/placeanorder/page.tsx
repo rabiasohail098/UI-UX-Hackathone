@@ -246,7 +246,24 @@
 
 // Import the CheckoutPage component and a helper function to convert amounts to subcurrency.
 import CheckoutPage from "../components/Checkoutpage";
+import Link from 'next/link';
 import convertToSubcurrency from "@/lib/convertToSubcurrency";
+import { client } from "@/sanity/lib/client";
+import { useState, useEffect } from "react";
+import { useUser } from "@clerk/nextjs";
+import { groq } from "next-sanity";
+
+interface CheckoutItem {
+  _id: string;
+  title: string;
+  price: number;
+  category: string;
+  quantity: number;
+  imageUrl: string;
+  product: {
+    _ref: string;
+  };
+}
 
 // Import Stripe-specific components and methods for creating and managing payments.
 import { Elements } from "@stripe/react-stripe-js";
@@ -262,20 +279,83 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 
 // Define the main component for the home page.
 export default function Home() {
-  // The amount requested for payment.
-  const amount = 49.99;
+  const { user } = useUser();
+  const [cartItems, setCartItems] = useState<CheckoutItem[]>([]);
+  const [loading, setLoading] = useState(true);
+console.log(user)
+  // Fetch cart items for the logged-in user
+  const fetchCartItems = async (userId: string) => {
+    try {
+      const query = groq`*[_type == "carts" && user._ref == $userId] {
+       _id,
+  "price": product->price, // Fetch price from the referenced product
+      }`;
+     
+      const result = await client.fetch(query, { userId });
+      
+      setCartItems(result);
+    } catch (error) {
+      console.error("Error fetching cart items:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (!user) return;
+    fetchCartItems(user.id);
+
+    // Real-time listener for cart updates
+    const subscription = client
+      .listen(groq`*[_type == "carts" && user._ref == $userId]`, { userId: user.id })
+      .subscribe((update) => {
+        console.log("Live Update Received:", update);
+        fetchCartItems(user.id);
+      });
+
+    return () => subscription.unsubscribe(); // Cleanup listener
+  }, [user]);
+
+  // Calculate pricing
+  const subtotal = cartItems.reduce((total, item) => total + item.price * 1, 0);
+  const shipping = 0; // Free shipping
+  const discountPercentage = 25; // 25% discount
+  const discount = (subtotal * discountPercentage) / 100;
+  const taxRate = 10; // 10% tax
+  const tax = (subtotal * taxRate) / 100;
+  const total = subtotal + shipping - discount + tax;
+
+  if (loading) return <div>Loading...</div>;
+  if (cartItems.length === 0) return <div>Your cart is empty.</div>;
+
 
   // Return the main content of the page.
   return (
     // Use Tailwind CSS classes for styling and layout.
-    <main className="max-w-6xl mx-auto p-10 text-white text-center border m-10 rounded-md bg-gradient-to-tr from-slate-400 to-zinc-900">
+    <>
+       <section
+            className="bg-cover bg-center h-64 flex items-center justify-center"
+            style={{ backgroundImage: "url('/images/bg.png')" }}
+          >
+            <div className="text-center text-white">
+              <h2 className="text-4xl font-bold">Checkout Page</h2>
+              <p className="pt-2">
+                <Link href="/" className="text-yellow-400">
+                  Home
+                </Link>{" "}
+                › Checkout
+              </p>
+            </div>
+          </section>
+    
+    <main className="max-w-6xl mx-auto p-10 text-white text-center border m-10 bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 rounded-[4px] px-4 py-1 hover:via-orange-500 hover:to-orange-600">
       
       {/* A header section for displaying who requested payment and how much. */}
       <div className="mb-10">
-        <h1 className="text-4xl font-extrabold mb-2">Ali Aftab</h1>
+        <h1 className="text-4xl font-extrabold mb-2">{user?.firstName ?? "Guest"}</h1>
         <h2 className="text-2xl">
           has requested
-          <span className="font-bold"> ${amount}</span>
+          <span className="font-bold"> ${total}</span>
         </h2>
       </div>
 
@@ -285,13 +365,17 @@ export default function Home() {
         stripe={stripePromise}       // The promise that resolves to a Stripe instance.
         options={{
           mode: "payment",           // The payment mode for Stripe Elements.
-          amount: convertToSubcurrency(amount),  // Convert amount to subcurrency (e.g., cents).
+          amount: convertToSubcurrency(total ?? 1),  // Convert amount to subcurrency (e.g., cents).
           currency: "usd",           // The currency to use for the payment.
         }}
       >
         {/* Render the CheckoutPage component, passing the amount as a prop. */}
-        <CheckoutPage amount={amount} />
+        <CheckoutPage amount={total ?? 1} />
       </Elements>
-    </main>
+      </main>
+      </>
   );
 }
+
+
+

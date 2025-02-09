@@ -2,31 +2,55 @@
 import { useEffect, useState } from 'react';
 import React from 'react';
 import Image from 'next/image';
+import { client } from '@/sanity/lib/client';
 import { AiOutlineLike } from "react-icons/ai";
 import { LuMessageSquareMore } from "react-icons/lu";
 import { IoShareSocialOutline } from "react-icons/io5";
 import Link from 'next/link';
+
+
+type Blog = {
+  _id: string;
+  title: string;
+  description: string;
+  date: string;
+  quote: string;
+  imageUrl: string;
+};
 const Hero6 = () => {
- const [posts, setPosts] = useState([]); // State to store fetched data
-  const [loading, setLoading] = useState(true); // State for loading
-
-  useEffect(() => {
-    // Fetch data when the component mounts
-    const fetchPosts = async () => {
-      try {
-        const res = await fetch("https://677c0f1720824100c07bb9bc.mockapi.io/blog");
-        const data = await res.json();
-        const data1 = data.slice(0,3)
-        setPosts(data1); // Set fetched data to state
-        setLoading(false); // Turn off loading state
-      } catch (error) {
-        console.error("Failed to fetch posts:", error);
-        setLoading(false);
-      }
-    };
-
-    fetchPosts();
-  }, []);
+  const [data, setData] = useState<Blog[]>([]);
+   const [loading, setLoading] = useState(true);
+ 
+   useEffect(() => {
+     const fetchData = async () => {
+       const query = `*[_type == "blog"]{
+         _id,
+         title,
+         date,
+         "imageUrl": image.asset->url,
+         description,
+         quote
+       }`;
+ 
+       try {
+         const fetchedData = await client.fetch(query);
+         const data1 = fetchedData.slice(0,3)
+         console.log("Fetched Data:", fetchedData);
+         setData(data1);
+       } catch (error) {
+         console.error("Error fetching data:", error);
+       } finally {
+         setLoading(false);
+       }
+     };
+ 
+     fetchData();
+   }, []);
+ 
+   if (loading) {
+     return <div>Loading...</div>;
+   }
+ 
 
   if (loading) {
     return <div>Loading...</div>; // Show loading state
@@ -41,10 +65,10 @@ const Hero6 = () => {
         </h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {posts.map((post:any)=>(
+        {data.map((post:any)=>(
         <div className='bg-[#1A1A1A] p-6 rounded-2 flex flex-col' key={post.id}>
           <Image
-              src={post.image}
+              src={post.imageUrl}
             alt={post.name}
             width={240}
             height={329}
@@ -55,7 +79,7 @@ const Hero6 = () => {
             Pellentesque Non Efficitur Mi Aliquam Convallis Mi Quis
           </h3>
           <div className='flex justify-between w-full px-4'>
-          <Link href={`/blog/${post.id}`}>
+          <Link href={`/blogdetails/${post._id}`}>
               <p className='font-inter text-[16px] text-[#ffffff] cursor-pointer'>Learn More</p>
               </Link>
            

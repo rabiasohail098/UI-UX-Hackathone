@@ -35,7 +35,7 @@ const Cart = ({ cartItems, removeFromCart }: CartProps) => {
              
                 <button
                   onClick={() => removeFromCart(item._id)}
-                  className="bg-red-500 text-white py-1 px-4 rounded hover:bg-red-600"
+                  className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 hover:via-orange-500 hover:to-orange-600 text-white py-1 px-4 rounded hover:bg-red-600"
                 >
                   Remove
                 </button>
@@ -174,6 +174,21 @@ const ProductListing = ({ addToCart }: ProductListingProps) => {
   }
 
   return (
+    <>
+       <section
+            className="bg-cover bg-center h-64 flex items-center justify-center"
+            style={{ backgroundImage: "url('/images/bg.png')" }}
+          >
+            <div className="text-center text-white">
+              <h2 className="text-4xl font-bold">Wishlist</h2>
+              <p className="pt-2">
+                <Link href="/" className="text-yellow-400">
+                  Home
+                </Link>{" "}
+                › Wishlist
+              </p>
+            </div>
+          </section>
     <div className="container mx-auto px-4 py-8">
    
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -194,7 +209,7 @@ const ProductListing = ({ addToCart }: ProductListingProps) => {
             <Link href="">
             <button
               onClick={() => addToCart(product)}
-              className="mt-2 bg-orange-500 w-full overflow-y-auto text-white py-1 px-4 rounded hover:bg-orange-600"
+              className="mt-2 bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 hover:via-orange-500 hover:to-orange-600 w-full overflow-y-auto text-white py-1 px-4 rounded "
             >
               Add to Wishlist
               </button>
@@ -202,7 +217,8 @@ const ProductListing = ({ addToCart }: ProductListingProps) => {
           </div>
         ))}
       </div>
-    </div>
+      </div>
+      </>
   );
 };
 

@@ -5,8 +5,8 @@ const Meetchef = () => {
   return (
     <div className="min-h-fit w-full flex flex-col items-center justify-center bg-[#0D0D0D] space-y-12">
     <div className="text-center space-y-4">
-  <p className="font-greatvibes text-[16px] md:text-[18px] font-normal text-[#FF9F0D]"> Chefs</p>
-<h2 className="font-helvetica text-[28px] md:text-[36px] lg:text-[48px] font-bold text-[#FFFFFF]"><span className='text-[#FF9F0D]'>Me</span>et Our Chef</h2>
+  <p className="font-greatvibes text-2xl md:text-[18px] font-normal text-[#FF9F0D]"> Chefs</p>
+<h2 className="font-helvetica text-[32px] md:text-[36px] lg:text-[48px] font-bold text-[#FFFFFF]"><span className='text-[#FF9F0D]'>Me</span>et Our Chef</h2>
     </div>
 
     <div className="w-full grid grid-cols-2 sm:grid-cols-3 px-28 gap-6 lg:grid-cols-4  items-center justify-center">

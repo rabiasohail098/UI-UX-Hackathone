@@ -60,7 +60,7 @@ export default function Aboutus() {
           </p>
           <div className="flex justify-center">
             <Link href="/shop">
-              <button className="inline-flex text-white bg-orange-400 border-0 py-2 px-3 focus:outline-none rounded text-lg">
+              <button className="inline-flex text-white bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 rounded-[4px] px-4 py-1 hover:via-orange-500 hover:to-orange-600 border-0  focus:outline-none  text-lg">
                 Show More
               </button>
             </Link>

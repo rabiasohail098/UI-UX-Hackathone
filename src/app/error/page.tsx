@@ -19,7 +19,7 @@ const Error = () => {
 <h2 className="text-[64px] md:w-[630px] w-full md:text-[80px] lg:text-[96px] font-bold font-helvetica text-[#FF9F0D]">404</h2>
 <h4 className="  w-full text-[32px]  font-bold font-helvetica text-[#333333]">Oops! Looks like something went wrong</h4>
 <p className="text-[18px] w-full font-bold font-inter text-[#4F4F4F] px-4">Page cannot be found! We’ll have it figured out in no time. Meanwhile, check out these fresh ideas:</p>
-<Link href="/"><button className="text-[16px] w-[197px] md:text-[18px] lg:text-[20px] font-bold font-helvetica px-6 py-3 text-[#FFFFFF] bg-[#FF9F0D] rounded-[4px] hover:bg-[#FF7F00] transition-all duration-300">Go to Home</button>
+<Link href="/"><button className="text-[16px] w-[197px] md:text-[18px] lg:text-[20px] font-bold font-helvetica px-6 py-3 text-[#FFFFFF] bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 hover:via-orange-500 hover:to-orange-600 transition-all duration-300">Go to Home</button>
 </Link>
       </div>
     </>

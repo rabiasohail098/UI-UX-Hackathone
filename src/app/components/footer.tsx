@@ -78,17 +78,27 @@ const Footer: React.FC = () => {
         <div className="w-full md:w-[18%] hidden md:block mb-8 md:mb-0">
           <h2 className="font-bold text-[16px] md:text-[18px] text-[#FFFFFF] mb-4">Useful Links</h2>
           <ul className="space-y-2">
-            {['About', 'News', 'Patrons', 'Team', 'Menu', 'Contact'].map((link, index) => (
-              <li key={index} className="font-normal text-[14px] md:text-[16px] text-[#FFFFFF]">{link}</li>
-            ))}
+
+             <li  className="font-normal text-[14px] md:text-[16px] text-[#FFFFFF]"> <Link href="/about">About</Link></li>
+              <li  className="font-normal text-[14px] md:text-[16px] text-[#FFFFFF]"><Link href="/news">News</Link></li>
+              <li  className="font-normal text-[14px] md:text-[16px] text-[#FFFFFF]"><Link href="/patrons">Patrons</Link></li>
+              <li  className="font-normal text-[14px] md:text-[16px] text-[#FFFFFF]"><Link href="/team">Team</Link></li>
+              <li  className="font-normal text-[14px] md:text-[16px] text-[#FFFFFF]"><Link href="/menu">Menu</Link></li>
+              <li  className="font-normal text-[14px] md:text-[16px] text-[#FFFFFF]"><Link href="/contact">Contact</Link></li>
+           
           </ul>
         </div>
         <div className="w-full md:w-[18%] hidden md:block mb-8 md:mb-0">
           <h2 className="font-bold text-[16px] md:text-[18px] text-[#FFFFFF] mb-4">Help?</h2>
           <ul className="space-y-2">
-            {['FAQ', 'Terms & Conditions', 'Reporting', 'Documentation', 'Support Policy', 'Privacy'].map((item, index) => (
-              <li key={index} className="font-normal text-[14px] md:text-[16px] text-[#FFFFFF]">{item}</li>
-            ))}
+         
+              <li className="font-normal text-[14px] md:text-[16px] text-[#FFFFFF]"><Link href="/faq">FAQ</Link></li>
+              <li className="font-normal text-[14px] md:text-[16px] text-[#FFFFFF]"><Link href="/termsandconditions">Terms & Conditions</Link></li>
+              <li className="font-normal text-[14px] md:text-[16px] text-[#FFFFFF]"><Link href="/reporting">Reporting</Link></li>
+              <li className="font-normal text-[14px] md:text-[16px] text-[#FFFFFF]"><Link href="https://github.com/rabiasohail098/Marketplace-Q-Commerce-Documentation.git">Documentation</Link></li>
+              <li className="font-normal text-[14px] md:text-[16px] text-[#FFFFFF]"><Link href="/supportpolicy">Support Policy</Link></li>
+              <li className="font-normal text-[14px] md:text-[16px] text-[#FFFFFF]"><Link href="/privacy">Privacy</Link></li>
+          
           </ul>
         </div>
         <div className="w-full sm:w-[45%] md:w-[35%] mb-8 md:mb-0">

@@ -48,7 +48,7 @@ const CartManager = ({products}:{products:Product[]}) => {
                             <td>{item.name}</td>
                             <td>{item.price}</td>
                             <td>1</td>
-                            <td><button onClick={()=>handleRemoveFromCart(item._id)} className='bg-red-500 rounded-xl p-4 text-white'>Remove</button></td>
+                            <td><button onClick={()=>handleRemoveFromCart(item._id)} className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 rounded-[4px] px-4 py-1 hover:via-orange-500 hover:to-orange-600 p-4 text-white">Remove</button></td>
                         </tr>
                     )
                 })}

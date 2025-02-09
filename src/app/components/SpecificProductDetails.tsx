@@ -163,7 +163,7 @@ const SpecificProductDetails = ({ productId }: { productId: string }) => {
             <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
               <Link href="/addtocart">
                 <button
-                  className="bg-orange-500 text-white px-4 py-2 rounded"
+                  className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 hover:via-orange-500 hover:to-orange-600 text-white px-4 py-2 rounded"
                   onClick={() => addToCart(product)}
                 >
                   Add to Cart

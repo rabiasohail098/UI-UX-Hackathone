@@ -1,0 +1,140 @@
+.teamPage {
+    padding: 60px 10%;
+    background-color: #fff;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .pageTitle {
+    text-align: center;
+    font-size: 45px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 50px;
+  }
+  
+  .teamContainer {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping of the cards */
+    justify-content: space-between;
+    gap: 30px; /* Add horizontal gap between cards */
+    margin-top: 40px;
+  }
+  
+  .teamMember {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px; /* Horizontal gap inside the card */
+    padding: 40px 30px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; /* Center the content horizontally */
+    flex: 1 1 calc(50% - 30px); /* Make cards 50% width with gap */
+    margin-bottom: 40px; /* Add margin between cards */
+  }
+  
+  .teamMember:nth-child(odd) {
+    flex-direction: row; /* Image on the left for odd members */
+  }
+  
+  .teamMember:nth-child(even) {
+    flex-direction: row-reverse; /* Image on the right for even members */
+  }
+  
+  .teamMember:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .imageContainer {
+    width: 40%; /* Reduced image width */
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  
+  .teamImage {
+    object-fit: cover;
+    width: 70%;
+    height: 100%;
+    border-right: #f97316;
+    border-radius: 20px;
+    margin-left: 40px;
+  }
+  
+  .detailsContainer {
+    width: 60%; /* Details container width to balance with image */
+    text-align: left;
+  }
+  
+  .teamName {
+    font-size: 26px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 12px;
+  }
+  
+  .teamRole {
+    font-size: 20px;
+    color: #f97316; /* Food-themed accent color */
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+  
+  .teamDescription {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 25px;
+  }
+  
+  .socialLinks {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .socialLinks a {
+    color: #333;
+    font-size: 22px;
+    transition: color 0.3s ease;
+  }
+  
+  .socialLinks a:hover {
+    color: #f97316; /* Highlight color */
+  }
+  @media (max-width: 768px) {
+    .teamContainer {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .teamMember {
+      flex-direction: column !important; /* Override row and row-reverse */
+      text-align: center;
+      width: 100%;
+    }
+  
+    .imageContainer {
+      width: 100%;
+      height: auto;
+    }
+  
+    .teamImage {
+      width: 100%;
+      height: auto;
+      margin-left: 0;
+    }
+  
+    .detailsContainer {
+      width: 100%;
+      text-align: center;
+    }
+  }

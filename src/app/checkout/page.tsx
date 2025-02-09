@@ -168,9 +168,9 @@ export default function CheckoutPage() {
         style={{ backgroundImage: "url('/images/bg.png')" }}
       >
         <div className="text-center text-white">
-          <h2 className="text-4xl font-bold">Checkout Page</h2>
+          <h2 className="text-4xl font-bold">Order Summary</h2>
           <p className="pt-2">
-            <Link href="/" className="text-yellow-400">Home</Link> › Checkout
+            <Link href="/" className="text-yellow-400">Home</Link> › Order Summary
           </p>
         </div>
       </section>

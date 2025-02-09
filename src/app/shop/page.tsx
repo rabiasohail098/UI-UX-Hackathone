@@ -126,7 +126,7 @@ const Page = () => {
                   <p className="text-gray-500 line-through">${item.price + 6}.00</p>
                   </div>
                 <Link href={`/products/${item._id}`}>
-                  <button className=" w-[200px] bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 mt-4">
+                  <button className=" w-[200px] bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 hover:from-orange-400 hover:via-orange-500 hover:to-orange-600 mt-4">
                     View Product
                   </button>
                 </Link>
