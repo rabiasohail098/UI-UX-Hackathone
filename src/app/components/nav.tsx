@@ -9,6 +9,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { UserButton, useUser } from "@clerk/nextjs";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Link from "next/link";
+import Image from "next/image";
 import { client } from "@/sanity/lib/client";
 import { HeartIcon, User2, User2Icon } from "lucide-react";
 
@@ -133,6 +134,12 @@ const Nav = () => {
               </div>
             </Link>
 
+            <a href="">
+              <div className="relative mt-2">
+                  <Image src="/images/dash.png" alt="icon" width={100} height={100} className="w-[28px] h-[28px] cursor-pointer"/>               
+              </div>
+            </a>
+            
             <Link href="/sign-in">
               <div className="relative mt-3">
                 <span className="text-whitetext text-[28px]  cursor-pointer">
@@ -140,6 +147,8 @@ const Nav = () => {
                 </span>
               </div>
             </Link>
+
+           
           </div>
         </div>
 
@@ -224,6 +233,14 @@ const Nav = () => {
                 )}
               </div>
                 </Link>
+
+                <Link href="/sign-in">
+              <div className="relative mt-3">
+                <span className="text-whitetext text-[28px]  cursor-pointer">
+                <UserButton/>
+                </span>
+              </div>
+            </Link>
                 </div>
             </SheetContent>
           </Sheet>

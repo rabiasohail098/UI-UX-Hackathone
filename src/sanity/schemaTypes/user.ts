@@ -25,6 +25,12 @@ export default {
       to: [{ type: 'carts' }], // Reference to the user's cart
     },
     {
+      name: 'isAdmin',
+      title: 'Admin',
+      type: 'boolean', // ✅ Admin field (true/false)
+      description: 'Check if this user is an admin',
+    },
+    {
       name: 'orders',
       title: 'Orders',
       type: 'array',

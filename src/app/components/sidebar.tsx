@@ -55,7 +55,7 @@ const Sidebar = () => {
       const data1 = datas.slice(0,4)
   return (
       <div>
-            <aside className="w-[300px] px-4 md:w-1/4 flex flex-col gap-8">
+            <aside className="w-[250px] px-4 md:w-1/4 flex flex-col gap-8">
         {/* Filter Section */}
         <div className="space-y-4">
           <Filterproduct />
