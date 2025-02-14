@@ -117,7 +117,7 @@ type Blog = {
 
 const Page = () => {
   const [data, setData] = useState<Blog[]>([]);
-  const [loading, setLoading] = useState(true);
+ 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -137,16 +137,13 @@ const Page = () => {
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
-        setLoading(false);
+       
       }
     };
 
     fetchData();
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div>

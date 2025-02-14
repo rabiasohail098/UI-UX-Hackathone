@@ -36,6 +36,19 @@ export default {
       title: "State",
     },
     {
+      name: "status",
+      type: "string",
+      title: "Status",
+      options: {
+        list: [
+          { title: "Pending", value: "pending" },
+          { title: "Processing", value: "processing" },
+          { title: "Success", value: "success" },
+          { title: "Cancelled", value: "cancelled" },
+        ],
+      },
+    },
+    {
       name: "zipCode",
       type: "string",
       title: "Zip Code",

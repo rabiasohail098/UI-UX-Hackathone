@@ -176,7 +176,7 @@ const ProductListing = ({ addToCart }: ProductListingProps) => {
   return (
     <>
        <section
-            className="bg-cover bg-center h-64 flex items-center justify-center"
+            className="bg-cover bg-center  flex items-center justify-center"
             style={{ backgroundImage: "url('/images/bg.png')" }}
           >
             <div className="text-center text-white">
