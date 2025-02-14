@@ -134,7 +134,7 @@ const Nav = () => {
               </div>
             </Link>
 
-            <a href="">
+            <a href="https://dashboard-beta-opal.vercel.app/">
               <div className="relative mt-2">
                   <Image src="/images/dash.png" alt="icon" width={100} height={100} className="w-[28px] h-[28px] cursor-pointer"/>               
               </div>
@@ -159,7 +159,7 @@ const Nav = () => {
               <GiHamburgerMenu className="text-whitetext text-[34px] cursor-pointer" />
             </SheetTrigger>
             <SheetContent>
-              <ul className="flex flex-col gap-[10px] font-medium text-[16px] text-orange-500">
+              <ul className="flex flex-col gap-3 font-medium text-[16px] text-orange-500">
                 <Link href={"/"}>
                   <li className="font-medium hover:text-bordercoloryello">Home</li>
                 </Link>
@@ -241,7 +241,14 @@ const Nav = () => {
                 </span>
               </div>
             </Link>
-                </div>
+              </div>
+              
+            <a href="https://dashboard-beta-opal.vercel.app/">
+              <div className="relative mt-2">
+                  <Image src="/images/dash.png" alt="icon" width={100} height={100} className="w-[28px] h-[28px] cursor-pointer"/>               
+              </div>
+            </a>
+
             </SheetContent>
           </Sheet>
         </div>
