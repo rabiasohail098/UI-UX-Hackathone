@@ -175,20 +175,7 @@ const ProductListing = ({ addToCart }: ProductListingProps) => {
 
   return (
     <>
-       <section
-            className="bg-cover bg-center h-fit flex items-center justify-center"
-            style={{ backgroundImage: "url('/images/bg.png')" }}
-          >
-            <div className="text-center text-white">
-              <h2 className="text-4xl font-bold">Wishlist</h2>
-              <p className="pt-2">
-                <Link href="/" className="text-yellow-400">
-                  Home
-                </Link>{" "}
-                › Wishlist
-              </p>
-            </div>
-          </section>
+      
     <div className="container mx-auto px-4 py-8">
    
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
